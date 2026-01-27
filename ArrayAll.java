@@ -289,6 +289,30 @@ public class ArrayAll {
         System.out.println("Index where we have profit = " + prices[maxProfit]);
     }
 
+    // 15. Majority Element
+    public static void majorityElement(int arr[]) {
+        int curr = arr[0];
+        int count = 1;
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == curr) {
+                count++;
+            }
+            else {
+                count--;
+                if (count == 0) {
+                    curr = arr[i];
+                    count = 1;
+                }
+            }
+        }
+        
+        System.out.println(curr);
+    }
+
+
+
+
     // 2. Find duplicates in an array
     public static void findDuplicates(int arr[]) {
         for (int i = 0; i < arr.length; i++) {
@@ -359,8 +383,10 @@ public class ArrayAll {
         //     System.out.print(result[i] + " ");
         // }
 
+        // int prices[] = {7, 1, 5, 3, 6, 4};
+        // buyShell(prices);
 
-        int prices[] = {7, 1, 5, 3, 6, 4};
-        buyShell(prices);
+        int arr[] = {1, 2, 1, 2, 1, 2, 1, 2};
+        majorityElement(arr);
     }
 }
