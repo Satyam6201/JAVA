@@ -274,7 +274,7 @@ public class ArrayAll {
     }
 
     // 14.buy and shell stock
-    public static void buyShell(int prices[]) {
+    public static void buySell(int prices[]) {
         int minPrices = prices[0];
         int maxProfit = 0;
 
@@ -309,6 +309,33 @@ public class ArrayAll {
         
         System.out.println(curr);
     }
+
+    // 16. number of 1 bits(binary me phle convert hoga or check hoga kitna 1 hai binary me)
+    public static void countOnes(int num) {
+        int count = 0;
+
+        while (num > 0) {
+            if (num % 2 == 1) {
+                count++;
+            }
+            num = num / 2;
+        }
+        System.out.println(count);
+    }
+
+    // 17. hight altitude
+    public static void highAltitude(int arr[]) {
+        int altitude = 0;
+        int maxAltitude = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            altitude = altitude + arr[i];
+
+            maxAltitude = Math.max(altitude, maxAltitude);
+        }
+        System.out.println(maxAltitude);
+    }
+
 
 
 
@@ -384,9 +411,14 @@ public class ArrayAll {
         // }
 
         // int prices[] = {7, 1, 5, 3, 6, 4};
-        // buyShell(prices);
+        // buySell(prices);
 
-        int arr[] = {1, 2, 1, 2, 1, 2, 1, 2};
-        majorityElement(arr);
+        // int arr[] = {1, 2, 1, 2, 1, 2, 1, 2};
+        // majorityElement(arr);
+
+        // countOnes(11);
+
+        int arr[] = {-5, 1, 5, 0, -7, 10};
+        highAltitude(arr);
     }
 }
