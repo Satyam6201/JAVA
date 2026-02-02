@@ -449,6 +449,26 @@ public class ArrayAll {
         System.out.println(result);
     }
 
+    // 24. subArray with Give sum(target wala)
+    public static void subArraySum(int arr[], int target) {
+        int sum = 0;
+        int start = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
+            
+            while (sum > target) {
+                sum = sum - arr[start];
+                start++;
+            }
+            if (sum == target) {
+                System.out.println("start = " + start + " end = " + i);
+                return;
+            }
+        }
+        System.out.println("Not Found!");
+    }
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -532,8 +552,12 @@ public class ArrayAll {
         // int arr2[] = {2, 3, 5, 6};
         // union(arr1, arr2); //[1, 2, 3, 4, 5, 6]
 
-        int arr1[] = {1, 5, 3, 5};
-        int arr2[] = {2, 3, 5};
-        intersection(arr1, arr2); //[2, 5]
+        // int arr1[] = {1, 5, 3, 5};
+        // int arr2[] = {2, 3, 5};
+        // intersection(arr1, arr2); //[2, 5]
+
+        int arr[] = {1, 4, 20, 3, 10, 5};
+        int target = 33;
+        subArraySum(arr, target); // start = 2 end = 4
     }
 }
