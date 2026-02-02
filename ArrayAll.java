@@ -1,4 +1,5 @@
-import java.util.HashMap;
+import java.util.*;
+
 
 public class ArrayAll {
     // 1. Second largest number 
@@ -239,8 +240,8 @@ public class ArrayAll {
         int n = arr1.length;
         int m = arr2.length;
 
-        int i = 0;
-        int j = 0;
+        int i = 0;  //  for num1
+        int j = 0;  //  for num2
         int k = 0;
         
         int result[] = new int[n + m]; 
@@ -336,11 +337,45 @@ public class ArrayAll {
         System.out.println(maxAltitude);
     }
 
+    // 18. Maximum Average Subarray (size = k)
+    public static void findMaxAverage(int arr[], int k) {
+        int sum = 0;
+        int max = 0;
 
+        // First 4 number
+        for (int i = 0; i < k; i++) {
+            sum = sum + arr[i];
+        }
 
+        max = sum;
 
+        // Next sliding number
+        for (int i = k; i < arr.length; i++) {
+            sum = sum + arr[i] - arr[i - k];
+            max = Math.max(max, sum);
+        }
 
-    // 2. Find duplicates in an array
+        double result = (double)max / k;
+        System.out.println(result);
+    }
+
+    // 19. Find largest number and smallest number 
+    public static void maxAndMin(int arr[]) {
+        int largest = arr[0];
+        int smallest = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > largest) {
+                largest = arr[i];
+            }
+            if (arr[i] < smallest) {
+                smallest = arr[i];
+            }
+        }
+        System.out.println("Largest Num = "+ largest + " Smallest = " + smallest);
+    }
+
+    // 20. Find duplicates in an array
     public static void findDuplicates(int arr[]) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
@@ -351,6 +386,68 @@ public class ArrayAll {
             }
         }
     } 
+
+    // 21 Armstrong Number (153 = 1^3 + 5^3 + 3^3)
+    public static void armstrong(int num) {
+        int originalNum = num;
+        int sum = 0;
+
+        while (num > 0) {
+            int digit = num % 10;
+            sum = sum + (digit * digit * digit);
+            num = num / 10;
+        }
+
+        if (sum == originalNum) {
+            System.out.println("Armstrong Number!");
+        }
+        else {
+            System.out.println("Not Armstrong Number!");
+        }
+    }
+
+    // 22. Union of 2 array(not sorted or sorted)
+    public static void union(int arr1[], int arr2[]) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < arr1.length; i++) {
+            set.add(arr1[i]); // arr1 ka sara value add ho gya 
+        }
+
+        for (int i = 0; i < arr2.length; i++) {   // arr2 ka value but duplicate is not allow
+            set.add(arr2[i]);
+        }
+
+        System.out.println(set);
+    }
+
+    // 23. Intersection of 2 Array(sorted)
+    public static void intersection(int arr1[], int arr2[]) {
+
+        // If array is not sorted then used this
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        int i = 0;  // for arr1
+        int j = 0; // for arr2
+
+        List <Integer> result = new ArrayList<>();
+
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] == arr2[j]) {
+                result.add(arr1[i]);
+                i++;
+                j++;
+            }
+            else if (arr1[i] < arr2[j]) {
+                i++;
+            }
+            else {
+                j++;
+            }
+        }
+        System.out.println(result);
+    }
 
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
@@ -418,7 +515,25 @@ public class ArrayAll {
 
         // countOnes(11);
 
-        int arr[] = {-5, 1, 5, 0, -7, 10};
-        highAltitude(arr);
+        // int arr[] = {-5, 1, 5, 0, -7, 10};
+        // highAltitude(arr);
+
+        // int nums[] = {1, 12, -5, -6, 50, 3};
+        // int k = 4;
+        // findMaxAverage(nums, k);
+    
+        // int arr[] = {1, 12, -5, -6, 50, 3};
+        // maxAndMin(arr);
+
+        // armstrong(153);  // Armstrong Number!
+        // armstrong(152); //Not Armstrong Number!
+    
+        // int arr1[] = {1, 2, 4, 5};
+        // int arr2[] = {2, 3, 5, 6};
+        // union(arr1, arr2); //[1, 2, 3, 4, 5, 6]
+
+        int arr1[] = {1, 5, 3, 5};
+        int arr2[] = {2, 3, 5};
+        intersection(arr1, arr2); //[2, 5]
     }
 }
