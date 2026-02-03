@@ -505,6 +505,37 @@ public class ArrayAll {
         System.out.println("Equilibrium is Not Found");
     }
 
+    // 27.
+    public static void sort(int arr[]) {
+        int low = 0;
+        int mid = 0;
+        int high = arr.length - 1;
+
+        while (mid <= high) {
+            if (arr[mid] == 0) {
+                int temp = arr[low];
+                arr[low] = arr[mid];
+                arr[mid] = temp;
+
+                mid++;
+                low++;
+            }
+            else if (arr[mid] == 1) {
+                mid++;
+            }
+            else {
+                int temp = arr[high];
+                arr[high] = arr[mid];
+                arr[mid] = temp;
+
+                high--;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -601,7 +632,10 @@ public class ArrayAll {
         // int arr[] = {16, 17, 4, 3, 5, 2};
         // leader(arr); //2 5 17
 
-        int arr[] = {-7, 1, 5, 2, -4, 3, 0};
-        equilibrium(arr);  // Equilibrium index = 3(value = 2)
+        // int arr[] = {-7, 1, 5, 2, -4, 3, 0};
+        // equilibrium(arr);  // Equilibrium index = 3(value = 2)
+
+        int arr[] = {1, 2, 0, 1};
+        sort(arr);
     }
 }
