@@ -469,6 +469,44 @@ public class ArrayAll {
         System.out.println("Not Found!");
     }
 
+    // 25 Leader in Array(Array ka wo element jo apne right side ke sab elements se bada ho
+    // Last element hamesha leader hota hai
+    public static void leader(int arr[]) {
+        int max = arr[arr.length - 1]; // last wala number 
+        System.out.print(max + " "); // last number hamesh leader hota hai 
+
+        for (int i = arr.length - 2; i >= 0; i--) {   // last se chalaenge taki number check krne me aasani ho
+            if (arr[i] > max) {
+                max = arr[i];
+                System.out.print(max + " ");
+            }
+        }
+    }
+
+    // 26 Equilibrium index kya hota hai (Wo index i jahan left side ka sum = right side ka sum)
+    public static void equilibrium(int arr[]) {
+        int totalSum = 0;
+        int leftSum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            totalSum = totalSum + arr[i];
+        }
+        
+        for (int i = 0; i < arr.length; i++) {
+            totalSum = totalSum - arr[i];
+
+            if (leftSum == totalSum) {
+                System.out.println("Equilibrium index = " + i + " value = " + arr[i]);
+                return;
+            }
+
+            leftSum = leftSum + arr[i];  // aage number ko add krenge 
+        }
+        System.out.println("Equilibrium is Not Found");
+    }
+
+
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -556,8 +594,14 @@ public class ArrayAll {
         // int arr2[] = {2, 3, 5};
         // intersection(arr1, arr2); //[2, 5]
 
-        int arr[] = {1, 4, 20, 3, 10, 5};
-        int target = 33;
-        subArraySum(arr, target); // start = 2 end = 4
+        // int arr[] = {1, 4, 20, 3, 10, 5};
+        // int target = 33;
+        // subArraySum(arr, target); // start = 2 end = 4
+    
+        // int arr[] = {16, 17, 4, 3, 5, 2};
+        // leader(arr); //2 5 17
+
+        int arr[] = {-7, 1, 5, 2, -4, 3, 0};
+        equilibrium(arr);  // Equilibrium index = 3(value = 2)
     }
 }
