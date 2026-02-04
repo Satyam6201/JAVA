@@ -505,13 +505,14 @@ public class ArrayAll {
         System.out.println("Equilibrium is Not Found");
     }
 
-    // 27.
-    public static void sort(int arr[]) {
+    // 27.Sort 0s, 1s, 2s (Dutch National Flag Algorithm bhi bolte hain)
+    public static void sortZeroOneTwo(int arr[]) {
         int low = 0;
         int mid = 0;
         int high = arr.length - 1;
 
         while (mid <= high) {
+            // swap arr[low] and arr[mid] 
             if (arr[mid] == 0) {
                 int temp = arr[low];
                 arr[low] = arr[mid];
@@ -523,7 +524,8 @@ public class ArrayAll {
             else if (arr[mid] == 1) {
                 mid++;
             }
-            else {
+            else {  // arr[mid] == 2
+                // swap arr[mid] and arr[high]
                 int temp = arr[high];
                 arr[high] = arr[mid];
                 arr[mid] = temp;
@@ -533,8 +535,136 @@ public class ArrayAll {
         }
 
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+            System.out.print(arr[i] + " ");
         }
+    }
+
+    // 28. Find common elements in 3 arrays
+    public static void commonElementSorted(int arr1[], int arr2[], int arr3[]) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < arr1.length && j < arr2.length && k < arr3.length) {
+            if (arr1[i] == arr2[j] && arr2[j] == arr3[k]) {
+                System.out.print(arr1[i] + " ");
+                i++;
+                j++;
+                k++;
+            }
+            else if (arr1[i] < arr2[j]) {
+                i++;
+            }
+            else if (arr2[j] < arr3[k]) {
+                j++;
+            }
+            else {
+                k++;
+            }
+        }
+    }
+    
+    // or hashSet Method (Array is not Sorted)
+    public static void commonElement(int arr1[], int arr2[], int arr3[]) {
+        Set <Integer> set1 = new HashSet<>();
+        Set <Integer> set2 = new HashSet<>();
+
+        // Step 1: arr1 ke elements set1 me
+        for (int x : arr1) {
+            set1.add(x);
+        }
+
+        // Step 2: arr2 ke common elements set2 me
+        for (int x : arr2) {
+            if (set1.contains(x)) {
+                set2.add(x);
+            }
+        }
+
+        for (int x : arr3) {
+            if (set2.contains(x)) {
+                System.out.print(x + " ");
+            }
+        }
+    }
+
+    // 29. Rearrange array alternatively
+    public static void rearrangeArrayAlternatively(int arr[]) {
+        int n = arr.length;
+        int result[] = new int[n];
+
+        int low = 0;
+        int high = n - 1;
+        int index = 0;
+
+        while (low <= high) {
+            if (index < n) {
+                result[index] = arr[high];   // max value
+                index++;
+                high--;
+            }
+            if (index < n) {
+                result[index] = arr[low]; // min value
+                index++;
+                low++;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            arr[i] = result[i];  // copy back
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+    
+    // 30. Rearrange array alternatively
+    public static void ProductExceptSelfNaive (int arr[]) {
+        int n = arr.length;
+        int result[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int product = 1;
+
+            for (int j = 0; j < n; j++) {
+                if (i != j) {
+                    product = product * arr[j];
+                }
+            }
+            result[i] = product;
+        }
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+    }
+
+    // 31. count pairs with givem sum(arr[i] + arr[j] == target)
+    public static void pairCount(int arr[], int k) {
+        int count = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] == k) {
+                    System.out.println("(" + arr[i] + ", " + arr[j] + ")");
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+
+    // 32. Chocolate distribution problem(maximum aur minimum chocolates ke beech ka difference MINIMUM ho)
+    public static void chocolateDistribution(int arr[], int m) {
+        int n = arr.length;
+        Arrays.sort(arr);
+
+        int minDiff = Integer.MAX_VALUE;
+
+        for (int i = 0; i + m - 1 < n; i++) {
+            int diff = arr[i + m - 1] - arr[i];
+
+            minDiff = Math.min(minDiff, diff);
+        }
+        System.out.println("Minimum Difference = " + minDiff);
     }
 
 
@@ -635,7 +765,28 @@ public class ArrayAll {
         // int arr[] = {-7, 1, 5, 2, -4, 3, 0};
         // equilibrium(arr);  // Equilibrium index = 3(value = 2)
 
-        int arr[] = {1, 2, 0, 1};
-        sort(arr);
+        // int arr[] = {1, 2, 0, 1};
+        // sortZeroOneTwo(arr);
+
+        // int[] arr1 = {1, 5, 10, 20, 40, 80};
+        // int[] arr2 = {6, 7, 20, 80, 100};
+        // int[] arr3 = {3, 4, 15, 20, 30, 70, 80, 120};
+        // // commonElement(arr1, arr2, arr3);
+        // commonElementSorted(arr1, arr2, arr3);
+
+        // int[] arr = {1, 2, 3, 4, 5, 6};
+        // rearrangeArrayAlternatively(arr);
+
+        // int arr[] = {1, 2, 3, 4};
+        // ProductExceptSelfNaive(arr); 
+       
+        // int[] arr = {1, 5, 7, 1};
+        // int k = 6;
+        // pairCount(arr, k);
+
+        int[] arr = {7, 3, 2, 4, 9, 12, 56};
+        int m = 3;
+        chocolateDistribution(arr, m);
+
     }
 }
