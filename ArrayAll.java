@@ -672,7 +672,7 @@ public class ArrayAll {
         int n = arr.length;
         int maxRight = -1;
 
-        for (int i = n - 1; i >= 0; i++) {
+        for (int i = n - 1; i >= 0; i--) {
             int current = arr[i];
             arr[i] = maxRight;
 
@@ -686,6 +686,37 @@ public class ArrayAll {
         }
     }
 
+    // 34. Array is subset of another (arr2 ke saare elements arr1 me present hain)
+    public static void subsetArray(int arr1[], int arr2[]) {
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < arr1.length; i++) {
+            set.add(arr1[i]);
+        }
+
+        for (int i = 0; i < arr2.length; i++) {
+            if (!set.contains(arr2[i])) {
+                System.out.println("Not Subset Array!");
+                return;
+            }
+        }
+
+        System.out.println("Subset Array!");
+    }
+    
+    // 35. Maximum difference (j > i)   
+    public static void maxDifference(int arr[]) {
+        int current = arr[0];
+        int maxDiff = arr[1] - arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            int diff = arr[i] - current;
+            maxDiff = Math.max(maxDiff, diff);
+            current = Math.min(current, arr[i]);
+        }
+        System.out.println("Maximum Difference = " + maxDiff);
+    }  
+    
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -804,10 +835,16 @@ public class ArrayAll {
 
         // int[] arr = {7, 3, 2, 4, 9, 12, 56};
         // int m = 3;
-        // chocolateDistribution(arr, m);
+        // chocolateDistribution(arr, m); // 2
 
-        int[] arr = {16, 17, 4, 3, 5, 2};
-        replaceWithNextGreatest(arr);
+        // int[] arr = {16, 17, 4, 3, 5, 2};
+        // replaceWithNextGreatest(arr);  //17 5 5 5 2 -1 
 
+        // int[] arr1 = {11, 1, 13, 21, 3, 7};
+        // int[] arr2 = {11, 3, 7, 1};
+        // subsetArray(arr1, arr2);
+
+        int[] arr = {2, 3, 10, 6, 4, 8, 1};
+        maxDifference(arr);
     }
 }
