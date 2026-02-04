@@ -667,6 +667,24 @@ public class ArrayAll {
         System.out.println("Minimum Difference = " + minDiff);
     }
 
+    // 33. Replace each element with next greatest
+    public static void replaceWithNextGreatest(int arr[]) {
+        int n = arr.length;
+        int maxRight = -1;
+
+        for (int i = n - 1; i >= 0; i++) {
+            int current = arr[i];
+            arr[i] = maxRight;
+
+            if (current > maxRight) {
+                maxRight = current;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
 
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
@@ -784,9 +802,12 @@ public class ArrayAll {
         // int k = 6;
         // pairCount(arr, k);
 
-        int[] arr = {7, 3, 2, 4, 9, 12, 56};
-        int m = 3;
-        chocolateDistribution(arr, m);
+        // int[] arr = {7, 3, 2, 4, 9, 12, 56};
+        // int m = 3;
+        // chocolateDistribution(arr, m);
+
+        int[] arr = {16, 17, 4, 3, 5, 2};
+        replaceWithNextGreatest(arr);
 
     }
 }
