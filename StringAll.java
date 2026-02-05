@@ -1,3 +1,6 @@
+
+import java.util.*;
+
 public class StringAll{
 
     // 1. Reverse The String
@@ -22,17 +25,104 @@ public class StringAll{
 
     // 2. CheckPalindrome 
     public static boolean isPalindrome(String str) {
-        int i = 0;
-        int j = str.length() - 1;
+        // int i = 0;
+        // int j = str.length() - 1;
 
-        while (i < j) {
-            if (str.charAt(i) != str.charAt(j)) {
+        // while (i < j) {
+        //     if (str.charAt(i) != str.charAt(j)) {
+        //         return false;
+        //     }
+        //     i++;
+        //     j--;
+        // }
+        // return true;
+
+        // or 
+
+        int n = str.length() - 1;
+
+        for (int i = 0; i < n/2; i++) {
+            if (str.charAt(i) != str.charAt(n - i)) {
                 return false;
             }
-            i++;
-            j--;
         }
         return true;
+    }
+
+    // 3. Count vowels & consonants
+    public static void countVowelsConsonants(String str) {
+        int vowels = 0;
+        int consonants = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (ch >= 'a' && ch <= 'z') {
+                if (ch == 'a' || ch =='e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    vowels++;
+                }
+                else {
+                    consonants++;
+                }
+            }
+        }
+        System.out.println("Vowels = " + vowels + " Consonants = " + consonants);
+    }
+
+    // 4. remove duplicate characters
+    public static void removeDuplicateString(String str) {
+        HashSet<Character> set = new HashSet<>();
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (!set.contains(ch)) {
+                set.add(ch);
+                result.append(ch);
+            }
+        }
+        System.out.println(result.toString());
+    }
+    
+    // 5. Anagram 
+    public static boolean isAnagram(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        int freq[] = new int[26];
+        
+        for (int i = 0; i < str1.length(); i++) {
+            freq[str1.charAt(i) - 'a']++;
+        }
+
+        for (int i = 0; i < str2.length(); i++) {
+            freq[str2.charAt(i) - 'a']--;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    // 6. find first non-repeating character
+    public static char firstNonReapting(String str) {
+        int freq[] = new int[256];
+
+        for (int i = 0; i < str.length(); i++) {
+            freq[str.charAt(i)]++;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            if (freq[str.charAt(i)] == 1) {
+                return str.charAt(i);
+            }
+        }
+        return '0';
     }
 
 
@@ -40,11 +130,24 @@ public class StringAll{
         // String s = "hello";
         // reverseString(s); //olleh
 
-        String s = "madam";
-        if (isPalindrome(s)) {
-            System.out.println("Palindrome");
-        } else {
-            System.out.println("Not Palindrome");
-        }
+        // String s = "madam";
+        // if (isPalindrome(s)) {
+        //     System.out.println("Palindrome");
+        // } else {
+        //     System.out.println("Not Palindrome");
+        // }
+
+        // String str = "hello world";
+        // countVowelsConsonants(str);  // v = 3, con = 7
+
+        // String str = "programming";
+        // removeDuplicateString(str);  //progamin 
+
+        // String s1 = "listen";
+        // String s2 = "silent";
+        // System.out.println(isAnagram(s1, s2)); //true
+
+        String str = "aabbcdd";
+        System.out.println(firstNonReapting(str));
     }
 }
