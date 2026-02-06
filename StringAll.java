@@ -151,6 +151,49 @@ public class StringAll{
 
         System.out.println(result.trim());
     }
+
+    // 9. Longest word in string 
+    public static void longestWord(String str) {
+        String word[] = str.split(" ");
+        String longest = " ";
+
+        for (int i = 0; i < word.length; i++) {
+            if (word[i].length() > longest.length()) {
+                longest = word[i];
+            }
+        }
+        System.out.println(longest);
+    }
+
+    // 10. Check valid shuffle of string
+    public static boolean validShuffle(String s1, String s2, String s3) {
+        if (s1.length() + s2.length() != s3.length()) {
+            return false;
+        }
+
+        int i = 0; // for s1
+        int j = 0; // for s2
+        int k = 0; //for s3
+
+        while (k < s3.length()) {
+            if (i < s1.length() && s1.charAt(i) == s3.charAt(k)) {
+                i++;
+                k++;
+            }
+            else if (j < s2.length() && s2.charAt(j) == s3.charAt(k)) {
+                j++;
+                k++;
+            }
+            else {
+                return false;
+            }
+
+            // k++;
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) {
         // String s = "hello";
         // reverseString(s); //olleh
@@ -178,8 +221,16 @@ public class StringAll{
         // String str = "aabbcdd";
         // countFrequency(str);
 
-        String str = "i love java";
-        reverseWord(str);
+        // String str = "i love java";
+        // reverseWord(str);
+
+        // String str = "i love java language";
+        // longestWord(str);
+
+        String s1 = "ab";
+        String s2 = "cd";
+        String s3 = "adbc";
+        System.out.println(validShuffle(s1, s2, s3));
 
     }
 }
