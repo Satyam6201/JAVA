@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class StringAll{
@@ -125,7 +124,33 @@ public class StringAll{
         return '0';
     }
 
+    // 7. count frequency of character
+    public static void countFrequency(String str) {
+        int freq[] = new int[256];
 
+        for (int i = 0; i < str.length(); i++) {
+            freq[str.charAt(i)]++;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            if (freq[str.charAt(i)] != 0) {
+                System.out.println(str.charAt(i) + " -> " + freq[str.charAt(i)]);
+                freq[str.charAt(i)] = 0;
+            }
+        }
+    }
+
+    // 8 Reverse words in string
+    public static void reverseWord(String str) {
+        String word[] = str.split(" ");
+        String result = " ";
+
+        for (int i = word.length - 1; i >= 0; i--) {
+            result = result + word[i] + " ";
+        }
+
+        System.out.println(result.trim());
+    }
     public static void main(String[] args) {
         // String s = "hello";
         // reverseString(s); //olleh
@@ -147,7 +172,14 @@ public class StringAll{
         // String s2 = "silent";
         // System.out.println(isAnagram(s1, s2)); //true
 
-        String str = "aabbcdd";
-        System.out.println(firstNonReapting(str));
+        // String str = "aabbcdd";
+        // System.out.println(firstNonReapting(str));
+
+        // String str = "aabbcdd";
+        // countFrequency(str);
+
+        String str = "i love java";
+        reverseWord(str);
+
     }
 }

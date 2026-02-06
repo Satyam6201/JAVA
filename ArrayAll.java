@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class ArrayAll {
     // 1. Second largest number 
     public static void secondLargest(int arr[]) {
