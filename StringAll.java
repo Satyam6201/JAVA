@@ -193,6 +193,55 @@ public class StringAll{
         return true;
     }
 
+    // 11 Convert Upper case to Lowercase
+    public static void upperToLower(String str) {
+        char arr[] = str.toCharArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= 'A' && arr[i] <= 'Z') {
+                arr[i] = (char)(arr[i] + 32);
+            }
+        }
+        System.out.println(new String(arr));
+    }
+
+    // 12 Convert Lowercase to Upper case
+    public static void lowerToUpper(String str) {
+        char arr[] = str.toCharArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= 'a' && arr[i] <= 'z') {
+                arr[i] = (char)(arr[i] - 32);
+            }
+        }
+        System.out.println(new String(arr));
+    }
+
+    // 13 Find subString
+    public static void subString(String str, String sub) {
+        if (str.contains(sub)) {
+            System.out.println("This is SubString!");
+        }
+        else {
+            System.out.println("Not SubString!");
+        }
+    }
+
+    // 14. check String rotate
+    public static boolean  rotateString(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < str1.length(); i++) {
+            String rotate = str1.substring(i) + str1.substring(0, i);
+            if (rotate.equals(str2)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
         // String s = "hello";
@@ -227,10 +276,19 @@ public class StringAll{
         // String str = "i love java language";
         // longestWord(str);
 
-        String s1 = "ab";
-        String s2 = "cd";
-        String s3 = "adbc";
-        System.out.println(validShuffle(s1, s2, s3));
+        // String s1 = "ab";
+        // String s2 = "cd";
+        // String s3 = "adbc";
+        // System.out.println(validShuffle(s1, s2, s3));
 
+        // String str = "I LOVE JAVA";
+        // upperToLower(str);
+
+        // String str = "i love java";
+        // lowerToUpper(str);
+
+        // subString("i love java", "java"); // true
+
+        System.out.println(rotateString("abcd", "cbad")); // false
     }
 }
