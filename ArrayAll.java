@@ -715,7 +715,74 @@ public class ArrayAll {
         }
         System.out.println("Maximum Difference = " + maxDiff);
     }  
+
+    // 36. Rearrange Array Elements by Sign
+    public static void rearrangeBySign(int arr[]) {
+        int n = arr.length;
+        int ans[] = new int[n];
+        int possitiveIndex = 0;
+        int negativeIndex = 1;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] < 0) {  // negative
+                ans[negativeIndex] = arr[i];
+                negativeIndex +=2;
+            }
+            else {
+                ans[possitiveIndex] = arr[i];
+                possitiveIndex +=2;
+            }
+        }
+        // print array properly
+        for (int i = 0; i < n; i++) {
+           System.out.print(ans[i] + " ");
+        }
+    }
     
+    // 37. Spiral Matrix 
+    public static void spiralMatrix(int matrix[][]) {
+
+    int row = matrix.length;
+    int col = matrix[0].length;
+
+    int startRow = 0;
+    int startCol = 0;
+    int endRow = row - 1;
+    int endCol = col - 1;
+
+    while (startRow <= endRow && startCol <= endCol) {
+
+        // Top
+        for (int i = startCol; i <= endCol; i++) {
+            System.out.print(matrix[startRow][i] + " ");
+        }
+
+        // Right
+        for (int j = startRow + 1; j <= endRow; j++) {
+            System.out.print(matrix[j][endCol] + " ");
+        }
+
+        // Bottom
+        if (startRow < endRow) {
+            for (int i = endCol - 1; i >= startCol; i--) {
+                System.out.print(matrix[endRow][i] + " ");
+            }
+        }
+
+        // Left
+        if (startCol < endCol) {
+            for (int j = endRow - 1; j > startRow; j--) {
+                System.out.print(matrix[j][startCol] + " ");
+            }
+        }
+
+        startRow++;
+        startCol++;
+        endRow--;
+        endCol--;
+    }
+}
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -843,7 +910,17 @@ public class ArrayAll {
         // int[] arr2 = {11, 3, 7, 1};
         // subsetArray(arr1, arr2);
 
-        int[] arr = {2, 3, 10, 6, 4, 8, 1};
-        maxDifference(arr);
+        // int[] arr = {2, 3, 10, 6, 4, 8, 1};
+        // maxDifference(arr);
+
+        // int[] A = {1, 2, -4, -5};
+        // rearrangeBySign(A);
+
+        int [][] matrix = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+        spiralMatrix(matrix);
     }
 }
