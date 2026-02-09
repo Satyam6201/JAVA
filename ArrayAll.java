@@ -782,7 +782,58 @@ public class ArrayAll {
         endCol--;
     }
 }
+    
+    // 38. count subArray equal to k
+    public static void countSubArrayEqualToK(int arr[], int k) {
 
+        int count = 0;
+        
+        for (int i = 0; i < arr.length; i++) {
+            int sum = 0;
+            for (int j = i; j < arr.length; j++) {
+                sum = sum + arr[j];
+
+                if (sum == k) {
+                   count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+    
+    // 39. Pascals triangle (Pascal’s triangle, each number is the sum of the two numbers directly above)
+    public static void pascalTriangle(int row, int col) {
+        int n = row - 1;
+        int k = col - 1;
+
+        int result = 1;
+        for (int i = 0; i < k; i++) {
+            result = result * (n - i);
+            result = result / (i + 1);
+        }
+        System.out.println(result);
+    }
+    
+    // 40 majority element more then n / 3
+    public static void majorityElemnetMoreThanNByThree(int arr[]) {
+        int n = arr.length;
+        List <Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+            for (int j = 0; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                }
+            }
+
+            if (count > n / 3 && !ans.contains(arr[i])) {
+                ans.add(arr[i]);
+            }
+        }
+        System.out.println(ans);
+    }
+    
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -916,11 +967,23 @@ public class ArrayAll {
         // int[] A = {1, 2, -4, -5};
         // rearrangeBySign(A);
 
-        int [][] matrix = {
-            {1,2,3},
-            {4,5,6},
-            {7,8,9}
-        };
-        spiralMatrix(matrix);
+        // int [][] matrix = {
+        //     {1,2,3},
+        //     {4,5,6},
+        //     {7,8,9}
+        // };
+        // spiralMatrix(matrix);
+
+        // int arr[] = {3, 1, 2, 4};
+        // int k = 6;
+        // countSubArrayEqualToK(arr, k);  // 2
+
+        // int row = 5;
+        // int col = 3;
+        // pascalTriangle(row, col);  // 6
+
+        int arr[] = {1, 1, 2, 3, 1, 0};
+        majorityElemnetMoreThanNByThree(arr);
+        
     }
 }
