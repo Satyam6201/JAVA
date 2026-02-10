@@ -29,12 +29,28 @@ public class sorting {
         }
         System.out.println(-1);
     }
+
+    public static void kthMissingNum(int arr[], int k) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] <= k) {
+                k++;
+            }
+            else {
+                break;
+            }
+        }
+        System.out.println(k);
+    }
     public static void main(String[] args) {
         // int n = 36;
         // findSqur(28);
 
-        nthRoot(3, 27); // 3
-        nthRoot(4, 69);  // -1 (not found)
+        // nthRoot(3, 27); // 3
+        // nthRoot(4, 69);  // -1 (not found)
+
+        int arr[] = {4, 7, 9, 10};
+        int k = 4;
+        kthMissingNum(arr, k);
 
     }
 }
