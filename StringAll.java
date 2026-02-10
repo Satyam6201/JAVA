@@ -242,6 +242,45 @@ public class StringAll{
         return false;
     }
 
+    // 15. remove outermost parentheses
+    public static void removeOuterParenthese(String str) {
+        int level = 0;
+
+        char s[] = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < s.length; i++) {
+            char ch = str.charAt(i);
+
+            if (ch == '(') {
+                if (level > 0) {
+                    sb.append(ch);
+                }
+                level++;
+            }
+            else if (ch == ')') {
+                level--;
+                if (level > 0) {
+                    sb.append(ch);
+                }
+            }
+        }
+        System.out.println(sb.toString());
+    }
+
+    // 16  Largest Odd Number in String
+    public static void longestOddNum(String str) {
+        for (int i = str.length() - 1; i >= 0; i--) {
+            char ch = str.charAt(i);
+            if ((ch - '0') % 2 == 1) {   // ch - '0' used to convert string to number
+                System.out.println(str.substring(0, i + 1));  // subString(0, i+1) here 0 is staring index and i+1 is last index
+                return;
+            }
+        }
+        System.out.println("Not Found");
+    }
+
+
 
     public static void main(String[] args) {
         // String s = "hello";
@@ -289,6 +328,15 @@ public class StringAll{
 
         // subString("i love java", "java"); // true
 
-        System.out.println(rotateString("abcd", "cbad")); // false
+        // System.out.println(rotateString("abcd", "cbad")); // false
+
+        // String str = "((()))";
+        // removeOuterParenthese(str); //(())
+
+        String str = "5837";
+        longestOddNum(str); // 5837
+        longestOddNum("8351475224"); // 8351475
+
+        
     }
 }

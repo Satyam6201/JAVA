@@ -1,5 +1,6 @@
 public class sorting {
 
+    //1. find squr of the n number
     public static void findSqur(int n) {
         int ans = 0;
         for (int i = 1; i <= n; i++) {
@@ -15,6 +16,7 @@ public class sorting {
         System.out.println(ans);
     }
 
+    //2. find nth root(power of i^n == m)
     public static void nthRoot(int n, int m) {
         for (int i = 1; i <= m; i++) {
            long pow = (long) Math.pow(i, n);
@@ -30,6 +32,7 @@ public class sorting {
         System.out.println(-1);
     }
 
+    // find kth missing number
     public static void kthMissingNum(int arr[], int k) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] <= k) {
@@ -41,6 +44,9 @@ public class sorting {
         }
         System.out.println(k);
     }
+    
+
+    
     public static void main(String[] args) {
         // int n = 36;
         // findSqur(28);
@@ -50,7 +56,7 @@ public class sorting {
 
         int arr[] = {4, 7, 9, 10};
         int k = 4;
-        kthMissingNum(arr, k);
+        kthMissingNum(arr, 2);
 
     }
 }
