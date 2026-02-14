@@ -120,6 +120,34 @@ public class LinkedList {
         size--;
         System.out.println("Value of Last deleted is = " + value);
     }
+
+    // Remove any place any number
+    public void remove(int key) {
+        if (Head == null) {
+            System.out.println("LinkedList is empty!");
+            return;
+        }
+
+        if (Head.data == key) {  // target hi head raha tb
+            Head = Head.next;
+            System.out.println("Value which is delete " + key);
+            return;
+        }
+
+        Node temp = Head;
+
+        while (temp.next != null && temp.next.data != key) {  // agr temp ka next null huaa or temp.next ka data key k barabar nhi hai tb tk
+            temp = temp.next;
+        }
+
+        if (temp.next != null) {
+            int value = temp.next.data;
+            temp.next = temp.next.next;
+            System.out.println("Value which is deleted = " + value);
+        } else {
+            System.out.println("Value not found");
+        }
+    }
     
 
     
@@ -139,7 +167,10 @@ public class LinkedList {
     
         li.removeFirst();
         li.removeLast();
-        li.print();
+        // li.print();
+
+        li.remove(5);
+        // li.print();
         
     }
 }
