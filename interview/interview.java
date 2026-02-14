@@ -502,7 +502,6 @@ public class interview {
         System.out.println(count);
     }
 
-
     public static void main(String[] args) {
         // int arr[] = {12, 5, 9, 25, 3, 18};
         // int result[] = smallestAndLargest(arr);

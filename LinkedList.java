@@ -55,7 +55,7 @@ public class LinkedList {
         Node temp = Head;
 
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.println(temp.data + " ");
             temp = temp.next;
         }
     }
@@ -76,22 +76,70 @@ public class LinkedList {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+
+    // Remove First
+    public void removeFirst() {
+        if (size == 0) {
+            System.out.println("Linked List is Empty!");
+        }
+        else if (size == 1) {
+            int value = Head.data;
+            Head = Tail = null;
+            size = 0;
+            System.out.println(value);
+        } 
+
+        int value = Head.data;
+        Head = Head.next;
+        size--;
+        System.out.println("Value of first deleted value is = " + value);
+    }
+
+    // Remove last
+    public void removeLast() {
+
+        Node prev = Head;
+
+        if (size == 0) {
+            System.out.println("LinkedList is Empty");
+        }
+        else if (size == 1) {
+            int value = Tail.data;
+            Head = Tail = null;
+            size = 0;
+            System.out.println(value);
+        }
+
+        for (int i = 0; i < size - 2; i++) {
+            prev = prev.next;
+        }
+
+        int value = prev.next.data;
+        prev.next = null;
+        Tail = prev;
+        size--;
+        System.out.println("Value of Last deleted is = " + value);
+    }
     
 
     
     public static void main(String[] args) {
         LinkedList li = new LinkedList();
-        li.addFirst(1);
         li.addFirst(2);
+        li.addFirst(1);
 
         li.addLast(3);
         li.addLast(4);
 
-        // li.print();  // 2, 1, 3, 4
+        // li.print();  // 1, 2, 3, 4
 
-        li.add(2, 5); 
+        li.add(2, 5);  // 1, 2, 5, 3, 4
         li.print();
-        System.out.println("Size = " + li.size);
+        // System.out.println("Size = " + li.size); size = 5
+    
+        li.removeFirst();
+        li.removeLast();
+        li.print();
         
     }
 }
