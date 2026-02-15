@@ -149,6 +149,17 @@ public class LinkedList {
         }
     }
     
+    // Length of the LinkedList:-
+    public void length() {
+        Node Temp = Head;
+        int count = 0;
+
+        while (Temp != null) {
+            count++;
+            Temp = Temp.next;
+        }
+        System.out.println("Length of the LinkedList = " + count);
+    }
 
     
     public static void main(String[] args) {
@@ -171,6 +182,9 @@ public class LinkedList {
 
         li.remove(5);
         // li.print();
+
+        li.length();
+        li.print();
         
     }
 }
