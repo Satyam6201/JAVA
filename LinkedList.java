@@ -1,3 +1,4 @@
+
 public class LinkedList {
     public static class Node {
         int data;
@@ -161,7 +162,35 @@ public class LinkedList {
         System.out.println("Length of the LinkedList = " + count);
     }
 
+    // Search an element in the linkedlist
+    public void search(int target) {       
+        Node Temp = Head;
+
+        while (Temp != null) {
+
+            if (Temp.data == target) {
+                System.out.println("Value is Found!");
+                return;
+            }
+            Temp = Temp.next;                       
+        }
+        System.out.println("Not Found!");
+    }
     
+    // Reverse the linkedlist 
+    public void reverse() {
+        Node curr = Head;
+        Node next = null;
+        Node prev = null;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Head = prev;
+    }
     public static void main(String[] args) {
         LinkedList li = new LinkedList();
         li.addFirst(2);
@@ -176,15 +205,21 @@ public class LinkedList {
         li.print();
         // System.out.println("Size = " + li.size); size = 5
     
-        li.removeFirst();
-        li.removeLast();
-        // li.print();
+        // li.removeFirst();
+        // li.removeLast();
+        // // li.print();
 
-        li.remove(5);
-        // li.print();
+        // li.remove(5);
+        // // li.print();
 
-        li.length();
-        li.print();
+        // li.length();
+        // li.print();
+        // li.search(3);  // Value is Found
+        // li.search(5);  // value is not found
         
+        li.reverse();  // 4, 3, 5, 2, 1
+        System.out.println("Reverse LinkList!");
+        li.print();
+
     }
 }
