@@ -191,6 +191,39 @@ public class LinkedList {
         }
         Head = prev;
     }
+    
+    // Find and Remove nth node from the end
+    public void deleteNthfromEnd(int n) {
+        int size = 0;
+        Node Temp = Head;
+
+        while (Temp != null) {
+            Temp = Temp.next;
+            size++;
+        }
+        
+        // Agar head hi ko remove krna ho to 
+        if (n == size) {
+            Head = Head.next;
+            return;
+        }
+
+        // size - n
+        int i = 1;
+        int iToFind = size - n;
+        Node prev = Head;
+
+        while (i < iToFind) {   // 1 to n 
+            prev = prev.next;
+            i++;
+        }
+
+        prev.next = prev.next.next;
+        
+    }
+    
+    
+    
     public static void main(String[] args) {
         LinkedList li = new LinkedList();
         li.addFirst(2);
@@ -202,7 +235,7 @@ public class LinkedList {
         // li.print();  // 1, 2, 3, 4
 
         li.add(2, 5);  // 1, 2, 5, 3, 4
-        li.print();
+        // li.print();
         // System.out.println("Size = " + li.size); size = 5
     
         // li.removeFirst();
@@ -217,9 +250,11 @@ public class LinkedList {
         // li.search(3);  // Value is Found
         // li.search(5);  // value is not found
         
-        li.reverse();  // 4, 3, 5, 2, 1
-        System.out.println("Reverse LinkList!");
+        // li.reverse();  // 4, 3, 5, 2, 1
+        // System.out.println("Reverse LinkList!");
+        // li.print();
+        
+        li.deleteNthfromEnd(2);
         li.print();
-
     }
 }
