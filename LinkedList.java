@@ -219,7 +219,58 @@ public class LinkedList {
         }
 
         prev.next = prev.next.next;
-        
+        return;
+    }
+    
+    // Find Mid value 
+    public void midValue() {
+        if (Head == null || Head.next == null) {
+            System.out.println(Head);
+            return;
+        }
+
+        int count = 0;
+        Node Temp = Head;
+
+        while (Temp != null) {
+            count++;
+            Temp = Temp.next;
+        }
+
+        // Calculate the position of the middle node.
+        int mid = count / 2 + 1;
+        Temp = Head;
+
+        while (Temp != null) {
+            mid = mid - 1;
+
+            if (mid == 0) {
+                break;
+            }
+
+            // Move temp ahead
+            Temp = Temp.next;
+        }
+
+        // Return the middle node.
+        System.out.println("Mid value = " + Temp.data);
+    }
+
+    // Find mid value optimizied code (Slow and fast approach)
+    public void midValueSlowAndFast() {
+        if (Head == null || Head.next == null) {
+            System.out.println(Head);
+            return;
+        }
+
+        Node fast = Head;
+        Node slow = Head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;  // fast = 2 se aage jaega
+            slow = slow.next; // slow = 1 se aage jaega
+        }
+        System.out.println("Mid Value = " + slow.data);
     }
     
     
@@ -235,7 +286,7 @@ public class LinkedList {
         // li.print();  // 1, 2, 3, 4
 
         li.add(2, 5);  // 1, 2, 5, 3, 4
-        // li.print();
+        li.print();
         // System.out.println("Size = " + li.size); size = 5
     
         // li.removeFirst();
@@ -254,7 +305,10 @@ public class LinkedList {
         // System.out.println("Reverse LinkList!");
         // li.print();
         
-        li.deleteNthfromEnd(2);
-        li.print();
+        // li.deleteNthfromEnd(2);
+        // li.print();
+
+        // li.midValue(); // 5
+        li.midValueSlowAndFast(); // 5
     }
 }
