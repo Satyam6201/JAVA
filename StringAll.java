@@ -280,7 +280,51 @@ public class StringAll{
         System.out.println("Not Found");
     }
 
+    // 17. Longest Common Prefix 
+    public static void longestCommon(String str[]) {
 
+    if (str == null || str.length == 0) {
+        System.out.println("Empty String");
+        return;
+    }
+
+    String first = str[0];
+
+    for (int i = 0; i < first.length(); i++) {
+        char ch = first.charAt(i);
+
+        for (int j = 1; j < str.length; j++) {
+
+            if (i >= str[j].length() || str[j].charAt(i) != ch) {
+                System.out.println(first.substring(0, i));
+                return;
+            }
+        }
+    }
+
+    // all characters matched
+    System.out.println(first);
+}
+     
+    // 18 Find first index of  first occurrence
+    public static void firstOccurrence(String str1, String str2) {
+        if (str2.length() == 0) {
+            System.out.println("Not Str2 is define!");
+            return;
+        }
+
+        int n = str1.length();
+        int m = str2.length();  
+
+
+        for (int i = 0; i < n - m; i++) {  // i + m = 0 + m ka length tk
+            if (str1.substring(0, i + m).equals(str2)) {
+                System.out.println(i);
+                return;
+            }
+        }
+        System.out.println("Not Found!");
+    }
 
     public static void main(String[] args) {
         // String s = "hello";
@@ -333,10 +377,16 @@ public class StringAll{
         // String str = "((()))";
         // removeOuterParenthese(str); //(())
 
-        String str = "5837";
-        longestOddNum(str); // 5837
-        longestOddNum("8351475224"); // 8351475
+        // String str = "5837";
+        // longestOddNum(str); // 5837
+        // longestOddNum("8351475224"); // 8351475
 
+        // String str[] = {"flower", "flow", "flight"};
+        // longestCommon(str);
+
+        String str1 = "saadandsad";
+        String str2 = "sad";
+        firstOccurrence(str1, str2);
         
     }
 }
