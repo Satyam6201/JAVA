@@ -317,8 +317,8 @@ public class StringAll{
         int m = str2.length();  
 
 
-        for (int i = 0; i < n - m; i++) {  // i + m = 0 + m ka length tk
-            if (str1.substring(0, i + m).equals(str2)) {
+        for (int i = 0; i <= n - m; i++) {  // i + m = 0 + m ka length tk
+            if (str1.substring(i, i + m).equals(str2)) {
                 System.out.println(i);
                 return;
             }
