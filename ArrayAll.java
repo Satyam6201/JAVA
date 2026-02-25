@@ -834,6 +834,146 @@ public class ArrayAll {
         System.out.println(ans);
     }
     
+    // 41 peak element (Linear search)
+    public static void peakElementLinear(int arr[]) {
+        int current  = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (current < arr[i]) {
+                current = arr[i];
+            }
+        }
+        System.out.println(current);
+    }
+    
+    // 42 find square of the number
+    public static void square(int n) {
+        int ans = 1;
+
+        for (int i = 1; i <= n; i++) {
+            if ((i * i) <= n) {
+                ans = i;
+            }
+            else {
+                break;
+            }
+        }
+        System.out.println(ans);
+    }
+    
+    // or binary search me 
+    public static void squares(int n) {
+        int left = 1;
+        int right = n / 2;
+        int ans = 0;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (mid * mid <= n) {
+                ans = mid;
+                left = mid + 1;
+            }
+            else {
+                right = mid - 1;
+            }
+        }
+        System.out.println(ans);
+    }
+    
+    // 43 nth root power
+    public static void pow(int n, int m) {
+        for (int i = 0; i < m; i++) {
+            int power = (int)Math.pow(i, n);
+            if (power == m) {
+                System.out.println(i);
+                return;
+            }
+            else if (power > m) {
+                System.out.println(-1);
+                return;
+            }
+        }
+    }
+    
+    // 44 kth position misssing number
+    public static void missingNum(int arr[], int k) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] <= k) {
+                k++;
+            }
+        }
+        System.out.println(k);
+    }
+    
+    // 45 find the row with maximum no. of 1's
+    public static void MaxOne(int matrix[][]) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int max = 0;
+        int index = -1;
+
+        for (int i = 0; i < row; i++) {
+            int count = 0;
+            for (int j = 0; j < col; j++) {
+                if (matrix[i][j] == 1) {
+                    count++;
+                }
+            }
+            // max = Math.max(max, count);   // return max no. of 1
+
+            if (count > max) {  // used for finding where the element is have more 1's
+                max = count;
+                index = i;
+            }
+        }
+        // System.out.println(max);
+        System.out.println(index);
+    }
+  
+    // 46 searching the element in the 2D array
+    public static void searchingIn2D(int matrix[][], int target) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == target) {
+                    System.out.println("Start = " + i + " end = " + j);
+                    return;
+                }
+            }
+        }
+    }
+
+    // in binary search
+    public static void searchIn2D(int matrix[][], int target) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        int left = 0;
+        int high = row * col - 1;
+
+        while (left <= high) {
+            int mid = left + (high - left) / 2;
+
+            int rows = mid / col;
+            int cols = mid % col;
+            int midValue = matrix[rows][cols];
+
+            if (midValue == target) {
+                System.out.println("Value is found = " + rows + ", " + cols);
+                return;
+            }
+            else if (midValue < target) {
+                left = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        System.out.println("Not found!");
+    }
+
+    
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -982,8 +1122,31 @@ public class ArrayAll {
         // int col = 3;
         // pascalTriangle(row, col);  // 6
 
-        int arr[] = {1, 1, 2, 3, 1, 0};
-        majorityElemnetMoreThanNByThree(arr);
+        // int arr[] = {1, 1, 2, 3, 1, 0};
+        // majorityElemnetMoreThanNByThree(arr);
+
+        // square(25);
+        // squares(36);
+        // pow(3, 29);
+
+        // int arr[] = {7, 9, 11, 13};
+        // missingNum(arr, 6);
+
+        // int matrix[][] = { {0, 1, 1},
+        //                    {1, 1, 1},
+        //                    {0, 0, 0}
+        //                 };
+
+        // MaxOne(matrix);
+
+        int matrix[][] = { {1, 3, 5, 7},
+                           {10, 11, 16, 20},
+                           {23, 30, 34, 60}
+                        };
+        // searchingIn2D(matrix, 3);
+        searchIn2D(matrix, 3);
+
+        
         
     }
 }
