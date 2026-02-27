@@ -384,9 +384,10 @@ public class StringAll{
         // String str[] = {"flower", "flow", "flight"};
         // longestCommon(str);
 
-        String str1 = "saadandsad";
-        String str2 = "sad";
-        firstOccurrence(str1, str2);
-        
+        // String str1 = "saadandsad";
+        // String str2 = "sad";
+        // firstOccurrence(str1, str2);
+
+
     }
 }
