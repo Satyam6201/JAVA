@@ -111,7 +111,7 @@ public class mathproblem {
         if (n <= 1) {
             System.out.println("Not Prime Number");
         }
-        for (int i = 2; i < Math.sqrt(n); i++) {
+        for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) {
                 System.out.println("Not PrimeNumber!");
                 return;
@@ -119,6 +119,125 @@ public class mathproblem {
         }
         System.out.println("PrimeNumber");
     }
+    
+    // Q9. LCM:-
+    public static void lcm(int n1, int n2) {
+        int gcd = 1;
+
+        for (int i = 1; i < Math.min(n1, n1); i++) {
+            if (n1 % i == 0 && n1 % i == 0) {
+                gcd = i;
+            }
+        }
+        
+        int product = n1 * n2;
+        int lcm = product / gcd;
+        System.out.println(lcm);
+    }
+    
+    // 10 Count Prime Number:-
+    public static boolean primeNum(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static int countPrimeNum(int n) {
+        int count = 0;
+
+        for (int i = 2; i < n; i++) {
+            if (primeNum(i)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    // 11 check Prefect Number:-
+    public static void isPrefect(int n) {
+        int sum = 0;
+
+        for (int i = 1; i < n; i++) {
+            if (n % i == 0) {
+                sum = sum + i;
+            }
+        }
+        if (sum == n) {
+            System.out.println("This is prefect Number!");
+        }
+        else {
+            System.out.println("Not Prefect Number!");
+        }
+    }
+    
+    //  12 Factorial of a given number:
+    public static void fact(int n) {
+        int factorial = 1;
+
+        for (int i = 1; i <= n; i++) {
+            factorial = factorial * i;
+        } 
+
+        System.out.println(factorial);
+    }
+
+    // or  recursion Method:-
+    public static int factorial(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        int fact = n * factorial(n - 1);
+        return fact;
+    }
+
+    // 13. Largest Number :-
+    public static void largest(int n) {
+        int largest = 0;
+
+        while (0 < n) {
+            int lastDigit = n % 10;
+            largest = Math.max(largest, lastDigit);
+            n = n / 10;
+        }
+        System.out.println(largest);
+    }
+
+    //  14. Count odd number 
+    public static void oddCount(int n) {
+        int count = 0;
+
+        while (0 < n) {
+            int lastDigit = n % 10;
+            if (lastDigit % 2 != 0) {
+                count++;
+            }
+            n = n / 10;
+        }
+
+        System.out.println(count);
+    }
+
+    // 15. Even count :-
+    public static void evenCount(int n) {
+        int count = 0;
+
+        while (0 < n) {
+            int lastDigit = n % 10;
+            if (lastDigit % 2 == 0) {
+                count++;
+            }
+
+            n = n / 10;
+        }
+        System.out.println(count);
+    }
+    
     public static void main(String[] args) {
         // binDec(101);
         // decBin(11);
@@ -127,7 +246,15 @@ public class mathproblem {
         // reverse(1265);
         // armstrong(153);
         // divisior(36);
-        primeNumber(36);
+        // primeNumber(36);
+        // lcm(9, 12);
+        // System.out.println(countPrimeNum(6));
+        // isPrefect(6);
+        // fact(4);
+        // System.out.println(factorial(4));
+        // largest(529);
+        // oddCount(59254);
+        evenCount(5874584);
 
     }
 }
