@@ -387,7 +387,5 @@ public class StringAll{
         // String str1 = "saadandsad";
         // String str2 = "sad";
         // firstOccurrence(str1, str2);
-
-
     }
 }
