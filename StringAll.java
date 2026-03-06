@@ -326,6 +326,33 @@ public class StringAll{
         System.out.println("Not Found!");
     }
 
+    // 19 Roman Number to Integer number:-
+    public static void romanToInteger(String str) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 5000);
+        map.put('M', 1000);
+
+        int result = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            int current = str.charAt(i);
+
+            if (i < str.length() && current < str.charAt(i + 1)) {
+                result = result - current;
+            }
+            else {
+                result = result + current;
+            }
+        }
+        System.out.println(result);
+    }
+
+
     public static void main(String[] args) {
         // String s = "hello";
         // reverseString(s); //olleh
@@ -387,5 +414,8 @@ public class StringAll{
         // String str1 = "saadandsad";
         // String str2 = "sad";
         // firstOccurrence(str1, str2);
+    
+        romanToInteger("MCMXCIV");
+    
     }
 }
