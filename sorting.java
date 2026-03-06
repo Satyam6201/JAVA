@@ -1,6 +1,6 @@
 public class sorting {
 
-    //1. find squr of the n number
+    // 1. find squr of the n number
     public static void findSqur(int n) {
         int ans = 0;
         for (int i = 1; i <= n; i++) {
@@ -125,9 +125,9 @@ public class sorting {
         // nthRoot(3, 27); // 3
         // nthRoot(4, 69);  // -1 (not found)
 
-        // int arr[] = {4, 7, 9, 10};
-        // int k = 4;
-        // kthMissingNum(arr, 2);
+        int arr[] = {4, 7, 9, 10};
+        int k = 4;
+        kthMissingNum(arr, 5);
 
         // int[][] matrix = {
         //         {0,0,0,1,1},
@@ -137,14 +137,14 @@ public class sorting {
         // };
         // rowWithMax1s(matrix);
 
-        int[][] matrix = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12}
-        };
+        // int[][] matrix = {
+        //     {1, 2, 3, 4},
+        //     {5, 6, 7, 8},
+        //     {9, 10, 11, 12}
+        // };
 
         // System.out.println(searchArray(matrix, 3)); // true
         // System.out.println(searchArrayS(matrix, 3)); // true
-        System.out.println(searchArrayS(matrix, 15));  // false
+        // System.out.println(searchArrayS(matrix, 15));  // false
     }
 }
