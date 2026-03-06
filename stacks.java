@@ -23,7 +23,6 @@ public class stacks {
         }
         if (s.isEmpty()) {
             System.out.println("Valid Paranthese!");
-            return;
         }
         else {
             System.out.println("Not a Valid Parantheses!");
