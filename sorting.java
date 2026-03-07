@@ -118,6 +118,66 @@ public class sorting {
         return false;
     }
     
+    // 6. Bubble sort:-
+    public static void bubbleSort(int arr[]) {
+        int n = arr.length - 1;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    } 
+
+    // 7. selection sort
+    public static void selectionSort(int arr[]) {
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            int minValue = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[minValue] > arr[j]) {
+                    minValue = j;  // min value find ho gya
+                }
+            }
+            // swap function
+            int temp = arr[i];
+            arr[i] = arr[minValue];
+            arr[minValue] = temp;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    // 8. inserction sort
+    public static void inserction(int arr[]) {
+        int n = arr.length;
+
+        for (int i = 1; i < n; i++) {
+            int current = arr[i]; // store current element
+            int prev = i - 1;   // previous element
+            
+            while (prev >= 0 && arr[prev] > current) {
+                arr[prev + 1] = arr[prev];
+                prev--;
+            }
+
+            arr[prev + 1] = current;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
     public static void main(String[] args) {
         // int n = 36;
         // findSqur(28);
@@ -125,9 +185,9 @@ public class sorting {
         // nthRoot(3, 27); // 3
         // nthRoot(4, 69);  // -1 (not found)
 
-        int arr[] = {4, 7, 9, 10};
-        int k = 4;
-        kthMissingNum(arr, 5);
+        // int arr[] = {4, 7, 9, 10};
+        // int k = 4;
+        // kthMissingNum(arr, 5);
 
         // int[][] matrix = {
         //         {0,0,0,1,1},
@@ -146,5 +206,11 @@ public class sorting {
         // System.out.println(searchArray(matrix, 3)); // true
         // System.out.println(searchArrayS(matrix, 3)); // true
         // System.out.println(searchArrayS(matrix, 15));  // false
+
+        int arr[] = {13,46,24,52,20,9};
+        // bubbleSort(arr); // 9 13 20 24 46 52 
+        // selectionSort(arr); // 9 13 20 24 46 52 
+        inserction(arr);
+    
     }
 }
