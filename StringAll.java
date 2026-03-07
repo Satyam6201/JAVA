@@ -334,15 +334,15 @@ public class StringAll{
         map.put('X', 10);
         map.put('L', 50);
         map.put('C', 100);
-        map.put('D', 5000);
+        map.put('D', 500);
         map.put('M', 1000);
 
         int result = 0;
 
         for (int i = 0; i < str.length(); i++) {
-            int current = str.charAt(i);
+            int current = map.get(str.charAt(i));
 
-            if (i < str.length() && current < str.charAt(i + 1)) {
+            if (i < str.length() - 1 && current < map.get(str.charAt(i + 1))) {
                 result = result - current;
             }
             else {
@@ -352,6 +352,24 @@ public class StringAll{
         System.out.println(result);
     }
 
+    // 20 Maximum Nesting Depth of Parenthesis
+    public static void nestedParenthesis(String s) {
+        int count = 0;
+        int max = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if (ch == '(') {
+                count++;
+                max = Math.max(max, count);
+            }
+            else if (ch == ')') {
+                count--;
+            }
+        }
+        System.out.println(max);
+    }
 
     public static void main(String[] args) {
         // String s = "hello";
@@ -415,7 +433,9 @@ public class StringAll{
         // String str2 = "sad";
         // firstOccurrence(str1, str2);
     
-        romanToInteger("MCMXCIV");
+        // romanToInteger("MCMXCIV");
+        String s = "(1+(2*3)+((8)/4))+1";
+        nestedParenthesis(s);
     
     }
 }
