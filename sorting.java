@@ -178,6 +178,8 @@ public class sorting {
             System.out.print(arr[i] + " ");
         }
     }
+    
+    
     public static void main(String[] args) {
         // int n = 36;
         // findSqur(28);

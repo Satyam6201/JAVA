@@ -1,4 +1,7 @@
 
+import java.util.Stack;
+
+
 public class revision {
     public static class Node {
         int data;
@@ -196,12 +199,40 @@ public class revision {
 
 
     public static void main(String[] args) {
-        revision l = new revision();
-        l.addFirst(2);
-        l.addFirst(1);
-        l.addLast(3);
-        l.add(0, -1);
+        // revision l = new revision();
+        // l.addFirst(2);
+        // l.addFirst(1);
+        // l.addLast(3);
+        // l.add(0, -1);
         
-        l.mid();
+        // l.mid();
+
+        String str = "({})";
+        Stack<Character> s = new Stack<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (ch == '(' || ch == '{' || ch == '[') {
+                s.push(ch);
+            }
+
+            else {
+                if (s.isEmpty()) {
+                    System.out.println("Not a valid paranthesis!");
+                    return;
+                }
+
+                else if (s.peek() == '(' && ch == ')' || s.peek() == '{' && ch == '}' || s.peek() == '[' && ch == ']') {
+                    s.pop();
+                }
+            }
+        } 
+        if (s.isEmpty()) {
+            System.out.println("Valid paranthesis");
+        }
+        else {
+            System.out.println("Not Valid");
+        }
     }
 }
