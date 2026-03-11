@@ -228,7 +228,7 @@ public class StringAll{
     }
 
     // 14. check String rotate
-    public static boolean  rotateString(String str1, String str2) {
+    public static boolean rotateString(String str1, String str2) {
         if (str1.length() != str2.length()) {
             return false;
         }
