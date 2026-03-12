@@ -1145,8 +1145,5 @@ public class ArrayAll {
                         };
         // searchingIn2D(matrix, 3);
         searchIn2D(matrix, 3);
-
-        
-        
     }
 }
