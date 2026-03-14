@@ -189,14 +189,6 @@ public class revision {
         System.out.println(slow.data);
     }
 
-
-
-
-
-
-
-
-
     public static void main(String[] args) {
         // revision l = new revision();
         // l.addFirst(2);
