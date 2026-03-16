@@ -209,10 +209,9 @@ public class sorting {
         // System.out.println(searchArrayS(matrix, 3)); // true
         // System.out.println(searchArrayS(matrix, 15));  // false
 
-        int arr[] = {13,46,24,52,20,9};
-        // bubbleSort(arr); // 9 13 20 24 46 52 
-        // selectionSort(arr); // 9 13 20 24 46 52 
-        inserction(arr);
-    
+        // int arr[] = {13,46,24,52,20,9};
+        // // bubbleSort(arr); // 9 13 20 24 46 52 
+        // // selectionSort(arr); // 9 13 20 24 46 52 
+        // inserction(arr);
     }
 }
