@@ -255,6 +255,5 @@ public class mathproblem {
         // largest(529);
         // oddCount(59254);
         evenCount(5874584);
-
     }
 }
