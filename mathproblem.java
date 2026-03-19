@@ -237,7 +237,37 @@ public class mathproblem {
         }
         System.out.println(count);
     }
-    
+
+    // 16. Sum of prime number form n
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    } 
+    public static void sumPrime(int n) {
+        int sum = 0;
+
+        if (n <= 1) {
+            System.out.print("Not prime");
+            return;
+        }
+
+        for (int i = 2; i <= n; i++) {
+            if (isPrime(i)) {
+                sum = sum + i;
+            }
+        }
+
+        System.out.println(sum);
+    }
+
     public static void main(String[] args) {
         // binDec(101);
         // decBin(11);
@@ -254,6 +284,7 @@ public class mathproblem {
         // System.out.println(factorial(4));
         // largest(529);
         // oddCount(59254);
-        evenCount(5874584);
+        // evenCount(5874584);
+        sumPrime(7);
     }
 }
