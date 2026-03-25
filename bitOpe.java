@@ -1,5 +1,3 @@
-
-
 public class bitOpe {
 
     // check number is odd or even
@@ -46,11 +44,22 @@ public class bitOpe {
         System.out.println(count);
     }
 
+    // find element appearing once when other appear twice
+    public static void onceAppear(int num[]) {
+        int n = num.length;
+
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            result = result ^ num[i];
+        }
+        System.out.println(result);
+    }
     public static void main(String[] args) {
         // oddEven(6); //even
         // swap(5, 7); // 7, 5
         // powerOfTwo(4);  true
-        countBit(10);
-
+        // countBit(10);
+        int num[] = {2, 3, 5, 4, 5, 3, 2};
+        onceAppear(num);
     }
 }
