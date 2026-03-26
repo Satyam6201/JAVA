@@ -54,6 +54,7 @@ public class bitOpe {
         }
         System.out.println(result);
     }
+    
     public static void main(String[] args) {
         // oddEven(6); //even
         // swap(5, 7); // 7, 5
