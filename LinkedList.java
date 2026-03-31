@@ -272,8 +272,6 @@ public class LinkedList {
         System.out.println("Mid Value = " + slow.data);
     }
     
-    
-    
     public static void main(String[] args) {
         LinkedList li = new LinkedList();
         li.addFirst(2);

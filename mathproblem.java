@@ -268,6 +268,29 @@ public class mathproblem {
         System.out.println(sum);
     }
 
+    // 17 LCM and GCD
+    public static int GCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;            
+        }
+        return  a;
+    }
+    public static int LCM(int a, int b) {
+        int lcm = (a / GCD(a, b)) * b;
+        return lcm;
+    }
+    public static void findGCDandLCM(int arr[]) {
+        int n = arr.length;
+        int result = arr[0];
+
+        for (int i = 1; i < n; i++) {
+            result = LCM(result, arr[i]);
+        }
+        System.out.println(result);
+    }
+
     public static void main(String[] args) {
         // binDec(101);
         // decBin(11);
@@ -285,6 +308,8 @@ public class mathproblem {
         // largest(529);
         // oddCount(59254);
         // evenCount(5874584);
-        sumPrime(7);
+        // sumPrime(7);
+        int arr[] = {3, 6, 9, 15};
+        findGCDandLCM(arr);
     }
 }
