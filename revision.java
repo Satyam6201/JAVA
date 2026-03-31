@@ -1,5 +1,4 @@
 
-
 public class revision {
     public static class Node {
         int data;
@@ -194,9 +193,6 @@ public class revision {
         // l.addFirst(1);
         // l.addLast(3);
         // l.add(0, -1);
-        
         // l.mid();
-
-        
     }
 }
