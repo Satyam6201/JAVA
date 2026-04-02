@@ -320,8 +320,91 @@ public class LinkedList {
         prev.next = null;  // remove cycle
            
     }
+    
+    // Merge sort 
+    public static Node midValue(Node Head1) {
+        Node fast = Head1.next;
+        Node slow = Head1;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return  slow;
+    }
+    public static Node merge(Node Head1, Node Head2) {
+        // Define length
+        Node mergeLL = new Node(-1);
+        Node temp = mergeLL;
+
+        while (Head1 != null && Head2 != null) {
+            // Check head1 ka data bara hai ya chota 
+            if (Head1.data <= Head2.data) {
+                temp.next = Head1;
+                Head1 = Head1.next;
+                temp = temp.next;
+            }
+            else {
+                temp.next = Head2;
+                Head2 = Head2.next;
+                temp = temp.next;
+            }
+        }
+
+        while (Head1 != null) {
+            temp.next = Head1;
+            Head1 = Head1.next;
+            temp = temp.next;
+        }
+        while (Head2 != null) {
+            temp.next = Head2;
+            Head2 = Head2.next;
+            temp = temp.next;
+        }
+
+        return mergeLL.next;
+    }
+    public static Node mergeSort(Node Head) {
+        if (Head == null || Head.next == null) {
+            return Head;
+        }
+
+        // find mid value 
+        Node mid = midValue(Head);
+
+        Node right = mid.next;
+        mid.next = null;
+
+        Node leftNode = mergeSort(Head);
+        Node righNode = mergeSort(right);
+
+        return merge(leftNode, righNode);
+    }
+    
+    // searching in the linkedlist (if value is present the return index otherwise return -1)
+    public static int IterativeSearch(int key) {
+        if (Head == null) {
+            return -1;
+        }
+
+        Node temp = Head;
+        int index = 0;
+
+        while (temp != null) {
+            if (temp.data == key) {
+                return index;
+            }
+            temp = temp.next;
+            index++;
+        }
+        return -1;
+    }
+    
+    
+    
+    
     public static void main(String[] args) {
-        // LinkedList li = new LinkedList();
+        LinkedList li = new LinkedList();
         // li.addFirst(2);
         // li.addFirst(1);
 
@@ -357,15 +440,35 @@ public class LinkedList {
         // li.midValueSlowAndFast(); // 5
 
 
-        Head = new Node(1);
-        Node temp = new Node(2);
-        Head.next = temp;
-        Head.next.next = new Node(3);
-        Head.next.next.next = new Node(4);
-        Head.next.next.next.next = new Node(5);
-        Head.next.next.next.next.next = temp;  // 1->2->3->4->5->2 
-        // System.out.println(isCycle()); // True
-        removeCycle();
-        System.out.println(isCycle());  // false
+        // Head = new Node(1);
+        // Node temp = new Node(2);
+        // Head.next = temp;
+        // Head.next.next = new Node(3);
+        // Head.next.next.next = new Node(4);
+        // Head.next.next.next.next = new Node(5);
+        // Head.next.next.next.next.next = temp;  // 1->2->3->4->5->2 
+        // // System.out.println(isCycle()); // True
+        // removeCycle();
+        // System.out.println(isCycle());  // false
+
+        // li.addFirst(1);
+        // li.addFirst(2);
+        // li.addFirst(3);
+        // li.addFirst(4);
+        // li.addFirst(6);
+        // li.addFirst(5);
+        // li.print();     // 5->6->4->3->2->1
+        // li.Head = li.mergeSort(li.Head);
+        // System.out.println("After sort");
+        // li.print();
+
+        li.addFirst(1);
+        li.addFirst(2);
+        li.addFirst(3);
+        li.addFirst(4);
+        li.addFirst(6);
+        li.addFirst(5);
+        System.out.println(li.IterativeSearch(2)); // index = 4
+        System.out.println(li.IterativeSearch(7)); //-1 (not present)
     }
 }
