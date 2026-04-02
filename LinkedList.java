@@ -1,3 +1,4 @@
+
 public class LinkedList {
     public static class Node {
         int data;
@@ -272,18 +273,65 @@ public class LinkedList {
         System.out.println("Mid Value = " + slow.data);
     }
     
+    // Detect a loop is cycyle or not 
+    public static boolean isCycle() {
+        Node fast = Head;
+        Node slow = Head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Remove cycle
+    public static void removeCycle() {
+        Node fast = Head;
+        Node slow = Head;
+        boolean isCycle =  false;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {  // detect it is cycle or not
+                isCycle = true;
+                break;
+            }           
+        }
+        if (isCycle == false) {
+            return;
+        }
+
+        slow = Head;
+        Node prev = null;
+
+        while (slow != fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        prev.next = null;  // remove cycle
+           
+    }
     public static void main(String[] args) {
-        LinkedList li = new LinkedList();
-        li.addFirst(2);
-        li.addFirst(1);
+        // LinkedList li = new LinkedList();
+        // li.addFirst(2);
+        // li.addFirst(1);
 
-        li.addLast(3);
-        li.addLast(4);
+        // li.addLast(3);
+        // li.addLast(4);
 
-        // li.print();  // 1, 2, 3, 4
+        // // li.print();  // 1, 2, 3, 4
 
-        li.add(2, 5);  // 1, 2, 5, 3, 4
-        li.print();
+        // li.add(2, 5);  // 1, 2, 5, 3, 4
+        // li.print();
         // System.out.println("Size = " + li.size); size = 5
     
         // li.removeFirst();
@@ -306,6 +354,18 @@ public class LinkedList {
         // li.print();
 
         // li.midValue(); // 5
-        li.midValueSlowAndFast(); // 5
+        // li.midValueSlowAndFast(); // 5
+
+
+        Head = new Node(1);
+        Node temp = new Node(2);
+        Head.next = temp;
+        Head.next.next = new Node(3);
+        Head.next.next.next = new Node(4);
+        Head.next.next.next.next = new Node(5);
+        Head.next.next.next.next.next = temp;  // 1->2->3->4->5->2 
+        // System.out.println(isCycle()); // True
+        removeCycle();
+        System.out.println(isCycle());  // false
     }
 }
