@@ -101,7 +101,6 @@ public class stacks {
         }
     }
     
-    
     public static void main(String[] args) {
         // String str = "({})";
         // System.out.println(validParentheses(str));
@@ -112,7 +111,7 @@ public class stacks {
         // int arr[] = {6, 8, 0, 1, 3};
         // nextGreater(arr);
 
-        int[] arr = {4, 5, 2, 10, 8};
-        prevSmallest(arr);
+        // int[] arr = {4, 5, 2, 10, 8};
+        // prevSmallest(arr);
     }
 }
