@@ -75,7 +75,31 @@ public class stacks {
     }
     
     // Previous smallest element
-    
+    public static void prevSmallest(int arr[]) {
+        Stack<Integer> s = new Stack<>();
+        int temp[] = new int[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+
+            // jab tk stack empty na ho or jb tk arr[i] ka no. barabar na ho s.peek se
+            while (!s.isEmpty() && s.peek() >= arr[i]) {
+                s.pop();
+            }
+
+            // stack agar khali hai to -1 push kr denge 
+            if (s.isEmpty()) {
+                temp[i] = -1;
+            }
+            else {
+                temp[i] = s.peek();
+            }
+
+            s.push(arr[i]);
+        }
+        for (int i = 0; i < temp.length; i++) {
+            System.out.print(temp[i] + " ");
+        }
+    }
     
     
     public static void main(String[] args) {
@@ -85,7 +109,10 @@ public class stacks {
         // String str = "hello";
         // reverseString(str);
 
-        int arr[] = {6, 8, 0, 1, 3};
-        nextGreater(arr);
+        // int arr[] = {6, 8, 0, 1, 3};
+        // nextGreater(arr);
+
+        int[] arr = {4, 5, 2, 10, 8};
+        prevSmallest(arr);
     }
 }
