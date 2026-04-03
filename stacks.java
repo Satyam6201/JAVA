@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class stacks {
@@ -101,6 +102,20 @@ public class stacks {
         }
     }
     
+    // Sliding Window Maximum  maximum number k tk 
+    public static void maxSlidingWindow(int arr[], int k) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i <= arr.length - k; i++) {
+            int max = arr[i];
+            for (int j = i; j < i + k; j++) {
+                max = Math.max(max, arr[j]);
+            }
+            list.add(max);
+        }
+        System.out.println(list);
+    }
+    
     public static void main(String[] args) {
         // String str = "({})";
         // System.out.println(validParentheses(str));
@@ -113,5 +128,9 @@ public class stacks {
 
         // int[] arr = {4, 5, 2, 10, 8};
         // prevSmallest(arr);
+
+        int arr[] = {4,0,-1,3,5,3,6,8};
+        int k = 3;
+        maxSlidingWindow(arr, k);
     }
 }
