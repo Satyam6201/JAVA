@@ -973,6 +973,38 @@ public class ArrayAll {
         System.out.println("Not found!");
     }
 
+    // 47. Trapping Rainwater O(n)
+    public static int trap(int height[]) {
+        int n = height.length;
+
+        int left = 0;
+        int right = n - 1;
+        int maxLeft = 0;
+        int maxRight = 0;
+        int totalWater = 0;
+
+        while (left <= right) {
+            if (height[left] <= height[right]) {
+                if (height[left] >= maxLeft) {
+                    maxLeft = height[left];
+                }
+                else {
+                    totalWater += maxLeft - height[left];
+                }
+                left++;
+            }
+            else {
+                if (height[right] >= maxRight) {
+                    maxRight = height[right];
+                }
+                else {
+                    totalWater += maxRight - height[right];
+                }
+                right--;
+            }
+        }
+        return totalWater;
+    }
     
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
@@ -1139,11 +1171,15 @@ public class ArrayAll {
 
         // MaxOne(matrix);
 
-        int matrix[][] = { {1, 3, 5, 7},
-                           {10, 11, 16, 20},
-                           {23, 30, 34, 60}
-                        };
-        // searchingIn2D(matrix, 3);
-        searchIn2D(matrix, 3);
+        // int matrix[][] = { {1, 3, 5, 7},
+        //                    {10, 11, 16, 20},
+        //                    {23, 30, 34, 60}
+        //                 };
+        // // searchingIn2D(matrix, 3);
+        // searchIn2D(matrix, 3);
+
+        int[] height = {4,2,0,3,2,5};
+        System.out.println(trap(height));  // 9
+    
     }
 }

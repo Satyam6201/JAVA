@@ -116,6 +116,44 @@ public class stacks {
         System.out.println(list);
     }
     
+    // (Push At Bottom)
+    public static void pushBottom(Stack<Integer> s, int data) {
+        if (s.isEmpty()) {
+            s.push(data);
+            return;
+        }
+
+        int top = s.pop();
+        pushBottom(s, data);
+        s.push(top);
+    }
+    
+    // Duplicate paranthesis
+    public static boolean isDuplicate(String str) {
+        Stack<Character> s = new Stack<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == ')') {
+                int count = 0;
+                while (s.peek() != '(') {
+                    s.pop();
+                    count++;
+                }
+                if (count < 1) {
+                    return true;
+                }
+                else {
+                    s.pop();
+                }
+            }
+            else {
+                s.push(ch);
+            }
+        }
+        return false;
+    }
+    
     public static void main(String[] args) {
         // String str = "({})";
         // System.out.println(validParentheses(str));
@@ -129,8 +167,22 @@ public class stacks {
         // int[] arr = {4, 5, 2, 10, 8};
         // prevSmallest(arr);
 
-        int arr[] = {4,0,-1,3,5,3,6,8};
-        int k = 3;
-        maxSlidingWindow(arr, k);
+        // int arr[] = {4,0,-1,3,5,3,6,8};
+        // int k = 3;
+        // maxSlidingWindow(arr, k);
+
+        // Stack<Integer> s = new Stack<>();
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+        // pushBottom(s, 4);
+        // while (!s.isEmpty()) {
+        //     System.out.print(s.peek() + " "); // 3 2 1 4 
+        //     s.pop();
+        // }
+
+        String str = "((a+(b))) + (c+d)";
+        System.out.println(isDuplicate(str));
+
     }
 }
