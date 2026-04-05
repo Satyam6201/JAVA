@@ -183,6 +183,5 @@ public class stacks {
 
         String str = "((a+(b))) + (c+d)";
         System.out.println(isDuplicate(str));
-
     }
 }

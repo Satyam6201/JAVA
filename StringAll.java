@@ -371,6 +371,35 @@ public class StringAll{
         System.out.println(max);
     }
 
+    // 21 Robot Return to Origin
+    public static void judgeCircle(String str) {
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (ch == 'R') {
+                x++;
+            }
+            else if (ch == 'L') {
+                x--;
+            }
+            else if (ch == 'U') {
+                y++;
+            }
+            else if (ch == 'D') {
+                y--;
+            }
+        }
+        if (x == 0 && y == 0) {
+            System.out.println("Robot Return to Origin");
+        }
+        else {
+            System.out.println("Robot does't Return to Origin");
+        }
+    }
+
     public static void main(String[] args) {
         // String s = "hello";
         // reverseString(s); //olleh
@@ -435,8 +464,11 @@ public class StringAll{
     
         // romanToInteger("MCMXCIV");
         
-        String s = "(1+(2*3)+((8)/4))+1";
-        nestedParenthesis(s);
+        // String s = "(1+(2*3)+((8)/4))+1";
+        // nestedParenthesis(s); //3
+
+        String s = "UD";
+        judgeCircle(s);
     
     }
 }
