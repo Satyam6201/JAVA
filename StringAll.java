@@ -468,7 +468,6 @@ public class StringAll{
         // nestedParenthesis(s); //3
 
         String s = "UD";
-        judgeCircle(s);
-    
+        judgeCircle(s);  // Robot Return to Origin
     }
 }
