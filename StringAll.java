@@ -467,8 +467,23 @@ public class StringAll{
         // String s = "(1+(2*3)+((8)/4))+1";
         // nestedParenthesis(s); //3
 
-        String s = "UD";
-        judgeCircle(s);  // Robot Return to Origin
-        judgeCircle("UUD");  //Robot does't Return to Origin
+        // String s = "UD";
+        // judgeCircle(s);  // Robot Return to Origin
+        // judgeCircle("UUD");  //Robot does't Return to Origin
+        
+        String s = "abcd";
+        
+        Stack<Character> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i = 0; i < s.length(); i++) {
+            st.push(s.charAt(i));
+        }
+        
+        while (!st.isEmpty()) {
+            sb.append(st.pop());
+        }
+        
+        System.out.println(sb);
     }
 }
