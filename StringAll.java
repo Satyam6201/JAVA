@@ -469,5 +469,6 @@ public class StringAll{
 
         String s = "UD";
         judgeCircle(s);  // Robot Return to Origin
+        judgeCircle("UUD");  //Robot does't Return to Origin
     }
 }
