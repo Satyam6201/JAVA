@@ -339,14 +339,13 @@ public class ArrayAll {
     // 18. Maximum Average Subarray (size = k)
     public static void findMaxAverage(int arr[], int k) {
         int sum = 0;
-        int max = 0;
 
         // First 4 number
         for (int i = 0; i < k; i++) {
             sum = sum + arr[i];
         }
 
-        max = sum;
+        int max = sum;
 
         // Next sliding number
         for (int i = k; i < arr.length; i++) {
