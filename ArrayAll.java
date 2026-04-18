@@ -1004,6 +1004,25 @@ public class ArrayAll {
         }
         return totalWater;
     }
+
+    // 48. Sum of subarray Minimum (Given an array of integers arr of size n, calculate the sum of the minimum value in each (contiguous) subarray of arr. Since the result may be large,)
+    public static void sumSubarrayMins(int arr[]) {
+        int n = arr.length;
+
+        int sum = 0; 
+        for (int i = 0; i < n; i++) {
+            int min = arr[i];
+            for (int j = i; j < n; j++) {
+                min = Math.min(min, arr[j]);
+
+                sum = sum + min;
+            }
+        }
+
+        System.out.println(sum);
+    }
+
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -1176,8 +1195,24 @@ public class ArrayAll {
         // // searchingIn2D(matrix, 3);
         // searchIn2D(matrix, 3);
 
-        int[] height = {4,2,0,3,2,5};
-        System.out.println(trap(height));  // 9
-    
+        // int[] height = {4,2,0,3,2,5};
+        // System.out.println(trap(height));  // 9
+
+        // int arr[] = {3, 1, 2, 5};
+        // sumSubarrayMins(arr);  // 18 
+
+        int arr[] = {4,0,-1,3,5,3,6,8};
+        int k = 3;
+        int n = arr.length;
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i <= n - k; i++) {
+            int max = arr[i];
+            for (int j = i; j < i + k; j++) {
+                max = Math.max(max, arr[j]);
+            }
+            list.add(max);
+        }
+        System.out.println(list);
     }
 }
