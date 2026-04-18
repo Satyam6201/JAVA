@@ -1200,19 +1200,5 @@ public class ArrayAll {
 
         // int arr[] = {3, 1, 2, 5};
         // sumSubarrayMins(arr);  // 18 
-
-        int arr[] = {4,0,-1,3,5,3,6,8};
-        int k = 3;
-        int n = arr.length;
-        ArrayList<Integer> list = new ArrayList<>();
-
-        for (int i = 0; i <= n - k; i++) {
-            int max = arr[i];
-            for (int j = i; j < i + k; j++) {
-                max = Math.max(max, arr[j]);
-            }
-            list.add(max);
-        }
-        System.out.println(list);
     }
 }
