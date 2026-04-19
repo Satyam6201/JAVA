@@ -1022,6 +1022,26 @@ public class ArrayAll {
         System.out.println(sum);
     }
 
+    // 49 tribonacci Number 
+    public static int tribonacci(int n) {
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+
+        int t0 = 0;
+        int t1 = 1;
+        int t2 = 2;
+        int tn = 0;
+
+        for (int i = 3; i <= n; i++) {
+            tn = t0 + t1 + t2;
+            t0 = t1;
+            t1 = t2;
+            t2 = tn;
+        }
+
+        return tn;
+    }
 
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
@@ -1200,5 +1220,7 @@ public class ArrayAll {
 
         // int arr[] = {3, 1, 2, 5};
         // sumSubarrayMins(arr);  // 18 
+
+        System.out.println(tribonacci(5));
     }
 }
