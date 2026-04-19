@@ -147,6 +147,37 @@ public class Trees {
 
         return sum;
     }
+
+    // Diameter og the tree
+    public static int height(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+
+        int totalHeight = Math.max(leftHeight, rightHeight) + 1;
+
+        return totalHeight;
+    }
+    public static int diameter(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int left = height(root.left);
+        int right = height(root.right);
+
+        int leftDiameter = diameter(root.left);
+        int rightDiameter = diameter(root.right);
+
+        int totalHeight = left + right + 1;
+        int laftRightDiameter = Math.max(leftDiameter, rightDiameter);
+
+        int max = Math.max(totalHeight, laftRightDiameter);
+        return max;
+    }
     public static void main(String[] args) {
         // int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         // BinaryTree tree = new BinaryTree();
@@ -185,15 +216,25 @@ public class Trees {
             //           \
             //            7
 
+        // Node root = new Node(1);
+        // root.left = new Node(2);
+        // root.right = new Node(3);
+        // root.left.left = new Node(4);
+        // root.left.right = new Node(5);
+        // root.left.right.right = new Node(6);
+        // root.left.right.right.right = new Node(7);
+        // // System.out.println(maxHeight(root)); // 5
+        // // System.out.println(totalHeight(root));  // 7
+        // System.out.println(sumOfNode(root));  // 28 (1+2+3+4+5+6+7)
+
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
         root.left.left = new Node(4);
         root.left.right = new Node(5);
-        root.left.right.right = new Node(6);
-        root.left.right.right.right = new Node(7);
-        // System.out.println(maxHeight(root)); // 5
-        // System.out.println(totalHeight(root));  // 7
-        System.out.println(sumOfNode(root));  // 28 (1+2+3+4+5+6+7)
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+        System.out.println(diameter(root));  // 5
+        
     }
 }
