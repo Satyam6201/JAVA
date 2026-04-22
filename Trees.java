@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -214,8 +215,75 @@ public class Trees {
         return isSubTree(root.left, subRoot) || isSubTree(root.right, subRoot);
     }
     
+    // 7. Top view of a tree
+    static class Info {
+        Node node;
+        int hd;  // Horizental distance
+
+        public Info(Node node, int hd) {
+            this.node = node;
+            this.hd = hd;
+        }
+    }
+    public static void topView(Node root) {
+        Queue<Info> q = new LinkedList<>();
+        HashMap<Integer, Node> map = new HashMap<>();
+
+        int min = 0;
+        int max = 0;
+
+        q.add(new Info(root, 0));
+        q.add(null);
+
+        while (!q.isEmpty()) {
+            Info curr = q.remove();
+            if (curr == null) {
+                if (q.isEmpty()) {
+                    break;
+                }
+                else {
+                    q.add(null);
+                }
+            }
+            else {
+                if (!map.containsKey(curr.hd)) {
+                    map.put(curr.hd, curr.node);
+                }
+
+                if (curr.node.left != null) {
+                    q.add(new Info(curr.node.left, curr.hd  - 1));
+                    min = Math.min(min, curr.hd - 1);
+                }
+
+                if (curr.node.right != null) {
+                    q.add(new Info(curr.node.right, curr.hd + 1));
+                    max = Math.max(max, curr.hd + 1);
+                }
+            }
+        }
+        for (int i = min; i <= max; i++) {
+            System.out.print(map.get(i).data + " ");
+        }
+    }
     
-    
+    // Lower Common Ancester
+    public static Node lca(Node root, int n1, int n2) {
+        if (root == null || root.data == n1 || root.data == n2) {
+            return root;
+        }
+
+        Node leftLCA = lca(root.left, n1, n2);
+        Node rightLCA = lca(root.right, n1, n2);
+
+        if (leftLCA == null) {
+            return rightLCA;
+        }
+        if (rightLCA == null) {
+            return leftLCA;
+        }
+
+        return root;
+    }
     
     public static void main(String[] args) {
         // int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
@@ -293,10 +361,12 @@ public class Trees {
             //      2 
             //     / \   
             //    4   5
-            Node subRoot = new Node(2);
-            subRoot.left = new Node(4);
-            subRoot.right = new Node(5);
-            System.out.println(isSubTree(root, subRoot));  // true
-            
+            // Node subRoot = new Node(2);
+            // subRoot.left = new Node(4);
+            // subRoot.right = new Node(5);
+            // System.out.println(isSubTree(root, subRoot));  // true
+
+            // topView(root); // 4 2 1 3 7
+            System.out.println(lca(root, 4, 5).data); // 1
     }
 }
