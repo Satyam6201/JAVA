@@ -14,7 +14,7 @@ public class Trees {
         }
     }
 
-    // InBuild Feature used for the preOrder, InOrder, PostOrder
+    // 1. InBuild Feature used for the preOrder, InOrder, PostOrder
     static class BinaryTree {
         static int index = -1;
 
@@ -108,7 +108,7 @@ public class Trees {
     
     }
 
-    //Max Height of the tree
+    // 2. Max Height of the tree
     public static int maxHeight(Node root) {
         if (root == null) {
             return 0;
@@ -121,7 +121,7 @@ public class Trees {
         return max + 1;
     }
     
-    // Total height of the tree
+    // 3. Total height of the tree
     public static int totalHeight(Node root) {
         if (root == null) {
             return 0;
@@ -134,7 +134,7 @@ public class Trees {
         return totalHeight;
     }
     
-    // Sum of the node 
+    // 4. Sum of the node 
     public static int sumOfNode(Node root) {
         if (root == null) {
             return 0;
@@ -148,7 +148,7 @@ public class Trees {
         return sum;
     }
 
-    // Diameter og the tree
+    // 5. Diameter og the tree
     public static int height(Node root) {
         if (root == null) {
             return 0;
@@ -178,6 +178,45 @@ public class Trees {
         int max = Math.max(totalHeight, laftRightDiameter);
         return max;
     }
+   
+    // 6. check subroot of another tree
+    public static boolean isIdentity(Node root, Node subRoot) {
+        if (root == null && subRoot == null) {
+            return true;
+        }
+
+        if (root == null || subRoot == null || root.data != subRoot.data) {
+            return false;
+        }
+
+        if (!isIdentity(root.left, subRoot.left)) {
+            return false;
+        }
+
+        if (!isIdentity(root.right, subRoot.right)) {
+            return false;
+        }
+
+        return true;
+    }
+    public static boolean isSubTree(Node root, Node subRoot) {
+        if (root == null) {
+            return false;
+        }
+
+        if (root.data == subRoot.data) {
+            if (isIdentity(root, subRoot)) {
+                return true;
+            }
+        }
+
+        // check subRoot is present root left or right side 
+        return isSubTree(root.left, subRoot) || isSubTree(root.right, subRoot);
+    }
+    
+    
+    
+    
     public static void main(String[] args) {
         // int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         // BinaryTree tree = new BinaryTree();
@@ -227,13 +266,37 @@ public class Trees {
         // // System.out.println(totalHeight(root));  // 7
         // System.out.println(sumOfNode(root));  // 28 (1+2+3+4+5+6+7)
 
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
-        System.out.println(diameter(root));  // 5
+        // Node root = new Node(1);
+        // root.left = new Node(2);
+        // root.right = new Node(3);
+        // root.left.left = new Node(4);
+        // root.left.right = new Node(5);
+        // root.right.left = new Node(6);
+        // root.right.right = new Node(7);
+        // System.out.println(diameter(root));  // 5
+
+            //         1
+            //       /   \
+            //      2     3
+            //     / \   / \
+            //    4   5 6   7
+
+            Node root = new Node(1);
+            root.left = new Node(2);
+            root.right = new Node(3);
+            root.left.left = new Node(4);
+            root.left.right = new Node(5);
+            root.right.left = new Node(6);
+
+            root.right.right = new Node(7);
+
+            //      2 
+            //     / \   
+            //    4   5
+            Node subRoot = new Node(2);
+            subRoot.left = new Node(4);
+            subRoot.right = new Node(5);
+            System.out.println(isSubTree(root, subRoot));  // true
+            
     }
 }
