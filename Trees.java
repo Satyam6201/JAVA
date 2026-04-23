@@ -266,7 +266,7 @@ public class Trees {
         }
     }
     
-    // Lower Common Ancester
+    // 8. Lower Common Ancester
     public static Node lca(Node root, int n1, int n2) {
         if (root == null || root.data == n1 || root.data == n2) {
             return root;
