@@ -285,6 +285,45 @@ public class Trees {
         return root;
     }
     
+    // 9  Check if the Binary Tree is Balanced Binary Tree(check blanceing)
+    public static boolean isBalance(Node root) {
+        if (root == null) {
+            return true;
+        }
+
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+
+        if (Math.abs(leftHeight - rightHeight) <= 1 && 
+        isBalance(root.left) && isBalance(root.right)) {
+            return true;
+        }
+
+        return false;
+    }
+    public static int  getHeight(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+
+        int max = Math.max(rightHeight, leftHeight) + 1;
+
+        return max;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public static void main(String[] args) {
         // int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         // BinaryTree tree = new BinaryTree();
@@ -355,7 +394,6 @@ public class Trees {
             root.left.left = new Node(4);
             root.left.right = new Node(5);
             root.right.left = new Node(6);
-
             root.right.right = new Node(7);
 
             //      2 
@@ -367,6 +405,7 @@ public class Trees {
             // System.out.println(isSubTree(root, subRoot));  // true
 
             // topView(root); // 4 2 1 3 7
-            System.out.println(lca(root, 4, 5).data); // 1
+            // System.out.println(lca(root, 4, 5).data); // 1
+            System.out.println(isBalance(root));  // true
     }
 }
