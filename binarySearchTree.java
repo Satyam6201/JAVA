@@ -64,6 +64,23 @@ public class binarySearchTree {
         System.out.print(root.data + " ");
     }
     
+    // 5. Search in the binary tree
+    public static boolean search(Node root, int key) {
+        if (root == null) {
+            return false;
+        }
+
+        if (root.data == key) {
+            return true;
+        }
+
+        if (root.data > key) {
+            return search(root.left, key);
+        }
+        else {
+            return search(root.right, key);
+        }
+    }
     
     public static void main(String[] args) {
         /*
@@ -84,7 +101,10 @@ public class binarySearchTree {
         
         // preOrder(root); // 5 1 3 2 4 7 
         // inOrder(root); // 1 2 3 4 5 7 
-        postOrder(root);  // 2 4 3 1 7 5 
+        // postOrder(root);  // 2 4 3 1 7 5 
+        
+        System.out.println(search(root, 7));  // true
+        System.out.println(search(root, 9));  // false
 
     }
 }
