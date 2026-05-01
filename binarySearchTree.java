@@ -82,6 +82,20 @@ public class binarySearchTree {
         }
     }
     
+    // 6 Mirror a bst 
+    public static Node mirror(Node root) {
+        if (root == null) {
+            return null;
+        }
+
+        Node rightNode = mirror(root.right);
+        Node leftNode = mirror(root.left);
+
+        root.left = rightNode;
+        root.right = leftNode;
+
+        return root;
+    }
     public static void main(String[] args) {
         /*
                 5
@@ -103,8 +117,11 @@ public class binarySearchTree {
         // inOrder(root); // 1 2 3 4 5 7 
         // postOrder(root);  // 2 4 3 1 7 5 
         
-        System.out.println(search(root, 7));  // true
-        System.out.println(search(root, 9));  // false
+        // System.out.println(search(root, 7));  // true
+        // System.out.println(search(root, 9));  // false
+
+        root = mirror(root);
+        preOrder(root); // 5 7 1 3 4 2 
 
     }
 }
