@@ -1043,6 +1043,25 @@ public class ArrayAll {
         return tn;
     }
 
+    // 50 Pair sum(Optimize ways) by using arrayList
+    public static boolean pair(ArrayList<Integer> list, int target) {
+        int i = 0;
+        int j = list.size() - 1;
+
+        while (i < j) {
+            if (list.get(i) + list.get(j) == target) {
+                return true;
+            }
+            else if (list.get(i) + list.get(j) < target) {
+                i++;
+            }
+            else {
+                j--;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -1221,6 +1240,12 @@ public class ArrayAll {
         // int arr[] = {3, 1, 2, 5};
         // sumSubarrayMins(arr);  // 18 
 
-        System.out.println(tribonacci(5));
+        // System.out.println(tribonacci(5));
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            list.add(i);
+        }
+        System.out.println(pair(list, 15));
     }
 }

@@ -96,6 +96,70 @@ public class binarySearchTree {
 
         return root;
     }
+    
+    // 7. Delete node in the tree
+    public static Node delete(Node root, int value) {
+        if (root.data < value) {  // value root se bara ho tb
+            root.right = delete(root.right, value);
+        }
+        else if (root.data > value) { // value root se chota ho
+            root.left = delete(root.left, value);
+        }
+        else {
+            // delete leaf node 
+            if (root.left == null && root.right == null) {
+                return null;
+            }
+            // delete one child element
+            else if (root.left == null) {
+                return root.right;
+            }
+            else if (root.right == null) {
+                return root.left;
+            }
+
+            // delete 2 child element
+            Node successor = findSuccessorNode(root.right);  // right value se swap krenge 
+            root.data = successor.data;
+            root.right = delete(root.right, successor.data);
+        }
+        return root;
+    }
+    public static Node findSuccessorNode(Node root) {
+        if (root.left != null) {
+            root = root.left;
+        }
+        return root;
+    }
+    
+    // 8. Find kth Smallest number
+    static int result = -1;
+    static int count = 0;
+    public static int kthSmallest(Node root, int k) {
+        count = 0;
+        result = -1;
+        inOrder(root, k);
+        return result;
+    }
+    public static void inOrder(Node root, int k) {
+        if (root == null) {
+            return;
+        }
+
+        inOrder(root.left, k); // pahle left me jaenge
+
+        count++;
+
+        if (count == k) {
+            result = root.data;
+            return;
+        }
+
+        inOrder(root.right, k);
+    }
+    
+    
+    
     public static void main(String[] args) {
         /*
                 5
@@ -120,8 +184,13 @@ public class binarySearchTree {
         // System.out.println(search(root, 7));  // true
         // System.out.println(search(root, 9));  // false
 
-        root = mirror(root);
-        preOrder(root); // 5 7 1 3 4 2 
+        // root = mirror(root);
+        // preOrder(root); // 5 7 1 3 4 2 
+
+        // delete(root, 1);
+        // inOrder(root);  // 2 3 4 5 7   (1 delete ho gya )
+
+        System.out.println(kthSmallest(root, 6)); // 7
 
     }
 }
