@@ -1,4 +1,9 @@
 
+import java.util.ArrayList;
+
+import org.w3c.dom.Node;
+
+
 public class binarySearchTree {
     static class Node {
         int data;
@@ -175,7 +180,68 @@ public class binarySearchTree {
         return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
     }
     
-    
+    // 10 Merge 2 binary search tree 
+    public static void getInOrder(Node root, ArrayList<Integer> list) {
+        if (root == null) {
+            return;
+        }
+
+        getInOrder(root.left, list);
+        list.add(root.data);
+        getInOrder(root.right, list);
+    } 
+    public static Node balanceBST(ArrayList<Integer> list, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+        
+        int mid = (start + end) / 2; // mid
+        Node root = new Node(list.get(mid));
+
+        root.left = balanceBST(list, start, mid - 1);
+        root.right = balanceBST(list, mid + 1, end);
+
+        return root;
+    }
+    public static Node mergeBST(Node root1, Node root2) {
+        
+        // Step-1 InOrder Sequence
+        ArrayList<Integer> inOrder1 = new ArrayList<>();
+        getInOrder(root1, inOrder1);
+
+        // Step-2 InOrder Sequence
+        ArrayList<Integer> inOrder2 = new ArrayList<>();
+        getInOrder(root2, inOrder2);
+
+        // step-3 merge
+        int i = 0;
+        int j = 0;
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        while (i < inOrder1.size() && j < inOrder2.size()) {
+            if (inOrder1.get(i) <= inOrder2.get(j)) {
+                result.add(inOrder1.get(i));
+                i++;
+            }
+            else {
+                result.add(inOrder2.get(j));
+                j++;
+            }
+        }
+
+        while (i < inOrder1.size()) {
+            result.add(inOrder1.get(i));
+            i++;
+        }
+        while (j < inOrder2.size()) {
+            result.add(inOrder2.get(j));
+            j++;
+        }
+        return balanceBST(result, 0, result.size() - 1);
+    }
+
+
     public static void main(String[] args) {
         /*
                 5
@@ -208,7 +274,19 @@ public class binarySearchTree {
 
         // System.out.println(kthSmallest(root, 6)); // 7
 
-        System.out.println(isValidBST(root, null, null));
+        // System.out.println(isValidBST(root, null, null));
+
+        Node root1 = new Node(2);
+        root1.left = new Node(1);
+        root1.right = new Node(4);
+
+        Node root2 = new Node(9);
+        root2.left = new Node(3);
+        root2.right = new Node(12);
+
+        Node roots = mergeBST(root1, root2);
+        preOrder(roots); //3 1 2 9 4 12 
+
 
     }
 }
