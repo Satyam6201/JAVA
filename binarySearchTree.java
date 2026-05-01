@@ -158,6 +158,22 @@ public class binarySearchTree {
         inOrder(root.right, k);
     }
     
+    // 9 Check a tree is valid Binary search tree
+    public static boolean isValidBST(Node root, Node min, Node max) {
+        if (root == null) {
+            return true;
+        }
+
+        if (min != null && root.data <= min.data) {
+           return false;
+        }
+
+        if (max != null && root.data >= max.data) {
+           return false;
+        }
+        
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+    }
     
     
     public static void main(String[] args) {
@@ -190,7 +206,9 @@ public class binarySearchTree {
         // delete(root, 1);
         // inOrder(root);  // 2 3 4 5 7   (1 delete ho gya )
 
-        System.out.println(kthSmallest(root, 6)); // 7
+        // System.out.println(kthSmallest(root, 6)); // 7
+
+        System.out.println(isValidBST(root, null, null));
 
     }
 }
