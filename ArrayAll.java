@@ -1062,6 +1062,26 @@ public class ArrayAll {
         return false;
     }
 
+    // 51 kth largest number by minHeap
+    public static void kthLargestNum(int arr[], int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for (int i = 0; i < k; i++) {
+            pq.add(arr[i]);
+        }
+
+        for (int i = k; i < arr.length; i++) {
+            if (arr[i] > pq.peek()) {
+                pq.poll();
+
+                pq.add(arr[i]);
+            }
+        }
+        System.out.println(pq.peek());
+    }
+    
+    
+    
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -1242,10 +1262,14 @@ public class ArrayAll {
 
         // System.out.println(tribonacci(5));
         
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            list.add(i);
-        }
-        System.out.println(pair(list, 15));
+        // ArrayList<Integer> list = new ArrayList<>();
+        // for (int i = 1; i <= 10; i++) {
+        //     list.add(i);
+        // }
+        // System.out.println(pair(list, 15));
+
+        int arr[] = {1, 2, 3, 4, 5};
+        int k = 2;
+        kthLargestNum(arr, k);
     }
 }
