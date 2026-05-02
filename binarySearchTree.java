@@ -1,8 +1,4 @@
-
 import java.util.ArrayList;
-
-import org.w3c.dom.Node;
-
 
 public class binarySearchTree {
     static class Node {
@@ -241,6 +237,47 @@ public class binarySearchTree {
         return balanceBST(result, 0, result.size() - 1);
     }
 
+    // 11 Inorder Successor/Predecessor in BST
+    static Node predecessor = null;
+    static Node successor = null;
+    public static void findPreSuc(Node root, int key) {
+        while (root != null) {
+            
+            // Predecessor 
+            if (root.data < key) {  // left side 
+                predecessor = root;
+                root = root.right;
+            }
+            // Successor
+            else if (root.data > key) {
+                successor = root;
+                root = root.left;
+            }
+            else {
+               // predecessor = max value in left subtree
+                if (root.left != null) {
+                    Node temp = root.left;
+
+                    while (temp.right != null) {  // root.left.right != null
+                        temp = temp.right;
+                    }
+                    predecessor = temp;
+                }
+
+                // successor = min value in right subtree
+                if (root.right != null) { 
+                    Node temp = root.right;
+
+                    while (temp.left != null) {  // root.right.left != null
+                        temp = temp.left;
+                    }
+
+                    successor = temp;
+                }
+                break;
+            }
+        }
+    }
 
     public static void main(String[] args) {
         /*
@@ -252,12 +289,12 @@ public class binarySearchTree {
                / \
               2   4
         */
-        int value[] = {5, 1, 3, 4, 2, 7};  
-        Node root = null;
+        // int value[] = {5, 1, 3, 4, 2, 7};  
+        // Node root = null;
 
-        for (int i = 0; i < value.length; i++) {
-            root = insert(root, value[i]);    //5 -> 1 -> 3 -> 2 -> 4 -> 7
-        }
+        // for (int i = 0; i < value.length; i++) {
+        //     root = insert(root, value[i]);    //5 -> 1 -> 3 -> 2 -> 4 -> 7
+        // }
         
         // preOrder(root); // 5 1 3 2 4 7 
         // inOrder(root); // 1 2 3 4 5 7 
@@ -276,17 +313,36 @@ public class binarySearchTree {
 
         // System.out.println(isValidBST(root, null, null));
 
-        Node root1 = new Node(2);
-        root1.left = new Node(1);
-        root1.right = new Node(4);
+        // Node root1 = new Node(2);
+        // root1.left = new Node(1);
+        // root1.right = new Node(4);
+        // Node root2 = new Node(9);
+        // root2.left = new Node(3);
+        // root2.right = new Node(12);
+        // Node roots = mergeBST(root1, root2);
+        // preOrder(roots); //3 1 2 9 4 12 
 
-        Node root2 = new Node(9);
-        root2.left = new Node(3);
-        root2.right = new Node(12);
+        /*
+                20
+               /  \
+             10    30
+            / \    / \
+           5  15  25  35
+        */
+        
+        Node root = new Node(20);
+        root.left = new Node(10);
+        root.right = new Node(30);
+        root.left.left = new Node(5);
+        root.left.right = new Node(15);
+        root.right.left = new Node(25);
+        root.right.right = new Node(35);
 
-        Node roots = mergeBST(root1, root2);
-        preOrder(roots); //3 1 2 9 4 12 
-
+        int key = 25;
+        findPreSuc(root, key);
+        
+        System.out.println(predecessor.data);  // 20
+        System.out.println(successor.data); // 30
 
     }
 }
