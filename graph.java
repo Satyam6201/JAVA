@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class graph {
     static class Edge {
@@ -50,14 +52,54 @@ public class graph {
         // Add 6 vertex:-
         graph[6].add(new Edge(6, 5, 1));
     }
+    
+    // 2. BFS(Breadth First Search)  // O(V + E)
+    public static void BFS(ArrayList<Edge> graph[]) {
+        Queue<Integer> q = new LinkedList<>();
+        boolean isVisited[] = new boolean[graph.length];
+        q.add(0);  // src = 0
+
+        while (!q.isEmpty()) {
+            int curr = q.remove();
+
+            if (!isVisited[curr]) {
+                System.out.print(curr + " ");
+                isVisited[curr] = true;
+                for (int i = 0; i < graph[curr].size(); i++) {
+                    Edge e = graph[curr].get(i);
+                    q.add(e.dist);
+                }
+            }
+        }
+    }
+    
+    // 3 DFS(Depth First Search)  // O(V + E)
+    public static void DFS(ArrayList<Edge> graph[], int curr, boolean isVisited[]) {
+        System.out.print(curr + " ");
+        isVisited[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i); // get neighbors
+
+            if (!isVisited[e.dist]) {
+                DFS(graph, e.dist, isVisited);
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
         createGraph(graph);
-        for (int i = 0; i < graph[5].size(); i++) {
-            Edge e = graph[5].get(i);
-            System.out.print(e.dist + " "); // 3 4 6
-            System.out.print(e.wt + " ");  // 1 1 1
-        }
+
+        // for (int i = 0; i < graph[5].size(); i++) {
+        //     Edge e = graph[5].get(i);
+        //     System.out.print(e.dist + " "); // 3 4 6
+        //     System.out.print(e.wt + " ");  // 1 1 1
+        // }
+
+        // BFS(graph);  // 0 1 2 3 4 5 6 
+        DFS(graph, 0, new boolean[V]);  // 0 1 3 4 2 5 6 
     }
 }
