@@ -47,6 +47,33 @@ public class practiceSet {
         System.out.println(maxLength);
     }
     
+    //Q3. largest subarray with the sum 0
+    public static void sumZero(int arr[]) {
+        int start = 0; 
+        int end = 0;
+        int maxLength = 0;
+        int sum = arr[0];
+        int n = arr.length;
+
+        while (end < n) {
+            while (sum > 0) {
+                sum = sum - arr[start];
+                start++;
+            }
+
+            if (sum == 0) {
+                maxLength = Math.max(maxLength, end - start + 1);
+            }
+
+            end++;
+            if (end < n) {
+                sum = sum + arr[end];
+            }
+        }
+        System.out.println(maxLength);
+    }
+
+
     // Q5. Check palandrome (O(logn))  // 4884
     public static boolean isPalandrome(int n) {
         int original = n;
@@ -148,13 +175,16 @@ public class practiceSet {
         // int k = 15;
         // longestSubArray(arr, k);  // 4 (1, 4)
 
+        int arr[] = {15, -2, 2, -8, 1, 7, 10, 23};
+        sumZero(arr);
+
         // System.out.println(isPalandrome(4884));  //true
 
         // sqrt(36);// 6
         // findSqrt(36);  //6
 
-        int arr[] = {16, 17, 4, 3, 5, 2};
-        // leader(arr);
-        leaders(arr);
+        // int arr[] = {16, 17, 4, 3, 5, 2};
+        // // leader(arr);
+        // leaders(arr);
     }
 }
