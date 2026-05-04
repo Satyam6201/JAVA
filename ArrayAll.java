@@ -1080,8 +1080,35 @@ public class ArrayAll {
         System.out.println(pq.peek());
     }
     
-    
-    
+    // 52 Rotate image on 90 deg
+    public static void rotate(int arr[][]) {
+        int n = arr.length;
+
+        // rotate the element and arrange in col wise
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
+            }
+        }
+
+        // rorate again last wala first hoga first wala last
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length / 2; j++) {
+                int temp = arr[i][arr.length - 1 - j];
+                arr[i][arr.length - 1 - j] = arr[i][j];
+                arr[i][j] = temp;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+        }
+    }
+     
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
@@ -1268,8 +1295,15 @@ public class ArrayAll {
         // }
         // System.out.println(pair(list, 15));
 
-        int arr[] = {1, 2, 3, 4, 5};
-        int k = 2;
-        kthLargestNum(arr, k);
+        // int arr[] = {1, 2, 3, 4, 5};
+        // int k = 2;
+        // kthLargestNum(arr, k);
+
+        int matrix[][] = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+        rotate(matrix);
     }
 }
