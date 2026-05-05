@@ -168,6 +168,78 @@ public class practiceSet {
 
     }
 
+    // Q8. find the max product subArray
+    public static int maxProduct(int arr[]) {
+        int max = arr[0];
+        int min = arr[0];
+        int maxProduct = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            int temp = max;
+
+            int maxFind = Math.max(max * arr[i], min * arr[i]);
+            max = Math.max(maxFind, arr[i]); 
+
+            int minFind = Math.min(temp * arr[i], min * arr[i]);
+            min = Math.min(arr[i], minFind);
+
+            maxProduct = Math.max(maxProduct, max);
+        }
+
+        return maxProduct;
+    }
+    
+    // Q10 Merge Sort
+    public static void merge(int arr[], int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        int mid = start + (end - start) / 2;
+        
+        merge(arr, start, mid);
+        merge(arr, mid + 1, end);
+        mergeSort(arr, start, mid, end);
+    }
+    public static void mergeSort(int arr[], int start, int mid, int end) {
+        int i = start;
+        int j = mid + 1;
+        int k = 0;
+        int temp[] = new int[end - start + 1];
+
+        while (i <= mid && j <= end) {
+            if (arr[i] < arr[j]) {
+                temp[k] = arr[i];
+                k++;
+                i++;
+            }
+            else {
+                temp[k] = arr[j];
+                k++;
+                j++;
+            }
+        }
+        while (i <= mid) {
+            temp[k] = arr[i];
+            k++;
+            i++;
+        }
+        while (j <= end) {
+            temp[k] = arr[j];
+            k++;
+            j++;
+        }
+
+        for (k = 0, i = start; k < temp.length; k++, i++) {  // copy of the array
+            arr[i] = temp[k];
+        }
+    }
+    public static void printArray(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
     public static void main(String[] args) {
         // int arr[] = {3, 2, 3, 4, 5};
         // bubbleSort(arr); // 2 3 3 4 5 
@@ -184,8 +256,15 @@ public class practiceSet {
         // sqrt(36);// 6
         // findSqrt(36);  //6
 
-        int arr[] = {16, 17, 4, 3, 5, 2};
-        // leader(arr);
-        leaders(arr);
+        // int arr[] = {16, 17, 4, 3, 5, 2};
+        // // leader(arr);
+        // leaders(arr);
+
+        // int arr[] = {2, 3, -2, 4};
+        // System.out.println(maxProduct(arr));
+
+        int arr[] = {6, 3, 9, 5, 2, 8};
+        merge(arr, 0, arr.length - 1);
+        printArray(arr);  // 2 3 5 6 8 9
     }
 }
