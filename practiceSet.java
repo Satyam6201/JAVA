@@ -36,7 +36,7 @@ public class practiceSet {
 
             if (sum == k) {
                 maxLength = Math.max(maxLength, end - start + 1);
-                // System.out.println(start + ", " + end);  // show that when sum == k is reach
+                System.out.println(start + ", " + end);  // show that when sum == k is reach
             }
 
             end++;
@@ -73,15 +73,14 @@ public class practiceSet {
         System.out.println(maxLength);
     }
 
-
     // Q5. Check palandrome (O(logn))  // 4884
     public static boolean isPalandrome(int n) {
-        int original = n;
+        int original = n; //4884
 
         int sum = 0;
         while (0 < n) {
-            int digit = n % 10;
-            sum = sum * 10 + digit;
+            int digit = n % 10; // 4 , 8, 8, 4
+            sum = sum * 10 + digit; // 0*10 = 0 + 4 = 4  == 4884
             n = n / 10; 
         }
         if (original == sum) {
@@ -90,7 +89,7 @@ public class practiceSet {
         return false;
     }
 
-    // Q6. sqrt O(n)
+    // Q6. sqrt O(n) // n = 36
     public static void sqrt(int n) {
         int ans = -1;
 
@@ -102,47 +101,49 @@ public class practiceSet {
                 break;
             }
         } 
-        System.out.println(ans);
+        System.out.println(ans);  //6
     }
     // Binary search approach
-    public static void findSqrt(int n) {
+    public static void findSqrt(int n) {  // n = 36
         if (n < 2) {  // if no. is smaller the 2 then return number
             System.out.println(n);
             return;
         }
 
         int left = 1;
-        int right = n / 2;
-        int ans = -1;
+        int right = n / 2;  //18
+        int ans = -1;  
 
         while (left <= right) {
-            int mid = (left + right) / 2;
+            int mid = (left + right) / 2;   //7
 
-            if (mid * mid <= n) {
-                ans = mid;
-                left = mid + 1;
+            if (mid * mid <= n) {  
+                ans = mid; //6
+                left = mid + 1; //7
             }
             else {
-                right = mid - 1;
+                right = mid - 1; // 8 // 6
             }
         }
         System.out.println(ans);
     }
 
     // 7. Leader in a Array (last element always a leader) //(O(n))
-    public static void leader(int arr[]) {
+    public static void leader(int arr[]) {  // 16, 17, 4, 3, 5, 2
         ArrayList<Integer> list = new ArrayList<>();
 
         int n = arr.length - 1;
         int max = arr[n];
-        list.add(max);
+        list.add(max);    // 2
 
         for (int i = n - 1; i >= 0; i--) {
             if (arr[i] > max) {
-                max = arr[i];
-                list.add(max);
+                max = arr[i];  // 5  // 17
+                list.add(max);  // 5 // 17
             }
         }
+
+        // 2, 5 , 17 
         
         Collections.reverse(list);
         System.out.println(list);
@@ -175,16 +176,16 @@ public class practiceSet {
         // int k = 15;
         // longestSubArray(arr, k);  // 4 (1, 4)
 
-        int arr[] = {15, -2, 2, -8, 1, 7, 10, 23};
-        sumZero(arr);
+        // int arr[] = {15, -2, 2, -8, 1, 7, 10, 23};
+        // sumZero(arr);
 
         // System.out.println(isPalandrome(4884));  //true
 
         // sqrt(36);// 6
         // findSqrt(36);  //6
 
-        // int arr[] = {16, 17, 4, 3, 5, 2};
-        // // leader(arr);
-        // leaders(arr);
+        int arr[] = {16, 17, 4, 3, 5, 2};
+        // leader(arr);
+        leaders(arr);
     }
 }
