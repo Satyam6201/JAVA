@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Stack;
+import java.util.*;
 
 public class practiceSet {
 
@@ -240,6 +238,156 @@ public class practiceSet {
         }
     }
 
+    // Q.12 search in rotated sorted array 1 -
+    public static void search(int arr[], int target) {
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start <= end) {
+            int mid = (start + end) / 2;
+
+            if (arr[mid] == target) {
+                System.out.println(mid);
+                return;
+            }
+            if (arr[start] <= arr[mid]) {
+                if (target >= arr[start] && target < arr[mid]) {
+                    end = mid - 1;
+                }
+                else {
+                    start = mid + 1;
+                }
+            }
+            else {
+                if (target > arr[mid] && target <= arr[end]) {
+                    start = mid + 1;
+                }
+                else {
+                    end = mid - 1;
+                }
+            }
+        }
+        System.out.println("Not Found!");
+    }
+    public static void searchs(int arr[], int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                System.out.println(i);
+                return;
+            }
+        }
+        System.out.println("Not Found");
+    }
+
+    // 11. Isomorphic Strings
+    public static boolean Isomorphic(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        Map<Character, Character> sMap = new HashMap<>();
+        Map<Character, Character> tMap = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char sch = s.charAt(i);
+            char tch = t.charAt(i);
+
+            if (sMap.containsKey(sch)) {
+                if (sMap.get(sch) != tch) {
+                    return false;
+                }
+                else {
+                    sMap.put(sch, tch);
+                }
+            }
+            if (tMap.containsKey(tch)) {
+                if (tMap.get(tch) != sch) {
+                    return false;
+                }
+                else {
+                    tMap.put(tch, sch);
+                }
+            }
+        }
+
+
+        return true;
+    }
+
+    // 13 count occurrences in a sorted array - 
+    public static int occurrence(int arr[], int target) {
+        int count = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+    // Q14 sort 0's, 1's and 2's
+    public static void sortZeros(int arr[]) {
+        int n = arr.length;
+        int temp[] = new int[n];
+        int k = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 0) {
+                temp[k] = arr[i];
+                k++;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 1) {
+                temp[k] = arr[i];
+                k++;
+            }
+        }
+        
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 2) {
+                temp[k] = arr[i];
+                k++;
+            }
+        }
+
+        for (int i = 0; i < temp.length; i++) {
+            System.out.print(temp[i] + " ");
+        }
+    }
+    // binery Approach
+    public static void sortZero(int arr[]) {
+        int left = 0;
+        int mid = 0;
+        int end = arr.length - 1;
+
+        while (mid <= end) {
+            if (arr[mid] == 0) {
+                int temp = arr[left];
+                arr[left] = arr[mid];
+                arr[mid] = temp;
+                mid++;
+                left++;
+            }
+            else if (arr[mid] == 1) {
+                mid++;
+            }
+            else {
+                int temp = arr[end];
+                arr[end] = arr[mid];
+                arr[mid] = temp;
+                end--;
+            }
+        }
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+    
     public static void main(String[] args) {
         // int arr[] = {3, 2, 3, 4, 5};
         // bubbleSort(arr); // 2 3 3 4 5 
@@ -263,8 +411,25 @@ public class practiceSet {
         // int arr[] = {2, 3, -2, 4};
         // System.out.println(maxProduct(arr));
 
-        int arr[] = {6, 3, 9, 5, 2, 8};
-        merge(arr, 0, arr.length - 1);
-        printArray(arr);  // 2 3 5 6 8 9
+        // int arr[] = {6, 3, 9, 5, 2, 8};
+        // merge(arr, 0, arr.length - 1);
+        // printArray(arr);  // 2 3 5 6 8 9
+
+        // int arr[] = {4, 5, 6, 7, 0, 1, 2};
+        // // search(arr, 0);  //4
+        // searchs(arr, 0); // 4
+
+        // System.out.println(Isomorphic("egg", "add"));  // true
+
+
+        int arr[] = {1, 1 , 2, 2, 2, 2, 3};
+        int terget = 2;
+        System.out.println(occurrence(arr, terget));
+
+
+
+        // int arr[] = {2, 2, 0, 0, 1, 0, 0, 2};
+        // // sortZeros(arr);  // 0 0 0 0 1 2 2 2
+        // sortZero(arr);  // 0 0 0 0 1 2 2 2
     }
 }
