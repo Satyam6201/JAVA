@@ -166,7 +166,7 @@ public class practiceSet {
 
     }
 
-    // Q8. find the max product subArray
+    // Q8. find the max product subArray O(n)
     public static int maxProduct(int arr[]) {
         int max = arr[0];
         int min = arr[0];
@@ -187,7 +187,7 @@ public class practiceSet {
         return maxProduct;
     }
     
-    // Q10 Merge Sort
+    // Q10 Merge Sort O(n)
     public static void merge(int arr[], int start, int end) {
         if (start >= end) {
             return;
@@ -237,8 +237,43 @@ public class practiceSet {
             System.out.print(arr[i] + " ");
         }
     }
+    
+    // 11. Isomorphic Strings O(n)
+    public static boolean Isomorphic(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
 
-    // Q.12 search in rotated sorted array 1 -
+        Map<Character, Character> sMap = new HashMap<>();
+        Map<Character, Character> tMap = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char sch = s.charAt(i);
+            char tch = t.charAt(i);
+
+            if (sMap.containsKey(sch)) {
+                if (sMap.get(sch) != tch) {
+                    return false;
+                }
+                else {
+                    sMap.put(sch, tch);
+                }
+            }
+            if (tMap.containsKey(tch)) {
+                if (tMap.get(tch) != sch) {
+                    return false;
+                }
+                else {
+                    tMap.put(tch, sch);
+                }
+            }
+        }
+
+
+        return true;
+    }
+
+    // Q.12 search in rotated sorted array 1 - 
     public static void search(int arr[], int target) {
         int start = 0;
         int end = arr.length - 1;
@@ -279,42 +314,7 @@ public class practiceSet {
         System.out.println("Not Found");
     }
 
-    // 11. Isomorphic Strings
-    public static boolean Isomorphic(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
-        }
-
-        Map<Character, Character> sMap = new HashMap<>();
-        Map<Character, Character> tMap = new HashMap<>();
-
-        for (int i = 0; i < s.length(); i++) {
-            char sch = s.charAt(i);
-            char tch = t.charAt(i);
-
-            if (sMap.containsKey(sch)) {
-                if (sMap.get(sch) != tch) {
-                    return false;
-                }
-                else {
-                    sMap.put(sch, tch);
-                }
-            }
-            if (tMap.containsKey(tch)) {
-                if (tMap.get(tch) != sch) {
-                    return false;
-                }
-                else {
-                    tMap.put(tch, sch);
-                }
-            }
-        }
-
-
-        return true;
-    }
-
-    // 13 count occurrences in a sorted array - 
+    // 13 count occurrences in a sorted array - O(n) 
     public static int occurrence(int arr[], int target) {
         int count = 0;
 
@@ -327,7 +327,7 @@ public class practiceSet {
     }
 
 
-    // Q14 sort 0's, 1's and 2's
+    // Q14 sort 0's, 1's and 2's O(n)
     public static void sortZeros(int arr[]) {
         int n = arr.length;
         int temp[] = new int[n];
@@ -358,7 +358,7 @@ public class practiceSet {
             System.out.print(temp[i] + " ");
         }
     }
-    // binery Approach
+    // binery Approach O(logn)
     public static void sortZero(int arr[]) {
         int left = 0;
         int mid = 0;
@@ -387,6 +387,75 @@ public class practiceSet {
             System.out.print(arr[i] + " ");
         }
     }
+    
+    // Q15. floor and ceil
+    public static void floor(int arr[], int target) {
+        int low = 0;
+        int high = arr.length - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] <= target) {
+                ans = arr[mid];
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        System.out.println(ans);
+    }
+    public static void ceil(int arr[], int target) {
+        int low = 0;
+        int high = arr.length -1 ;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] >= target) {
+                ans = arr[mid];
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        System.out.println(ans);
+    }
+
+    // 16. Find Minimum in Rotated Sorted Array
+    public static int findMinimum(int arr[]) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low < high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] > arr[high]) {
+                low = mid + 1;
+            }
+            else {
+                high = mid;
+            }
+        }
+        return arr[low];
+    }
+    public static int minimum(int arr[]) {
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    } 
+
+    // 17 l
+    
     
     public static void main(String[] args) {
         // int arr[] = {3, 2, 3, 4, 5};
@@ -421,15 +490,21 @@ public class practiceSet {
 
         // System.out.println(Isomorphic("egg", "add"));  // true
 
-
-        int arr[] = {1, 1 , 2, 2, 2, 2, 3};
-        int terget = 2;
-        System.out.println(occurrence(arr, terget));
-
-
+        // int arr[] = {1, 1 , 2, 2, 2, 2, 3};
+        // int terget = 2;
+        // System.out.println(occurrence(arr, terget));
 
         // int arr[] = {2, 2, 0, 0, 1, 0, 0, 2};
         // // sortZeros(arr);  // 0 0 0 0 1 2 2 2
         // sortZero(arr);  // 0 0 0 0 1 2 2 2
+
+        // int arr[] = {3, 4, 4, 7, 8, 10};
+        // int target = 5;
+        // floor(arr, target);  // 4
+        // ceil(arr, target); // 7
+
+        int arr[] = {3,4,5,1,2};
+        System.out.println(findMinimum(arr));  // 1
+        System.out.println(minimum(arr));  // 1
     }
 }
