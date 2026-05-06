@@ -454,7 +454,159 @@ public class practiceSet {
         return min;
     } 
 
-    // 17 l
+    // 17 Rearrange array elements by sign - O(n)
+    public static void arrangeBySign(int arr[]) {
+        int posIndex = 0;
+        int negIndex = 1;
+
+        int temp[] = new int[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                temp[posIndex] = arr[i];
+                posIndex += 2;
+            }
+            else if (arr[i] < 0) {
+                temp[negIndex] = arr[i];
+                negIndex += 2;
+            }
+        }
+        for (int i = 0; i < temp.length; i++) {
+            System.out.print(temp[i] + " ");
+        }
+    }
+    
+    // 18 Subarrays with sum K
+    public static void countSubArray(int arr[], int target) {
+        int n = arr.length;
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+            int sum = arr[i];
+            for (int j = i + 1; j < n; j++) {
+                sum += arr[j];
+
+                if (sum == target) {
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+    
+    // 19. Set Matrix Zeroes
+    public static void setZero(int arr[][]) {
+        int row = arr.length;
+        int col = arr[0].length;
+
+        boolean firstRowZero = false;
+        boolean firstColZero = false;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (arr[i][j] == 0) {
+                    if (i == 0) {
+                        firstRowZero = true;
+                    }
+                    if (j == 0) {
+                        firstColZero = true;
+                    }
+                    arr[i][0] = 0;
+                    arr[0][j] = 0;
+                }
+            }
+        }
+
+        for (int i = 1; i < row; i++) {
+            for (int j = 1; j < col; j++) {
+                if (arr[i][0] == 0 || arr[0][j] == 0) {
+                    arr[i][j] = 0;
+                }
+            }
+        }
+
+        if (firstRowZero) {
+            Arrays.fill(arr[0], 0);
+        }
+
+        if (firstColZero) {
+            for (int i = 0; i < row; i++) {
+                arr[i][0] = 0;
+            }
+        }
+    }
+    public static void printArray(int arr[][]) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+        }
+    }
+    
+    // 20 Find First and Last Position of Element in Sorted Array
+    // first Position
+    public static int firstPos(int arr[], int target) {
+        int low = 0; 
+        int high = arr.length - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == target) {
+                ans = mid;
+                high = mid - 1;
+            }
+            else if (arr[mid] < target) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+    public static int lastPos(int arr[], int target) {
+        int low = 0;
+        int high = arr.length - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] == target) {
+                ans = mid;
+                low = mid + 1;
+            }
+            else if (arr[mid] < target) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+    public static int[] searchRange(int arr[], int target) {
+        int first = firstPos(arr, target);
+        int last = lastPos(arr, target);
+        return new int[] {first, last};
+    }
+
+    // 21 Subsets
+    public static List<List<Integer>> subsets(int arr[]) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(0, arr, new ArrayList<>(), result);
+        return result;
+    }
+    public static void backtrack(int index, int arr[], List<Integer> current, List<List<Integer>> result) {
+        result.add(new ArrayList<>(current));
+
+        for (int i = index; i < arr.length; i++) {
+            current.add(arr[i]);
+            backtrack(i + 1, arr, current, result);
+            current.remove(current.size() - 1);
+        }
+    }
     
     
     public static void main(String[] args) {
@@ -503,8 +655,32 @@ public class practiceSet {
         // floor(arr, target);  // 4
         // ceil(arr, target); // 7
 
-        int arr[] = {3,4,5,1,2};
-        System.out.println(findMinimum(arr));  // 1
-        System.out.println(minimum(arr));  // 1
+        // int arr[] = {3,4,5,1,2};
+        // System.out.println(findMinimum(arr));  // 1
+        // System.out.println(minimum(arr));  // 1
+
+
+        // int arr[] = {3,1,-2,-5,2,-4};
+        // arrangeBySign(arr); // 3 -2 1 -5 2 -4 
+
+        // int arr[] = {9, 4, 20, 3, 10, 5};
+        // int target = 33;
+        // countSubArray(arr, target);
+
+        // int arr[][] = {
+        //     {1, 1, 1},
+        //     {1, 0, 1},
+        //     {1, 1, 1}
+        // };
+        // setZero(arr);
+        // printArray(arr);
+
+        // int arr[] = {5,7,7,8,8,10};
+        // int target = 8;
+        // System.out.println(Arrays.toString(searchRange(arr, target)));  // 3, 4
+
+
+        int arr[] = {1, 2, 3};
+        System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
     }
 }
