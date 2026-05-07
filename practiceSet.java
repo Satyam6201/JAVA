@@ -167,21 +167,21 @@ public class practiceSet {
     }
 
     // Q8. find the max product subArray O(n)
-    public static int maxProduct(int arr[]) {
-        int max = arr[0];
-        int min = arr[0];
-        int maxProduct = arr[0];
+    public static int maxProduct(int arr[]) {  // 2, 3, -2, 4
+        int max = arr[0]; // 2
+        int min = arr[0]; // 2
+        int maxProduct = arr[0]; // 2
 
-        for (int i = 1; i < arr.length; i++) {
-            int temp = max;
+        for (int i = 1; i < arr.length; i++) {  // min = -12, max = 4
+            int temp = max;  // -2
 
-            int maxFind = Math.max(max * arr[i], min * arr[i]);
-            max = Math.max(maxFind, arr[i]); 
+            int maxFind = Math.max(max * arr[i], min * arr[i]); // 6 , 6  // -8
+            max = Math.max(maxFind, arr[i]);  // 6, 3 // 6  // 4
 
-            int minFind = Math.min(temp * arr[i], min * arr[i]);
-            min = Math.min(arr[i], minFind);
+            int minFind = Math.min(temp * arr[i], min * arr[i]);  // 2 * 3 == 6, -12
+            min = Math.min(arr[i], minFind); // 3, 6 // 3 //-12
 
-            maxProduct = Math.max(maxProduct, max);
+            maxProduct = Math.max(maxProduct, max); // 6
         }
 
         return maxProduct;
@@ -193,13 +193,13 @@ public class practiceSet {
             return;
         }
 
-        int mid = start + (end - start) / 2;
+        int mid = start + (end - start) / 2;  
         
-        merge(arr, start, mid);
-        merge(arr, mid + 1, end);
+        merge(arr, start, mid);  // 1st
+        merge(arr, mid + 1, end); // 2nd
         mergeSort(arr, start, mid, end);
     }
-    public static void mergeSort(int arr[], int start, int mid, int end) {
+    public static void mergeSort(int arr[], int start, int mid, int end) {   //6, 3, 9, 5, 2, 8
         int i = start;
         int j = mid + 1;
         int k = 0;
@@ -238,7 +238,7 @@ public class practiceSet {
         }
     }
     
-    // 11. Isomorphic Strings O(n)
+    // 11. Isomorphic Strings O(n)   egg = add 
     public static boolean Isomorphic(String s, String t) {
         if (s.length() != t.length()) {
             return false;
@@ -248,8 +248,8 @@ public class practiceSet {
         Map<Character, Character> tMap = new HashMap<>();
 
         for (int i = 0; i < s.length(); i++) {
-            char sch = s.charAt(i);
-            char tch = t.charAt(i);
+            char sch = s.charAt(i);  // e  g
+            char tch = t.charAt(i); // a dd
 
             if (sMap.containsKey(sch)) {
                 if (sMap.get(sch) != tch) {
@@ -274,12 +274,12 @@ public class practiceSet {
     }
 
     // Q.12 search in rotated sorted array 1 - 
-    public static void search(int arr[], int target) {
-        int start = 0;
+    public static void search(int arr[], int target) {  // 4, 5, 6, 7, 0, 1, 2  t = 0
+        int start = 0; // 4
         int end = arr.length - 1;
 
         while (start <= end) {
-            int mid = (start + end) / 2;
+            int mid = (start + end) / 2; //  0
 
             if (arr[mid] == target) {
                 System.out.println(mid);
@@ -326,7 +326,6 @@ public class practiceSet {
         return count;
     }
 
-
     // Q14 sort 0's, 1's and 2's O(n)
     public static void sortZeros(int arr[]) {
         int n = arr.length;
@@ -359,7 +358,7 @@ public class practiceSet {
         }
     }
     // binery Approach O(logn)
-    public static void sortZero(int arr[]) {
+    public static void sortZero(int arr[]) {  // 2, 2, 0, 0, 1, 0, 0, 2
         int left = 0;
         int mid = 0;
         int end = arr.length - 1;
@@ -389,16 +388,16 @@ public class practiceSet {
     }
     
     // Q15. floor and ceil
-    public static void floor(int arr[], int target) {
+    public static void floor(int arr[], int target) {  // 3, 4, 4, 7, 8, 10  t = 5
         int low = 0;
         int high = arr.length - 1;
         int ans = -1;
 
         while (low <= high) {
-            int mid = (low + high) / 2;
+            int mid = (low + high) / 2;  // 8
 
             if (arr[mid] <= target) {
-                ans = arr[mid];
+                ans = arr[mid];  // 4
                 low = mid + 1;
             }
             else {
@@ -413,10 +412,10 @@ public class practiceSet {
         int ans = -1;
 
         while (low <= high) {
-            int mid = (low + high) / 2;
+            int mid = (low + high) / 2;  
 
             if (arr[mid] >= target) {
-                ans = arr[mid];
+                ans = arr[mid];  // 7
                 high = mid - 1;
             }
             else {
@@ -426,19 +425,19 @@ public class practiceSet {
         System.out.println(ans);
     }
 
-    // 16. Find Minimum in Rotated Sorted Array
+    // 16. Find Minimum in Rotated Sorted Array  // 4 5 6 7 0 1 2
     public static int findMinimum(int arr[]) {
         int low = 0;
         int high = arr.length - 1;
 
         while (low < high) {
-            int mid = (low + high) / 2;
+            int mid = (low + high) / 2;  // 0
 
             if (arr[mid] > arr[high]) {
                 low = mid + 1;
             }
             else {
-                high = mid;
+                high = mid;  // 5
             }
         }
         return arr[low];
@@ -455,7 +454,7 @@ public class practiceSet {
     } 
 
     // 17 Rearrange array elements by sign - O(n)
-    public static void arrangeBySign(int arr[]) {
+    public static void arrangeBySign(int arr[]) {  // 3,1,-2,-5,2,-4   // 3 -2 1 -5 2 -4
         int posIndex = 0;
         int negIndex = 1;
 
@@ -477,25 +476,29 @@ public class practiceSet {
     }
     
     // 18 Subarrays with sum K
-    public static void countSubArray(int arr[], int target) {
+    public static void countSubArray(int arr[], int target) { //  9, 4, 20, 3, 10, 5  t = 33
         int n = arr.length;
         int count = 0;
 
         for (int i = 0; i < n; i++) {
             int sum = arr[i];
             for (int j = i + 1; j < n; j++) {
-                sum += arr[j];
+                sum += arr[j];  // 9 + 4 + 20 + 3
 
                 if (sum == target) {
-                    count++;
+                    count++;  // 2
                 }
             }
         }
         System.out.println(count);
     }
     
-    // 19. Set Matrix Zeroes
-    public static void setZero(int arr[][]) {
+    // 19. Set Matrix Zeroes 
+    public static void setZero(int arr[][]) {   
+        //     {1, 1, 1}
+        //     {1, 0, 1}  
+        //     {1, 1, 1}
+
         int row = arr.length;
         int col = arr[0].length;
 
@@ -552,7 +555,7 @@ public class practiceSet {
 
         while (low <= high) {
             int mid = (low + high) / 2;
-            if (arr[mid] == target) {
+            if (arr[mid] == target) { 
                 ans = mid;
                 high = mid - 1;
             }
@@ -593,13 +596,13 @@ public class practiceSet {
     }
 
     // 21 Subsets
-    public static List<List<Integer>> subsets(int arr[]) {
+    public static List<List<Integer>> subsets(int arr[]) {  // 1, 2, 3
         List<List<Integer>> result = new ArrayList<>();
         backtrack(0, arr, new ArrayList<>(), result);
         return result;
     }
     public static void backtrack(int index, int arr[], List<Integer> current, List<List<Integer>> result) {
-        result.add(new ArrayList<>(current));
+        result.add(new ArrayList<>(current));  // [], [1], [1, 2], [1, 2, 3]
 
         for (int i = index; i < arr.length; i++) {
             current.add(arr[i]);
@@ -637,7 +640,7 @@ public class practiceSet {
         // printArray(arr);  // 2 3 5 6 8 9
 
         // int arr[] = {4, 5, 6, 7, 0, 1, 2};
-        // // search(arr, 0);  //4
+        // search(arr, 0);  //4
         // searchs(arr, 0); // 4
 
         // System.out.println(Isomorphic("egg", "add"));  // true
@@ -680,7 +683,8 @@ public class practiceSet {
         // System.out.println(Arrays.toString(searchRange(arr, target)));  // 3, 4
 
 
-        int arr[] = {1, 2, 3};
-        System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+        // int arr[] = {1, 2, 3};
+        // System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+
     }
 }
