@@ -1,4 +1,7 @@
 import java.util.*;
+import java.util.LinkedList;
+
+import org.w3c.dom.Node;
 
 public class practiceSet {
 
@@ -611,7 +614,192 @@ public class practiceSet {
         }
     }
     
+    // 22 Find intersection of Two Linked Lists   O(2 × max(length of list1, length of list2)),
+    //      ex:- List 1 = [1,3,1,2,4], List 2 = [3,2,4]   ans = 2
+    static class Node {
+        int data;
+        Node next;
+
+        public Node(int data) {
+            this.data = data;
+            next = null;
+        }
+    }
+    public static Node Intersection(Node head1, Node head2) {
+        if (head1 == null || head2 == null) {
+            return null;
+        }
+
+        Node temp1 = head1;
+        Node temp2 = head2;
+
+        while (temp1 != temp2) {
+            temp1 = temp1 == null ? head2 : temp1.next;
+            temp2 = temp2 == null ? head1 : temp2.next;
+        }
+        return temp1;
+    }
     
+    // 23.  Odd Even Linked List O(n)
+    public static Node oddAndEven(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node evenHead = null;
+        Node evenTail = null;
+        Node oddHead = null;
+        Node oddTail = null;
+
+        Node curr = head;
+
+        while (curr != null) {
+            
+            //even
+            if (curr.data % 2 == 0) {
+                if (evenHead == null) {  // first number
+                    evenHead = curr;
+                    evenTail = curr;
+                }
+                else {
+                    evenTail.next = curr;  // store the next value on the next index
+                    evenTail = curr;
+                }
+            }
+            else {
+                if (oddHead == null) {   // first number
+                    oddHead = curr;
+                    oddTail = curr;
+                }
+                else {
+                    oddTail.next = curr;
+                    oddTail = curr;
+                }
+            }
+        }
+
+        // check even is found or not
+        if (evenHead == null) {
+            return oddHead;
+        }
+
+        // check odd is found or not
+        if (oddHead == null) {
+            return evenHead;
+        }
+
+        evenTail.next = oddHead;
+        oddTail.next = null;
+
+        return evenHead;
+    }
+
+    // 28 preorder inOrder postOrder
+    static class Node {
+        int data;
+        Node left;
+        Node right;
+
+        public Node (int data) {
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+    static class BinaryTree {
+        static int index = -1;
+
+        // Bulid a tree
+        public static Node buildTree(int nodes[]) {
+            index++; // 0
+
+            // agar -1 huaa to null usko manenge 
+            if (nodes[index] == -1) {
+                return null;
+            }
+
+            // new node bnaenge 
+            Node newNode = new Node(nodes[index]);
+            newNode.left = buildTree(nodes);
+            newNode.right = buildTree(nodes);
+
+            return newNode;
+        }
+
+        // PreOrder (root -> left -> right)
+        public static void preOrder(Node root) {
+            if (root == null) {
+                return;
+            }
+
+            System.out.print(root.data + " ");
+            preOrder(root.left);
+            preOrder(root.right);
+        }
+
+        // InOrder (left -> root -> right)
+        public static void inOrder(Node root) {
+            if (root == null) {
+                return;
+            }
+
+            inOrder(root.left);
+            System.out.print(root.data + " ");
+            inOrder(root.right);
+        }
+
+        // PostOrder (left -> rigth -> root)
+        public static void postOrder(Node root) {
+            if (root == null) {
+                return;
+            }
+
+            postOrder(root.left);
+            postOrder(root.right);
+            System.out.print(root.data + " ");
+        }
+    
+        // Level Order
+        public static void level(Node root) {
+            if (root == null) {
+                return;
+            }
+
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            q.add(null);
+
+            while (!q.isEmpty()) {
+                Node currNode = q.remove();
+
+                if (currNode == null) {
+                    System.out.println();
+
+                    if (q.isEmpty()) {
+                        break;
+                    }
+                    else {
+                        q.add(null);
+                    }
+                }
+                else {
+                    System.out.print(currNode.data + " ");
+
+                    if (currNode.left != null) {
+                        q.add(currNode.left);
+                    }
+                    if (currNode.right != null) {
+                        q.add(currNode.right);
+                    }
+                }
+            }
+
+
+        }
+    
+    }
+
+
     public static void main(String[] args) {
         // int arr[] = {3, 2, 3, 4, 5};
         // bubbleSort(arr); // 2 3 3 4 5 
@@ -685,6 +873,25 @@ public class practiceSet {
 
         // int arr[] = {1, 2, 3};
         // System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+
+
+        // linked list: 17 -> 15 -> 8 -> 12 -> 10 -> 5 -> 4
+        Node head = new Node(17);
+        head.next = new Node(15);
+        head.next.next = new Node(8);
+        head.next.next.next = new Node(12);
+        head.next.next.next.next = new Node(10);
+        head.next.next.next.next.next = new Node(5);
+        head.next.next.next.next.next.next = new Node(4);
+
+        Node list = oddAndEven(head);
+
+        while (list != null) {
+            System.out.print(list.data + " ");  // 4 8 10 12 5 15 17
+            list = list.next;
+        }
+
+        System.out.println("hello");
 
     }
 }

@@ -400,6 +400,75 @@ public class LinkedList {
         return -1;
     }
     
+    // Intersection in the linkedList
+    public static Node Intersection(Node head1, Node head2) {
+        if (head1 == null || head2 == null) {
+            return null;
+        }
+
+        Node temp1 = head1;
+        Node temp2 = head2;
+
+        while (temp1 != temp2) {
+            temp1 = temp1 == null ? head2 : temp1.next;
+            temp2 = temp2 == null ? head1 : temp2.next;
+        }
+        return temp1;
+    }
+    
+    // Odd Even Linked List O(n)
+    public static Node oddAndEven(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node evenHead = null;
+        Node evenTail = null;
+        Node oddHead = null;
+        Node oddTail = null;
+
+        Node curr = head;
+
+        while (curr != null) {
+            
+            //even
+            if (curr.data % 2 == 0) {
+                if (evenHead == null) {  // first number
+                    evenHead = curr;
+                    evenTail = curr;
+                }
+                else {
+                    evenTail.next = curr;  // store the next value on the next index
+                    evenTail = curr;
+                }
+            }
+            else {
+                if (oddHead == null) {   // first number
+                    oddHead = curr;
+                    oddTail = curr;
+                }
+                else {
+                    oddTail.next = curr;
+                    oddTail = curr;
+                }
+            }
+        }
+
+        // check even is found or not
+        if (evenHead == null) {
+            return oddHead;
+        }
+
+        // check odd is found or not
+        if (oddHead == null) {
+            return evenHead;
+        }
+
+        evenTail.next = oddHead;
+        oddTail.next = null;
+
+        return evenHead;
+    }
     
     public static void main(String[] args) {
         LinkedList li = new LinkedList();
@@ -466,7 +535,9 @@ public class LinkedList {
         li.addFirst(4);
         li.addFirst(6);
         li.addFirst(5);
-        System.out.println(li.IterativeSearch(2)); // index = 4
-        System.out.println(li.IterativeSearch(7)); //-1 (not present)
+        // System.out.println(li.IterativeSearch(2)); // index = 4
+        // System.out.println(li.IterativeSearch(7)); //-1 (not present)
+
+        
     }
 }
