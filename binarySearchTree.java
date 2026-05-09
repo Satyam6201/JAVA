@@ -343,6 +343,5 @@ public class binarySearchTree {
         
         System.out.println(predecessor.data);  // 20
         System.out.println(successor.data); // 30
-
     }
 }
