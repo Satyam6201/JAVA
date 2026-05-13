@@ -397,5 +397,6 @@ public class Trees {
             // topView(root); // 4 2 1 3 7
             // System.out.println(lca(root, 4, 5).data); // 1
             System.out.println(isBalance(root));  // true
+            
     }
 }
