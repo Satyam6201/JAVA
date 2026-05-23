@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class greedyAlgorithm {
     
@@ -99,6 +101,44 @@ public class greedyAlgorithm {
         return true;
     }
     
+    // Q5. Jump Game II (Return the minimum number of jumps to reach index n - 1)
+    public static int jump(int[] nums) {
+        int jump = 0;
+        int currentEnd = 0;
+        int farthest = 0;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            farthest = Math.max(farthest, nums[i] + i);
+
+            if (i == currentEnd) {
+                jump++;
+                currentEnd = farthest;
+            }
+        }
+        return jump;
+    }
+
+    // Q6. N meetings in one room
+    public static List<Integer> maxMeeting(int start[], int end[]) {
+        List<int[]> meetings = new ArrayList<>();
+
+        for (int i = 0; i < start.length; i++) {
+            meetings.add(new int[]{end[i], start[i], i + 1});
+        }
+
+        meetings.sort(Comparator.comparingInt(a -> a[0]));
+
+        List<Integer> result = new ArrayList<>();
+        int lastEnd = -1;
+
+        for (int[] m : meetings) {
+            if (m[1] > lastEnd) {
+                result.add(m[2]);
+                lastEnd = m[0];
+            }
+        }
+        return result;
+    }
     
     
     
@@ -121,7 +161,14 @@ public class greedyAlgorithm {
         // System.out.println(lemonadeChange(bills)); // true
 
         // Q4.
-        int arr[] = {2,3,1,1,4};
-        System.out.println(canJump(arr));
+        // int arr[] = {2,3,1,1,4};
+        // // System.out.println(canJump(arr));
+        // System.out.println(jump(arr));
+
+        // Q6
+        int[] start = {1, 3, 0, 5, 8, 5};
+        int[] end   = {2, 4, 6, 7, 9, 9};
+
+        System.out.println(maxMeeting(start, end));
     }
 }
