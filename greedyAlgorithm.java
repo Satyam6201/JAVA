@@ -53,6 +53,54 @@ public class greedyAlgorithm {
         return finalValue;
     }
     
+    // Q3.  Lemonade Change
+    public static boolean lemonadeChange(int[] bills) {
+        int five = 0;
+        int ten = 0;
+
+        for (int i = 0; i < bills.length; i++) {
+            if (bills[i] == 5) {
+                five++;
+            }
+            else if (bills[i] == 10) {
+                if (five == 0) {
+                    return false;
+                }
+                five--;
+                ten++;
+            }
+            else {   // bills = 20
+                if (five > 0 && ten > 0) {
+                    five--;
+                    ten--;
+                }
+                else if (five >= 3) {
+                    five -= 3;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    // Q4.  Jump Game - 1 
+    public static boolean canJump(int[] nums) {
+        int maxReach = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i > maxReach) {
+                return false;
+            }
+
+            maxReach = Math.max(maxReach, nums[i] + i);
+        }
+        return true;
+    }
+    
+    
+    
     
     
     public static void main(String[] args) {
@@ -62,10 +110,18 @@ public class greedyAlgorithm {
         // System.out.println(findContentChildren(g, s));  // 2
 
         // Q2.
-        int value[] = {60, 100, 120};
-        int weight[] = {10, 20, 30};
-        int w = 50;
+        // int value[] = {60, 100, 120};
+        // int weight[] = {10, 20, 30};
+        // int w = 50;
+        // System.out.println(knapsackProblem(value, weight, w));  // 240( 60 + 100 + 80)
 
-        System.out.println(knapsackProblem(value, weight, w));  // 240( 60 + 100 + 80)
+
+        // Q3. 
+        // int bills[] = {5, 5, 5, 10, 20};
+        // System.out.println(lemonadeChange(bills)); // true
+
+        // Q4.
+        int arr[] = {2,3,1,1,4};
+        System.out.println(canJump(arr));
     }
 }
