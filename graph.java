@@ -86,7 +86,6 @@ public class graph {
             }
         }
     }
-
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge> graph[] = new ArrayList[V];
