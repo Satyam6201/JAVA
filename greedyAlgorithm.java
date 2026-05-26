@@ -153,7 +153,6 @@ public class greedyAlgorithm {
             this.profit = profit;
         }
     }
-
     public static void jobSeq(int jobInfo[][]) {
         ArrayList<Job> list = new ArrayList<>();
 
@@ -183,6 +182,30 @@ public class greedyAlgorithm {
         }
     }
     
+    // 8. Minimum number of platforms required for a railway (n * log(n))
+    public static void minimumPlatform(int n, int arr[], int dep[]) {
+        Arrays.sort(arr);
+        Arrays.sort(dep);
+
+        int i = 1;
+        int j = 0;
+        int platform = 1;
+        int result = 1;
+
+        while (i < n && j < n) {
+            if (arr[i] <= dep[j]) {
+                platform++;
+                i++;
+            }
+            else {
+                platform--;
+                j++;
+            }
+            result = Math.max(result, platform);
+        }
+
+        System.out.println(result);
+    }
     
     public static void main(String[] args) {
         // Q1
@@ -202,17 +225,23 @@ public class greedyAlgorithm {
         // System.out.println(lemonadeChange(bills)); // true
 
         // Q4.
-        // int arr[] = {2,3,1,1,4};
-        // // System.out.println(canJump(arr));
-        // System.out.println(jump(arr));
+        // int arr[] = {2, 3, 1, 1, 4};
+        // System.out.println(canJump(arr));  // true
+        // System.out.println(jump(arr));  // 2
 
         // Q6
         // int[] start = {1, 3, 0, 5, 8, 5};
         // int[] end   = {2, 4, 6, 7, 9, 9};
-        // System.out.println(maxMeeting(start, end));
+        // System.out.println(maxMeeting(start, end));   // [1, 2, 4, 5]
 
         // Q7.
-        int jobInfo[][] = {{4, 20}, {1, 10}, {1, 40}, {1, 20}};
-        jobSeq(jobInfo);
+        // int jobInfo[][] = {{4, 20}, {1, 10}, {1, 40}, {1, 20}};
+        // jobSeq(jobInfo);   //Max Job = 2  2({1, 40}), 0({4, 20})
+
+        // Q8. 
+        int[] arr = {900, 945, 955, 1100, 1500, 1800};
+        int[] dep = {920, 1200, 1130, 1150, 1900, 2000};
+        int n = arr.length;
+        minimumPlatform(n, arr, dep);  // 3  {945, 955, 1100}
     }
 }
