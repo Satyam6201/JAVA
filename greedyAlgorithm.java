@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -140,7 +141,47 @@ public class greedyAlgorithm {
         return result;
     }
     
-    
+    // 7. Job Sequencle 
+    static class Job {
+        int id;
+        int deadline;
+        int profit;
+
+        public Job(int id, int deadline, int profit) {
+            this.id = id;
+            this.deadline = deadline;
+            this.profit = profit;
+        }
+    }
+
+    public static void jobSeq(int jobInfo[][]) {
+        ArrayList<Job> list = new ArrayList<>();
+
+        for (int i = 0; i < jobInfo.length; i++) {
+           list.add(new Job(i, jobInfo[i][0], jobInfo[i][1]));
+            // i = id, jobInfo[i][0] = deadline, jobInfo[i][1] = profit 
+        }
+
+            // Sorthing of the object:-(in descending order)
+        Collections.sort(list, (obj1, obj2) -> obj2.profit - obj1.profit);
+
+        ArrayList<Integer> seq = new ArrayList<>();
+        int time = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            Job curr = list.get(i);
+
+            if (curr.deadline > time) {
+                seq.add(curr.id);
+                time++;
+            }
+        }
+
+        System.out.println("Max Job = " + seq.size());
+        for (int i = 0; i < seq.size(); i++) {
+            System.out.print(seq.get(i)+ " "); // 2({1, 40}), 0({4, 20})
+        }
+    }
     
     
     public static void main(String[] args) {
@@ -166,8 +207,12 @@ public class greedyAlgorithm {
         // System.out.println(jump(arr));
 
         // Q6
-        int[] start = {1, 3, 0, 5, 8, 5};
-        int[] end   = {2, 4, 6, 7, 9, 9};
-        System.out.println(maxMeeting(start, end));
+        // int[] start = {1, 3, 0, 5, 8, 5};
+        // int[] end   = {2, 4, 6, 7, 9, 9};
+        // System.out.println(maxMeeting(start, end));
+
+        // Q7.
+        int jobInfo[][] = {{4, 20}, {1, 10}, {1, 40}, {1, 20}};
+        jobSeq(jobInfo);
     }
 }
