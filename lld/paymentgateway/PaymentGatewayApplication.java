@@ -3,6 +3,7 @@ import java.util.*;
 // ----------------------------
 // Data structure for payment details
 // ----------------------------
+
 class PaymentRequest {
     public String sender;
     public String reciever;
