@@ -1080,7 +1080,22 @@ public class ArrayAll {
         System.out.println(pq.peek());
     }
     
-    // 52 Rotate image on 90 deg
+    // 52 Kth smallest number by minHeap
+    public static void kthsmallestNum(int arr[], int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+
+        for (int i = 0; i < arr.length; i++) {
+            pq.add(arr[i]);
+
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+
+        System.out.println(pq.peek());
+    }
+
+    // 53 Rotate image on 90 deg
     public static void rotate(int arr[][]) {
         int n = arr.length;
 
@@ -1295,15 +1310,16 @@ public class ArrayAll {
         // }
         // System.out.println(pair(list, 15));
 
-        // int arr[] = {1, 2, 3, 4, 5};
-        // int k = 2;
-        // kthLargestNum(arr, k);
+        int arr[] = {1, 2, 3, 4, 5};
+        int k = 2;
+        kthLargestNum(arr, k);
+        kthsmallestNum(arr, k);
 
-        int matrix[][] = {
-            {1,2,3},
-            {4,5,6},
-            {7,8,9}
-        };
-        rotate(matrix);
+        // int matrix[][] = {
+        //     {1,2,3},
+        //     {4,5,6},
+        //     {7,8,9}
+        // };
+        // rotate(matrix);
     }
 }
