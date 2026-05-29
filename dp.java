@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -82,7 +81,7 @@ public class dp {
 
         // for the last row of the triangle 
         for (int i = 0; i < n; i++) {
-            dp[i] = triangle.get(i).get(i);
+            dp[i] = triangle.get(n - 1).get(i);
         }
 
         for (int row = n - 2; row >= 0; row--) {
@@ -93,6 +92,31 @@ public class dp {
         return dp[0];
     }
     
+    // 6. Count Square Submatrices with All Ones
+    public static int countSquares(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int count = 0;
+
+        int dp[][] = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == 1) {
+                    if (i == 0 || j == 0) {
+                        dp[i][j] = 1;
+                    }
+                    else {
+                        dp[i][j] = Math.min(Math.min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]) + 1;
+                    }
+
+                    count += dp[i][j];
+                }
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         // Q1
         // int n = 4;
@@ -104,19 +128,26 @@ public class dp {
 
         // Q3. 
         // int arr[] = {1, 2, 3, 1};
-        // System.out.println(rob(arr));
+        // System.out.println(rob(arr));  // 4
 
         // Q4.
-        // System.out.println(uniquePath(3, 2));
+        // System.out.println(uniquePath(3, 2));  // 3
 
         // Q5.
-        List<List<Integer>> triangle = new ArrayList<>();
-        triangle.add(Arrays.asList(1));
-        triangle.add(Arrays.asList(2, 3));
-        triangle.add(Arrays.asList(3, 6, 7));
-        triangle.add(Arrays.asList(8, 9, 6, 10));
+        // List<List<Integer>> triangle = new ArrayList<>();
+        // triangle.add(Arrays.asList(2));
+        // triangle.add(Arrays.asList(3, 4));
+        // triangle.add(Arrays.asList(6, 5, 7));
+        // triangle.add(Arrays.asList(4, 1, 8, 3));
+        // System.out.println(minimumTotal(triangle));
 
-        System.out.println(minimumTotal(triangle));
+        // Q6.
+        int[][] arr = {
+            {0, 1, 1, 1},
+            {1, 1, 1, 1},
+            {0, 1, 1, 1}
+        };
+        System.out.println(countSquares(arr));
 
     }
 }
