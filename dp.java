@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class dp {
 
@@ -156,6 +155,7 @@ public class dp {
 
         int target = sum / 2;
         boolean dp[] = new boolean[target + 1];
+        dp[0] = true;
 
         for (int num: nums) {
             int newNum = num;
@@ -189,7 +189,7 @@ public class dp {
         // triangle.add(Arrays.asList(3, 4));
         // triangle.add(Arrays.asList(6, 5, 7));
         // triangle.add(Arrays.asList(4, 1, 8, 3));
-        // System.out.println(minimumTotal(triangle));
+        // System.out.println(minimumTotal(triangle));  // 11
 
         // Q6.
         // int[][] arr = {
@@ -197,16 +197,16 @@ public class dp {
         //     {1, 1, 1, 1},
         //     {0, 1, 1, 1}
         // };
-        // System.out.println(countSquares(arr));
+        // System.out.println(countSquares(arr));  // 15
 
         // Q7.
         // int[] nums = {1, 1, 1, 1, 1};
         // int target = 3;
-        // System.out.println(findTargetSumWays(nums, target));
+        // System.out.println(findTargetSumWays(nums, target));  // 5
 
         // Q8. 
-        int nums[] = {1, 5, 11, 5};
-        System.out.println(canPartition(nums));
+        // int nums[] = {1, 5, 11, 5};
+        // System.out.println(canPartition(nums));  // true
 
 
     }
