@@ -117,6 +117,56 @@ public class dp {
         return count;
     }
 
+    // Q7. Target Sum (DP - 21)
+    public static int findTargetSumWays(int nums[], int target) {
+        int total = 0;
+        for (int num : nums) {
+            total += num;
+        }
+
+        if ((target + total) % 2 != 0 || Math.abs(target) > total) {
+            return 0;
+        }
+
+        int newTotal = (total + target) / 2;
+        int dp[] = new int[newTotal + 1];
+
+        dp[0] = 1;
+
+        for (int num: nums) {
+            for (int j = newTotal; j >= num; j--) {
+                dp[j] += dp[j - num];
+            } 
+        }
+
+        return dp[newTotal];
+    }
+    
+    // Q8.  Partition Equal Subset Sum
+    public static boolean canPartition(int nums[]) {
+        int sum = 0;
+
+        for (int num: nums) {
+            sum += num;
+        }
+
+        if (sum % 2 != 0) {
+            return false;
+        }
+
+        int target = sum / 2;
+        boolean dp[] = new boolean[target + 1];
+
+        for (int num: nums) {
+            int newNum = num;
+
+            for (int j = target; j >= newNum; j--) {
+                dp[j] = dp[j] || dp[j - newNum];
+            }
+        }
+
+        return dp[target];
+    }
     public static void main(String[] args) {
         // Q1
         // int n = 4;
@@ -142,12 +192,22 @@ public class dp {
         // System.out.println(minimumTotal(triangle));
 
         // Q6.
-        int[][] arr = {
-            {0, 1, 1, 1},
-            {1, 1, 1, 1},
-            {0, 1, 1, 1}
-        };
-        System.out.println(countSquares(arr));
+        // int[][] arr = {
+        //     {0, 1, 1, 1},
+        //     {1, 1, 1, 1},
+        //     {0, 1, 1, 1}
+        // };
+        // System.out.println(countSquares(arr));
+
+        // Q7.
+        // int[] nums = {1, 1, 1, 1, 1};
+        // int target = 3;
+        // System.out.println(findTargetSumWays(nums, target));
+
+        // Q8. 
+        int nums[] = {1, 5, 11, 5};
+        System.out.println(canPartition(nums));
+
 
     }
 }
