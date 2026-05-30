@@ -207,7 +207,5 @@ public class dp {
         // Q8. 
         // int nums[] = {1, 5, 11, 5};
         // System.out.println(canPartition(nums));  // true
-
-
     }
 }
