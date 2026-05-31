@@ -90,8 +90,33 @@ public class Recursion {
         return find;
     }
 
-    
+    //Q8. Power of n
+    public static int power(int n, int pow) {
+        if (pow == 0) {
+            return 1;
+        }
 
+        int power = n * power(n, pow - 1);
+        return power;
+    }
+
+    // Q9. Power of n (O(log(n)))
+    public static int powers(int n, int pow) {
+        if (pow == 0) {
+            return 1;
+        }
+
+        int halfPower = powers(n, pow / 2);
+
+        int halfSqr = halfPower * halfPower;
+
+        if (pow % 2 != 0) {
+            halfSqr = halfSqr * n;
+        }
+        return halfSqr;
+    }
+
+    // Q10. 
 
 
     public static void main(String[] args) {
@@ -112,9 +137,13 @@ public class Recursion {
         // System.out.println(Fibonacci(6));  // 8  (0, 1, 1, 2, 3, 5, 8)
 
         // Q6.
-        int arr[] = {8, 3, 6, 9, 5, 10, 2, 5, 3};
-        System.out.println(firstOcc(arr, 0, 5));  // 4
-        System.out.println(lastOcc(arr, 0, 5));  // 7
+        // int arr[] = {8, 3, 6, 9, 5, 10, 2, 5, 3};
+        // System.out.println(firstOcc(arr, 0, 5));  // 4
+        // System.out.println(lastOcc(arr, 0, 5));  // 7
+
+        // Q8
+        System.out.println(power(2, 5));  // 32
+        System.out.println(powers(2, 5));  // 32
 
 
     }
