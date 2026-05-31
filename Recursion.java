@@ -49,7 +49,50 @@ public class Recursion {
         return n + sumOfNatural(n - 1);
     } 
 
+    // Q5. Fibonacci number
+    public static int Fibonacci(int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+
+        int f1 = Fibonacci(n - 1);
+        int f2 = Fibonacci(n - 2);
+        int fn = f1 + f2;
+
+        return fn;
+    }
     
+    // Q6. Find the first occurence of element
+    public static int firstOcc(int arr[], int index, int key) {
+        if (arr.length == index) {
+            return -1; // key is not found
+        }
+
+        if (arr[index] == key) {
+            return index;
+        }
+
+        return firstOcc(arr, index + 1, key);
+    }
+
+    // Q7. find the last occurence of element 
+    public static int lastOcc(int arr[], int index, int key) {
+        if (arr.length == index) {
+            return -1;
+        }
+
+        int find = lastOcc(arr, index + 1, key);
+
+        if (find == - 1 && arr[index] == key) {
+            return index;
+        }
+
+        return find;
+    }
+
+    
+
+
 
     public static void main(String[] args) {
         // Q1.
@@ -63,7 +106,16 @@ public class Recursion {
         // System.out.println(Factorial(5));  // 120
 
         // Q4.
-        System.out.println(sumOfNatural(5));   // 15
+        // System.out.println(sumOfNatural(5));   // 15
+
+        // Q5.
+        // System.out.println(Fibonacci(6));  // 8  (0, 1, 1, 2, 3, 5, 8)
+
+        // Q6.
+        int arr[] = {8, 3, 6, 9, 5, 10, 2, 5, 3};
+        System.out.println(firstOcc(arr, 0, 5));  // 4
+        System.out.println(lastOcc(arr, 0, 5));  // 7
+
 
     }
 }
