@@ -77,7 +77,7 @@ public class LRUCache {
             }
         }
         public static void main(String[] args) {
-            LRUCache obj = new LRUCache(2);
+        LRUCache obj = new LRUCache(2);
 
         System.out.println("null");
         obj.put(1,1); 
