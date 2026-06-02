@@ -158,6 +158,7 @@ public class Recursion {
         }
     }
     public static void print(char board[][]) {
+        System.out.println("--- Chess Board ---");
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
                 System.out.print(board[i][j] + " ");
@@ -166,9 +167,9 @@ public class Recursion {
         }
         System.out.println();
     }
-
     static int count = 0;
 
+    
     public static void main(String[] args) {
         // Q1.
         // printNum(10);  //10 9 8 7 6 5 4 3 2 1 
