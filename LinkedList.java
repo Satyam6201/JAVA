@@ -469,6 +469,23 @@ public class LinkedList {
 
         return evenHead;
     }
+
+    // Find intersection of Two Linked Lists   O(2 × max(length of list1, length of list2)),
+    //      ex:- List 1 = [1,3,1,2,4], List 2 = [3,2,4]   ans = 2
+    public static Node Intersection(Node head1, Node head2) {
+        if (head1 == null || head2 == null) {
+            return null;
+        }
+
+        Node temp1 = head1;
+        Node temp2 = head2;
+
+        while (temp1 != temp2) {
+            temp1 = temp1 == null ? head2 : temp1.next;
+            temp2 = temp2 == null ? head1 : temp2.next;
+        }
+        return temp1;
+    }
     
     public static void main(String[] args) {
         LinkedList li = new LinkedList();
