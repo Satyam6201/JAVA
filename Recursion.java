@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Recursion {
     
     // Q1. Print the number from n to 1
@@ -212,16 +216,19 @@ public class Recursion {
         // System.out.println(powers(2, 5));  // 32
 
         // Q10.
-        int n = 4;
-        char board[][] = new char[n][n];
+        // int n = 4;
+        // char board[][] = new char[n][n];
+        // for (int i = 0; i < board.length; i++) {
+        //     for (int j = 0; j < board.length; j++) {
+        //         board[i][j] = 'X';
+        //     }
+        // }
+        // NQueen(board, 0);
+        // System.out.println("Total N Queens are = " + count);
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-                board[i][j] = 'X';
-            }
-        }
-        NQueen(board, 0);
-        System.out.println("Total N Queens are = " + count);
+        // 11.
+        int arr[] = {1, 2, 3};
+        System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
 
     }
 }
