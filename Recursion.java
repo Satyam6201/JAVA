@@ -169,6 +169,21 @@ public class Recursion {
     }
     static int count = 0;
 
+    // 11 Subsets
+    public static List<List<Integer>> subsets(int arr[]) {  // 1, 2, 3
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(0, arr, new ArrayList<>(), result);
+        return result;
+    }
+    public static void backtrack(int index, int arr[], List<Integer> current, List<List<Integer>> result) {
+        result.add(new ArrayList<>(current));  // [], [1], [1, 2], [1, 2, 3]
+
+        for (int i = index; i < arr.length; i++) {
+            current.add(arr[i]);
+            backtrack(i + 1, arr, current, result);
+            current.remove(current.size() - 1);
+        }
+    }
     
     public static void main(String[] args) {
         // Q1.

@@ -546,15 +546,16 @@ public class LinkedList {
         // System.out.println("After sort");
         // li.print();
 
-        li.addFirst(1);
-        li.addFirst(2);
-        li.addFirst(3);
-        li.addFirst(4);
-        li.addFirst(6);
-        li.addFirst(5);
+        // li.addFirst(1);
+        // li.addFirst(2);
+        // li.addFirst(3);
+        // li.addFirst(4);
+        // li.addFirst(6);
+        // li.addFirst(5);
         // System.out.println(li.IterativeSearch(2)); // index = 4
         // System.out.println(li.IterativeSearch(7)); //-1 (not present)
 
-        
+
+            
     }
 }
