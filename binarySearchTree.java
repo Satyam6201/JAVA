@@ -340,7 +340,6 @@ public class binarySearchTree {
 
         int key = 25;
         findPreSuc(root, key);
-        
         System.out.println(predecessor.data);  // 20
         System.out.println(successor.data); // 30
     }
