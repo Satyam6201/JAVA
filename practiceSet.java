@@ -891,7 +891,5 @@ public class practiceSet {
             list = list.next;
         }
 
-        System.out.println("hello");
-
     }
 }
