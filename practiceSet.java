@@ -873,8 +873,6 @@ public class practiceSet {
 
         // int arr[] = {1, 2, 3};
         // System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
-
-
         // linked list: 17 -> 15 -> 8 -> 12 -> 10 -> 5 -> 4
         Node head = new Node(17);
         head.next = new Node(15);
