@@ -888,6 +888,5 @@ public class practiceSet {
             System.out.print(list.data + " ");  // 4 8 10 12 5 15 17
             list = list.next;
         }
-
     }
 }
