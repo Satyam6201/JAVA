@@ -19,7 +19,7 @@ public class ArrayAll {
         System.out.println(sl);
     }
 
-    // 2. Remove duplicate(int shorted array)
+    // 2. Remove duplicate(in shorted array)
     public static int removeDuplicate(int arr[]) {
         if (arr.length == 0) {
             return 0;
