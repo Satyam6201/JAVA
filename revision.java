@@ -129,9 +129,7 @@ public class revision {
         System.out.println(val);
 
     }
-    
-    
-    public static void main(String []args) {
+           public static void main(String []args) {
         revision li = new revision();
         li.add(1);
         li.add(2);
