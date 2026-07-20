@@ -1,3 +1,4 @@
+
 public class LinkedList {
     public static class Node {
         int data;
@@ -427,22 +428,22 @@ public class LinkedList {
         Node oddTail = null;
 
         Node curr = head;
-
         while (curr != null) {
             
-            //even
+            // even
             if (curr.data % 2 == 0) {
-                if (evenHead == null) {  // first number
+                if (evenHead == null) {
                     evenHead = curr;
                     evenTail = curr;
                 }
                 else {
-                    evenTail.next = curr;  // store the next value on the next index
+                    evenTail.next = curr;
                     evenTail = curr;
                 }
             }
+            // odd
             else {
-                if (oddHead == null) {   // first number
+                if (oddHead == null) {
                     oddHead = curr;
                     oddTail = curr;
                 }
@@ -453,12 +454,9 @@ public class LinkedList {
             }
         }
 
-        // check even is found or not
         if (evenHead == null) {
             return oddHead;
         }
-
-        // check odd is found or not
         if (oddHead == null) {
             return evenHead;
         }
@@ -536,6 +534,14 @@ public class LinkedList {
         // li.addFirst(5);
         // System.out.println(li.IterativeSearch(2)); // index = 4
         // System.out.println(li.IterativeSearch(7)); //-1 (not present)
+    
+        Head = new Node(1);
+        Head.next = new Node(2);
+        Head.next.next = new Node(3);
+        Head.next.next.next = new Node(4);
         
+        li.oddAndEven(Head);
+
+        li.print();
     }
 }
