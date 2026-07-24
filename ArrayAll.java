@@ -19,6 +19,30 @@ public class ArrayAll {
         System.out.println(sl);
     }
 
+    // Third Largest Nu.
+    public static void thirdLargest(int arr[]) {
+
+        int largest = Integer.MIN_VALUE;
+        int secLargest = Integer.MIN_VALUE;
+        int thiLargest = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > largest) {
+                thiLargest = secLargest;
+                secLargest = largest;
+                largest = arr[i];
+            }
+            else if (arr[i] > secLargest && arr[i] != largest) {
+                thiLargest = secLargest;
+                secLargest = arr[i];
+            }
+            else if (arr[i] > thiLargest && arr[i] != secLargest && arr[i] != largest) {
+                thiLargest = arr[i];
+            }
+        }
+        System.out.println(thiLargest);
+    }
+
     // 2. Remove duplicate(in shorted array)
     public static int removeDuplicate(int arr[]) {
         if (arr.length == 0) {
@@ -1125,8 +1149,9 @@ public class ArrayAll {
     }
      
     public static void main(String[] args) {
-        // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
+        int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // secondLargest(arr);
+        thirdLargest(arr);
 
         // int arr[] = {10, 20, 20, 30, 30};
         // int removeDuplicate = removeDuplicate(arr);
@@ -1310,10 +1335,10 @@ public class ArrayAll {
         // }
         // System.out.println(pair(list, 15));
 
-        int arr[] = {1, 2, 3, 4, 5};
-        int k = 2;
-        kthLargestNum(arr, k);
-        kthsmallestNum(arr, k);
+        // int arr[] = {1, 2, 3, 4, 5};
+        // int k = 2;
+        // kthLargestNum(arr, k);
+        // kthsmallestNum(arr, k);
 
         // int matrix[][] = {
         //     {1,2,3},
