@@ -1147,11 +1147,67 @@ public class ArrayAll {
             }
         }
     }
-     
+
+    // 54 Left Rotate the Array by One
+    public static void leftRotate(int arr[]) {
+        int temp = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            arr[i - 1] = arr[i];
+        }
+
+        arr[arr.length - 1] = temp;
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    // Rotate array by K elements(Left rotate)
+    public static void rotateLeftArray(int arr[], int k) {
+        int n = arr.length;
+        
+        k = k % n;
+
+        reverse(arr, 0, k - 1);
+        reverse(arr, k, n - 1);
+        reverse(arr, 0, n - 1);    
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }   
+    }
+    // Rotate array by K elements(Right rotate)
+    public static void rotateRightArray(int arr[], int k) {
+        int n = arr.length;
+        
+        k = k % n;
+
+        reverse(arr, 0, n - 1);
+        reverse(arr, 0, k - 1);
+        reverse(arr, k, n - 1);    
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }   
+    }
+    public static void reverse(int arr[], int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
+
+
+
     public static void main(String[] args) {
-        int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
-        // secondLargest(arr);
-        thirdLargest(arr);
+        // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
+        // // secondLargest(arr);
+        // thirdLargest(arr);
 
         // int arr[] = {10, 20, 20, 30, 30};
         // int removeDuplicate = removeDuplicate(arr);
@@ -1346,5 +1402,15 @@ public class ArrayAll {
         //     {7,8,9}
         // };
         // rotate(matrix);
+    
+    
+        int arr[] = {1, 2, 3, 4, 5};
+        leftRotate(arr); //2 3 4 5 1
+        // rotateLeftArray(arr, 2); // 3 4 5 1 2 
+        // System.out.println("");
+        // rotateRightArray(arr, 2); //4 5 1 2 3 
+
+    
+    
     }
 }
