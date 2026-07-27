@@ -1,3 +1,4 @@
+import java.lang.String;
 import java.util.*;
 
 public class ArrayAll {
@@ -1163,7 +1164,7 @@ public class ArrayAll {
         }
     }
 
-    // Rotate array by K elements(Left rotate)
+    // 55 Rotate array by K elements(Left rotate)
     public static void rotateLeftArray(int arr[], int k) {
         int n = arr.length;
         
@@ -1177,7 +1178,7 @@ public class ArrayAll {
             System.out.print(arr[i] + " ");
         }   
     }
-    // Rotate array by K elements(Right rotate)
+    // 56 Rotate array by K elements(Right rotate)
     public static void rotateRightArray(int arr[], int k) {
         int n = arr.length;
         
@@ -1202,6 +1203,25 @@ public class ArrayAll {
         }
     }
 
+    // 57 Rotate array by k elemet by direction 
+    public static int[] rotateArray(int arr[], int k, String direction) {
+        int n = arr.length; 
+        k = k % n;
+
+        if (direction.equals("right")) {
+            reverse(arr, 0, n - 1);
+            reverse(arr, 0, k - 1);
+            reverse(arr, k, n - 1);
+        }
+        else if (direction.equals("left")) {
+            reverse(arr, 0, k - 1);
+            reverse(arr, k, n - 1);
+            reverse(arr, 0, n - 1);
+        }
+        return arr;
+        }
+    
+    
 
 
     public static void main(String[] args) {
@@ -1405,11 +1425,18 @@ public class ArrayAll {
     
     
         int arr[] = {1, 2, 3, 4, 5};
-        leftRotate(arr); //2 3 4 5 1
+        // leftRotate(arr); //2 3 4 5 1
         // rotateLeftArray(arr, 2); // 3 4 5 1 2 
         // System.out.println("");
         // rotateRightArray(arr, 2); //4 5 1 2 3 
 
+        String direction = "right";
+        rotateArray(arr, 2, direction);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");//4 5 1 2 3  
+        }
+       
     
     
     }
