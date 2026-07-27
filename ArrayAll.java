@@ -1,5 +1,4 @@
-    import java.lang.String;
-    import java.util.*;
+import java.util.*;
 
 public class ArrayAll {
     // 1. Second largest number 
@@ -400,12 +399,16 @@ public class ArrayAll {
 
     // 20. Find duplicates in an array
     public static void findDuplicates(int arr[]) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) {
-                    System.out.print(arr[i] + " ");
-                    break;
-                }
+        for (int i = 1; i < arr.length; i++) {
+            // for (int j = i + 1; j < arr.length; j++) {
+            //     if (arr[i] == arr[j]) {
+            //         System.out.print(arr[i] + " ");
+            //         break;
+            //     }
+            // }
+
+            if (arr[i] == arr[i - 1]) {
+                System.out.print(arr[i] + " ");
             }
         }
     } 
@@ -1258,6 +1261,48 @@ public class ArrayAll {
         System.out.println(result);
     }
     
+    // 59 4Sum
+    public static void FourSum(int arr[], int target) {
+        int n = arr.length;
+        List<List<Integer>> result = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && arr[i] == arr[i - 1]) {
+                continue;
+            }
+
+            for (int j = i + 1; j < n; j++) {
+                if (j > i + 1 && arr[j] == arr[j - 1]) {
+                    continue;
+                }
+
+                int left = j + 1;
+                int right = n - 1;
+
+                while (left < right) {
+                    int sum = arr[i] + arr[j] + arr[left] + arr[right];
+
+                    if (sum == target) {
+                        result.add(Arrays.asList(arr[i], arr[j], arr[left], arr[right]));  
+
+                    while (left < right && arr[left] == arr[left + 1]) 
+                        left++;
+                    while (left < right &&  arr[right] == arr[right - 1]) 
+                        right--;
+
+                        left++;
+                        right--;
+                    }
+
+                    else if (sum < target) 
+                        left++;
+                    else 
+                        right--;
+                }
+            }
+        }
+        System.out.println(result);
+    }
 
 
     public static void main(String[] args) {
@@ -1471,8 +1516,10 @@ public class ArrayAll {
         //     System.out.print(arr[i] + " ");//4 5 1 2 3  
         // }
        
-        int arr[] = {-1,0,1,2,-1,-4};
-        ThreeSum(arr);
-    
+        // int arr[] = {-1,0,1,2,-1,-4};
+        // ThreeSum(arr);//[[-1, -1, 2], [-1, 0, 1]]
+
+        int arr[] = {4,3,3,4,4,2,1,2,1,1};
+        FourSum(arr, 9); // [[4, 2, 2, 1], [4, 2, 2, 1]]
     }
 }

@@ -1,5 +1,4 @@
 public class String {
-
     //1.Reverse the String 
     public static void reverse(String s) {  // 2 pointer Approach
         // Convert string to character array for in-place operations
@@ -202,7 +201,7 @@ public class String {
 
         // longestWord("java is a programming language");  // programming, length = 11
 
-        FirstNonRepeatingChar("aabcbadssdfcfde");  // First repetaing char = e
+        // FirstNonRepeatingChar("aabcbadssdfcfde");  // First repetaing char = e
 
     }
 }
