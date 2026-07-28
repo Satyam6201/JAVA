@@ -1304,7 +1304,6 @@ public class ArrayAll {
         System.out.println(result);
     }
 
-
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // // secondLargest(arr);
