@@ -1,3 +1,4 @@
+import java.lang.String;
 import java.util.*;
 
 public class ArrayAll {
@@ -1181,6 +1182,7 @@ public class ArrayAll {
             System.out.print(arr[i] + " ");
         }   
     }
+    
     // 56 Rotate array by K elements(Right rotate)
     public static void rotateRightArray(int arr[], int k) {
         int n = arr.length;
@@ -1302,6 +1304,28 @@ public class ArrayAll {
             }
         }
         System.out.println(result);
+    }
+    
+    // 60 Search Insert Position
+    public static void searchPosition(int arr[], int x) {
+        int n = arr.length;
+
+        int low = 0;
+        int high = n - 1;
+        int ans = 0;
+        
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] >= x) {
+                ans = mid;
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        System.out.print(ans);
     }
 
     public static void main(String[] args) {
