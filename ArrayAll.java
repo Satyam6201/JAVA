@@ -1326,6 +1326,7 @@ public class ArrayAll {
             }
         }
         System.out.print(ans);
+        
     }
 
     public static void main(String[] args) {
@@ -1542,7 +1543,11 @@ public class ArrayAll {
         // int arr[] = {-1,0,1,2,-1,-4};
         // ThreeSum(arr);//[[-1, -1, 2], [-1, 0, 1]]
 
-        int arr[] = {4,3,3,4,4,2,1,2,1,1};
-        FourSum(arr, 9); // [[4, 2, 2, 1], [4, 2, 2, 1]]
+        // int arr[] = {4,3,3,4,4,2,1,2,1,1};
+        // FourSum(arr, 9); // [[4, 2, 2, 1], [4, 2, 2, 1]]
+
+        int arr[] = {1,2,4,7};
+        int x = 6;
+        searchPosition(arr, x);
     }
 }
