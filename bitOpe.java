@@ -13,6 +13,8 @@ public class bitOpe {
 
     //swap two number without using 3 num
     public static void swap(int a, int b) {
+        System.out.println("a => " + a + " b => " + b);
+        
         a = a ^ b;
         b = a ^ b;
         a = a ^ b;
