@@ -1329,6 +1329,29 @@ public class ArrayAll {
         
     }
 
+    // 61 Non-overlapping Intervals
+    public static void OverlapIntervals(int intervals[][]) {
+        if (intervals.length == 0) {
+            return;
+        }
+
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[1], b[1]));
+
+        int end = intervals[0][1];
+        int count = 0;
+
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] < end) {
+                count++;
+            }
+            else {
+                end = intervals[i][1];
+            }
+        }
+
+        System.out.println(count);        
+    }
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // // secondLargest(arr);
@@ -1546,8 +1569,17 @@ public class ArrayAll {
         // int arr[] = {4,3,3,4,4,2,1,2,1,1};
         // FourSum(arr, 9); // [[4, 2, 2, 1], [4, 2, 2, 1]]
 
-        int arr[] = {1,2,4,7};
-        int x = 6;
-        searchPosition(arr, x);
+        // int arr[] = {1,2,4,7};
+        // int x = 6;
+        // searchPosition(arr, x);
+
+        int intervals[][] = {
+            {1, 2},
+            {2, 3},
+            {3, 4},
+            {1, 3}
+        };
+
+        OverlapIntervals(intervals);
     }
 }
