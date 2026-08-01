@@ -189,6 +189,24 @@ public class Recursion {
     }
     
     // 12 Combination Sum
+    public static List<List<Integer>> combinationSum(int arr[], int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(arr, target, 0, new ArrayList<>(), result);
+        return result;
+    }
+    public static void backtrack(int[] candidates, int target, int start, List<Integer> current, List<List<Integer>> result) {
+        if (target == 0) {
+            result.add(new ArrayList<>(current));  // Found a valid combination
+            return;
+        }
+        if (target < 0) return;  // Exceeded the sum, no need to continue
+
+        for (int i = start; i < candidates.length; i++) {
+            current.add(candidates[i]);  // Choose the number
+            backtrack(candidates, target - candidates[i], i, current, result); // Not i + 1 because we can reuse same element
+            current.remove(current.size() - 1);  // Backtrack
+        } 
+    }
 
     public static void main(String[] args) {
         // Q1.
@@ -228,8 +246,14 @@ public class Recursion {
         // System.out.println("Total N Queens are = " + count);
 
         // 11.
-        int arr[] = {1, 2, 3};
-        System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+        // int arr[] = {1, 2, 3};
+        // System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+
+        // 12
+        int arr[] = {2,3,6,7};
+        System.out.print(combinationSum(arr, 7));
+
+
 
     }
 }
