@@ -160,8 +160,8 @@ public class stacks {
         // String str = "hello";
         // reverseString(str);
 
-        int arr[] = {6, 8, 0, 1, 3};
-        nextGreater(arr);
+        // int arr[] = {6, 8, 0, 1, 3};
+        // nextGreater(arr);
 
         // int[] arr = {4, 5, 2, 10, 8};
         // prevSmallest(arr);
@@ -170,15 +170,15 @@ public class stacks {
         // int k = 3;
         // maxSlidingWindow(arr, k);
 
-        // Stack<Integer> s = new Stack<>();
-        // s.push(1);
-        // s.push(2);
-        // s.push(3);
-        // pushBottom(s, 4);
-        // while (!s.isEmpty()) {
-        //     System.out.print(s.peek() + " "); // 3 2 1 4 
-        //     s.pop();
-        // }
+        Stack<Integer> s = new Stack<>();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        pushBottom(s, 4);
+        while (!s.isEmpty()) {
+            System.out.print(s.peek() + " "); // 3 2 1 4 
+            s.pop();
+        }
 
         // String str = "((a+(b))) + (c+d)";
         // System.out.println(isDuplicate(str));
