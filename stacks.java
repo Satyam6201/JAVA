@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
 public class stacks {
 
@@ -161,8 +160,8 @@ public class stacks {
         // String str = "hello";
         // reverseString(str);
 
-        // int arr[] = {6, 8, 0, 1, 3};
-        // nextGreater(arr);
+        int arr[] = {6, 8, 0, 1, 3};
+        nextGreater(arr);
 
         // int[] arr = {4, 5, 2, 10, 8};
         // prevSmallest(arr);
@@ -181,7 +180,7 @@ public class stacks {
         //     s.pop();
         // }
 
-        String str = "((a+(b))) + (c+d)";
-        System.out.println(isDuplicate(str));
+        // String str = "((a+(b))) + (c+d)";
+        // System.out.println(isDuplicate(str));
     }
 }
