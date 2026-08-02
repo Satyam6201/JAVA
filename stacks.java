@@ -45,7 +45,7 @@ public class stacks {
     }
     
     // Next greater element
-    public static void nextGreater(int arr[]) {
+    public static void nextGreater(int arr[]) {  //6, 8, 0, 1, 3
         Stack<Integer> s = new Stack<>();
         int temp[] = new int[arr.length];
 
