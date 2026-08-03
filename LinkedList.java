@@ -465,7 +465,6 @@ public class LinkedList {
 
         return evenHead;
     }
-   
     public static void main(String[] args) {
         LinkedList li = new LinkedList();
         // li.addFirst(2);
