@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class String {
     //1.Reverse the String 
     public static void reverse(String s) {  // 2 pointer Approach
@@ -218,6 +221,26 @@ public class String {
         System.out.println(reverse);
     }
 
+    //  13. Longest Substring Without Repeating Characters
+    public static void lengthOfLongestSubstring(String s) {
+        int maxLength = 0;
+        int left = 0;
+        int right = 0;
+        Set<Character> set = new HashSet<>();
+
+        while (right < s.length()) {
+            if (!set.contains(s.charAt(right))) {
+                set.add(s.charAt(right));
+                maxLength = Math.max(maxLength, right - left + 1);
+                right++;
+            }
+            else {
+                set.remove(s.charAt(left));
+                left++;
+            }
+        }
+        System.out.println(maxLength);
+    }
 
 
     public static void main(String[] args) {
