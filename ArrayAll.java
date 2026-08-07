@@ -1352,6 +1352,34 @@ public class ArrayAll {
         System.out.println(count);        
     }
 
+    // 62. Find Missing and Repeated Values
+    public static void findMissingAndRepeatedValues(int [][] arr) {
+        int repeate = 0;
+        int missing = 0;
+
+        int n = arr.length;
+        int size = n * n;
+
+        int freq[] = new int[size + 1];
+
+        for (int[] num: arr) {
+            for (int nums: num) {
+                freq[nums]++;
+            }
+        }
+
+        for (int i = 1; i <= size; i++) {
+            if (freq[i] == 2) {
+                repeate = i; 
+            }
+            else if (freq[i] == 0) {
+                missing = i;
+            }
+        }
+
+        System.out.println(repeate + ", " + missing);
+    }
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // // secondLargest(arr);
@@ -1573,13 +1601,21 @@ public class ArrayAll {
         // int x = 6;
         // searchPosition(arr, x);
 
-        int intervals[][] = {
-            {1, 2},
-            {2, 3},
-            {3, 4},
-            {1, 3}
+        // int intervals[][] = {
+        //     {1, 2},
+        //     {2, 3},
+        //     {3, 4},
+        //     {1, 3}
+        // };
+        // OverlapIntervals(intervals);
+
+        int arr[][] = {
+            {1,3},
+            {2,2}
         };
 
-        OverlapIntervals(intervals);
+        findMissingAndRepeatedValues(arr);
+
+
     }
 }
