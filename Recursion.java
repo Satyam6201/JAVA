@@ -208,6 +208,28 @@ public class Recursion {
         } 
     }
 
+    // 13. Combination Sum-III
+    public static List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(1, k, n, new ArrayList<>(), result);
+        return result;
+    }
+    public static void backtrack(int start, int k, int n, List<Integer> current, List<List<Integer>> result) {
+        if (k == 0 && n == 0) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+
+        if (k == 0 || n <= 0) {
+            return;
+        }
+        for (int i = start; i <= 9; i++) {
+            current.add(i);
+            backtrack(i + 1, k - 1, n - i, current, result);
+            current.remove(current.size() - 1); 
+        }
+    }
+    
     public static void main(String[] args) {
         // Q1.
         // printNum(10);  //10 9 8 7 6 5 4 3 2 1 
@@ -250,8 +272,11 @@ public class Recursion {
         // System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
 
         // 12
-        int arr[] = {2,3,6,7};
-        System.out.print(combinationSum(arr, 7));
+        // int arr[] = {2,3,6,7};
+        // System.out.print(combinationSum(arr, 7));
+
+        // 13
+        System.out.println(combinationSum3(3, 9));
 
 
 
