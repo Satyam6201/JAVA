@@ -1,7 +1,8 @@
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
-public class String {
+public class StringAll {
     //1.Reverse the String 
     public static void reverse(String s) {  // 2 pointer Approach
         // Convert string to character array for in-place operations
@@ -242,6 +243,27 @@ public class String {
         System.out.println(maxLength);
     }
 
+    // 14. Removing Stars From a String
+    public static void removeStar(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == '*') {
+                stack.pop();
+            }
+            else {
+                stack.push(ch);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char ans: stack) {
+            sb.append(ans);
+        }
+
+        String result = sb.toString();
+        System.out.println(result);
+    }
 
     public static void main(String[] args) {
         // String s = "satyam";
@@ -260,7 +282,10 @@ public class String {
         // longestWord("java is a programming language");  // programming, length = 11
         // FirstNonRepeatingChar("aabcbadssdfcfde");  // First repetaing char = e
 
-        String s = "(1+(2*3)+((8)/4))+1";
-        System.out.println(maxDepth(s));
+        // String s = "(1+(2*3)+((8)/4))+1";
+        // System.out.println(maxDepth(s));
+
+        System.out.println("hello");
+
     }
 }
