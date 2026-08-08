@@ -265,6 +265,7 @@ public class StringAll {
         System.out.println(result);
     }
 
+    // 15 
     public static void main(String[] args) {
         // String s = "satyam";
         // reverse(s); // maytas
@@ -285,7 +286,8 @@ public class StringAll {
         // String s = "(1+(2*3)+((8)/4))+1";
         // System.out.println(maxDepth(s));
 
-        System.out.println("hello");
+        String str = "leet**cod*e";
+        removeStar(str);        
 
     }
 }
