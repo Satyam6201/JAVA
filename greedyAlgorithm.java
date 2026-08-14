@@ -207,6 +207,29 @@ public class greedyAlgorithm {
         System.out.println(result);
     }
     
+    // 9 Gas Station
+    public static int gasStation(int gas[], int cost[]) {
+        int total = 0;
+        int current = 0;
+        int index = 0;
+
+        for (int i = 0; i < gas.length; i++) {
+            int diff = gas[i] - cost[i];
+
+            total += diff;
+            current += diff;
+
+            if (current < 0) {
+                index = i + 1;
+                current = 0;
+            }
+        }
+
+        return total >= 0 ? index : -1;
+    }
+    
+    
+    
     public static void main(String[] args) {
         // Q1
         // int g[] = {1, 2, 3};
@@ -239,9 +262,13 @@ public class greedyAlgorithm {
         // jobSeq(jobInfo);   //Max Job = 2  2({1, 40}), 0({4, 20})
 
         // Q8. 
-        int[] arr = {900, 945, 955, 1100, 1500, 1800};
-        int[] dep = {920, 1200, 1130, 1150, 1900, 2000};
-        int n = arr.length;
-        minimumPlatform(n, arr, dep);  // 3  {945, 955, 1100}
+        // int[] arr = {900, 945, 955, 1100, 1500, 1800};
+        // int[] dep = {920, 1200, 1130, 1150, 1900, 2000};
+        // int n = arr.length;
+        // minimumPlatform(n, arr, dep);  // 3  {945, 955, 1100}
+
+        int gas[] = {1,2,3,4,5};
+        int cost[] = {3,4,5,1,2};
+        System.out.println(gasStation(gas, cost));  // 3
     }
 }
