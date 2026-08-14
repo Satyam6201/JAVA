@@ -69,6 +69,11 @@ public class bitOpe {
         return result;
     }
 
+    // Minimum Bit Flips to Convert Number
+    public static void minimumBitFlip(int start, int goal) {
+        
+    }
+
     public static void main(String[] args) {
         // oddEven(6); //even
         // swap(5, 7); // 7, 5
