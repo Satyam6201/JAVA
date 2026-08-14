@@ -230,6 +230,35 @@ public class Recursion {
         }
     }
     
+    // 14 Permutations
+    //nums = [1,2,3]
+    // Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+    public static List<List<Integer>> permutations(int arr[]) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(arr, new ArrayList<>(), new boolean [arr.length], result);
+        return result;
+    }
+    public static void backtrack(int arr[], List<Integer> curr, boolean used[], List<List<Integer>> result) {
+        if (arr.length == curr.size()) {
+            result.add(new ArrayList<>(curr));
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            if (used[i]) {
+                continue;
+            }
+
+            used[i] = true;
+            curr.add(arr[i]);
+            backtrack(arr, curr, used, result);
+
+            used[i] = false;
+            curr.remove(curr.size() - 1);
+        }
+    }
+
     public static void main(String[] args) {
         // Q1.
         // printNum(10);  //10 9 8 7 6 5 4 3 2 1 
@@ -276,7 +305,10 @@ public class Recursion {
         // System.out.print(combinationSum(arr, 7));
 
         // 13
-        System.out.println(combinationSum3(3, 9));
+        // System.out.println(combinationSum3(3, 9));
+
+        int arr[] = {1, 2, 3};
+        System.out.println(permutations(arr));
 
 
 
