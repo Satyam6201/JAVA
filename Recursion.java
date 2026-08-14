@@ -305,7 +305,7 @@ public class Recursion {
         // System.out.print(combinationSum(arr, 7)); // [[2, 2, 3], [7]]
 
         // 13
-        System.out.println(combinationSum3(3, 9)); 
+        System.out.println(combinationSum3(3, 9));  // [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
 
         // int arr[] = {1, 2, 3};
         // System.out.println(permutations(arr));   // [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
