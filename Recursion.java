@@ -301,11 +301,11 @@ public class Recursion {
         // System.out.println(subsets(arr)); // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
 
         // 12
-        int arr[] = {2,3,6,7};
-        System.out.print(combinationSum(arr, 7));
+        // int arr[] = {2,3,6,7};
+        // System.out.print(combinationSum(arr, 7)); // [[2, 2, 3], [7]]
 
         // 13
-        System.out.println(combinationSum3(3, 9));
+        System.out.println(combinationSum3(3, 9)); 
 
         // int arr[] = {1, 2, 3};
         // System.out.println(permutations(arr));   // [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
