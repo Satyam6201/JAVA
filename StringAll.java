@@ -166,7 +166,7 @@ public class StringAll {
     }
 
     //10. First Non-Repeating Character
-    public static void FirstNonRepeatingChar (String s) {
+    public static void FirstNonRepeatingChar(String s) {
         char result = '\0';
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
