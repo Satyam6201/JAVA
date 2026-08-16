@@ -1399,6 +1399,47 @@ public class ArrayAll {
         return false;
     } 
 
+    // 64 Next Permutation(123 -> 132,  115 => 151)
+    public static void nextPermutation(int arr[]) {
+        int n = arr.length;
+
+        int i = n - 2;
+        while (i >= 0 && arr[i] >= arr[i + 1]) {
+            i--;
+        }
+
+        if (i >= 0) {
+            int j = n - 1;
+            while (arr[j] <= arr[i]) {
+                j--;
+            }
+            swap(arr, i, j);
+        }
+        reverses(arr, i + 1, n - 1);
+    }
+    public static void swap(int arr[], int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    public static void reverses(int arr[], int start, int end) {
+        while (start < end) {
+            swap(arr, start, end);
+            start++;
+            end--;
+        }
+    }
+    public static void print(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+        }
+    }
+    
+    
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // // secondLargest(arr);
@@ -1632,12 +1673,14 @@ public class ArrayAll {
         //     {1,3},
         //     {2,2}
         // };
-
         // findMissingAndRepeatedValues(arr);
 
-        int arr[] = {1,2,3,4,5};
-        System.out.println(increasingTriplet(arr)); // true
+        // int arr[] = {1,2,3,4,5};
+        // System.out.println(increasingTriplet(arr)); // true
 
+        int arr[] = {1, 1, 5};
+        nextPermutation(arr);
+        print(arr); // 151
 
     }
 }

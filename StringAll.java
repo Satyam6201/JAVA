@@ -309,7 +309,7 @@ public class StringAll {
         // removeStar(str);
         
         String str = "loonbalxballpoon";
-        System.out.println(countBalloons(str));
+        System.out.println(countBalloons(str)); // 2 (balloon come 2 time)
 
     }
 }
