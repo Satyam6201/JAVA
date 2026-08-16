@@ -265,7 +265,26 @@ public class StringAll {
         System.out.println(result);
     }
 
-    // 15 
+    // 15 Maximum Number of Balloons (Balloon aana chahiye character me)
+    public static int countBalloons(String balloons) {
+        int min = Integer.MAX_VALUE;
+
+        int freq[] = new int[26];
+
+        for (int i = 0; i < balloons.length(); i++) {
+            freq[balloons.charAt(i) - 'a']++;
+        }
+
+        min = Math.min(min, freq['b' - 'a'] / 1);
+        min = Math.min(min, freq['a' - 'a'] / 1);
+        min = Math.min(min, freq['l' - 'a'] / 1);
+        min = Math.min(min, freq['l' - 'a'] / 1);
+        min = Math.min(min, freq['o' - 'a'] / 1);
+        min = Math.min(min, freq['o' - 'a'] / 1);
+        min = Math.min(min, freq['n' - 'a'] / 1);
+        
+        return min;
+    }
     public static void main(String[] args) {
         // String s = "satyam";
         // reverse(s); // maytas
@@ -286,8 +305,11 @@ public class StringAll {
         // String s = "(1+(2*3)+((8)/4))+1";
         // System.out.println(maxDepth(s));
 
-        String str = "leet**cod*e";
-        removeStar(str);        
+        // String str = "leet**cod*e";
+        // removeStar(str);
+        
+        String str = "loonbalxballpoon";
+        System.out.println(countBalloons(str));
 
     }
 }
