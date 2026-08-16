@@ -1380,6 +1380,25 @@ public class ArrayAll {
         System.out.println(repeate + ", " + missing);
     }
 
+    // 63 Increasing Triplet Subsequence (i < j < k)
+    public static boolean increasingTriplet(int arr[]) {
+        int first = Integer.MAX_VALUE;
+        int second = Integer.MAX_VALUE;
+        
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] <= first) {
+                first = arr[i];
+            }
+            else if (arr[i] <= second) {
+                second = arr[i];
+            }
+            else {
+                return true;
+            }
+        }
+        return false;
+    } 
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // // secondLargest(arr);
@@ -1609,12 +1628,15 @@ public class ArrayAll {
         // };
         // OverlapIntervals(intervals);
 
-        int arr[][] = {
-            {1,3},
-            {2,2}
-        };
+        // int arr[][] = {
+        //     {1,3},
+        //     {2,2}
+        // };
 
-        findMissingAndRepeatedValues(arr);
+        // findMissingAndRepeatedValues(arr);
+
+        int arr[] = {1,2,3,4,5};
+        System.out.println(increasingTriplet(arr)); // true
 
 
     }
