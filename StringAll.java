@@ -311,6 +311,22 @@ public class StringAll {
         return new ArrayList<>(map.values());
     }
     
+    // 17. Ransom Note(ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine)
+    public static boolean canConstruct(String ransomNote, String magazine) {
+        int freq[] = new int[26];
+
+        for (char word: magazine.toCharArray()) {
+            freq[word - 'a']++;
+        }
+
+        for (int word: ransomNote.toCharArray()) {
+            if (freq[word - 'a'] == 0) {
+                return false;
+            }
+            freq[word - 'a']--;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         // String s = "satyam";
         // reverse(s); // maytas
@@ -337,8 +353,12 @@ public class StringAll {
         // String str = "loonbalxballpoon";
         // System.out.println(countBalloons(str)); // 2 (balloon come 2 time)
 
-        String word[] = {"eat","tea","tan","ate","nat","bat"};
-        System.out.println(groupAnagram(word));
+        // String word[] = {"eat","tea","tan","ate","nat","bat"};
+        // System.out.println(groupAnagram(word));
+
+        String ransomNote = "aa";
+        String magazine = "aab";
+        System.out.println(canConstruct(ransomNote, magazine)); // true
 
     }
 }
