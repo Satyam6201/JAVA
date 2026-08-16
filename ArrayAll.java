@@ -1439,6 +1439,18 @@ public class ArrayAll {
         }
     }
     
+    // 65 remove the element 
+    public static void removeElement(int arr[], int value) {
+        int k = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != value) {
+                arr[k] = arr[i];
+                k++;
+            }
+        }
+        System.out.println(k);
+    }
     
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
@@ -1678,9 +1690,12 @@ public class ArrayAll {
         // int arr[] = {1,2,3,4,5};
         // System.out.println(increasingTriplet(arr)); // true
 
-        int arr[] = {1, 1, 5};
-        nextPermutation(arr);
-        print(arr); // 151
+        // int arr[] = {1, 1, 5};
+        // nextPermutation(arr);
+        // print(arr); // 151
+
+        int arr[] = {3, 2, 2, 3};
+        removeElement(arr, 3);
 
     }
 }

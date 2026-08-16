@@ -1,4 +1,9 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
@@ -285,6 +290,27 @@ public class StringAll {
         
         return min;
     }
+    
+    // 16 Group of anagram
+    public static List<List<String>> groupAnagram(String str[]) {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (int i = 0; i < str.length; i++) {
+            String word = str[i];
+
+            char [] words = word.toCharArray();
+
+            Arrays.sort(words);
+            String key = new String(words);
+
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+            map.get(key).add(word);
+        }
+        return new ArrayList<>(map.values());
+    }
+    
     public static void main(String[] args) {
         // String s = "satyam";
         // reverse(s); // maytas
@@ -308,8 +334,11 @@ public class StringAll {
         // String str = "leet**cod*e";
         // removeStar(str);
         
-        String str = "loonbalxballpoon";
-        System.out.println(countBalloons(str)); // 2 (balloon come 2 time)
+        // String str = "loonbalxballpoon";
+        // System.out.println(countBalloons(str)); // 2 (balloon come 2 time)
+
+        String word[] = {"eat","tea","tan","ate","nat","bat"};
+        System.out.println(groupAnagram(word));
 
     }
 }
