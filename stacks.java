@@ -153,6 +153,27 @@ public class stacks {
         return false;
     }
     
+    // Largest Rectangle in Histogram
+    public static void largestRectangleArea(int height[]) {
+        int n = height.length;
+        int maxLength = 0;
+
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = 0; i <= n; i++) {
+            int current = (n == i) ? 0 : height[i];
+
+            while (!stack.isEmpty() && current < height[stack.peek()]) {
+                int h = height[stack.pop()];
+                int width = stack.isEmpty() ? i : i - stack.peek() - 1;
+
+                maxLength = Math.max(maxLength, h * width);
+            }
+
+            stack.push(i);
+        }
+        System.out.println(maxLength);
+    }
     public static void main(String[] args) {
         // String str = "({})";
         // System.out.println(validParentheses(str));
@@ -170,17 +191,20 @@ public class stacks {
         // int k = 3;
         // maxSlidingWindow(arr, k);
 
-        Stack<Integer> s = new Stack<>();
-        s.push(1);
-        s.push(2);
-        s.push(3);
-        pushBottom(s, 4);
-        while (!s.isEmpty()) {
-            System.out.print(s.peek() + " "); // 3 2 1 4 
-            s.pop();
-        }
+        // Stack<Integer> s = new Stack<>();
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+        // pushBottom(s, 4);
+        // while (!s.isEmpty()) {
+        //     System.out.print(s.peek() + " "); // 3 2 1 4 
+        //     s.pop();
+        // }
 
         // String str = "((a+(b))) + (c+d)";
         // System.out.println(isDuplicate(str));
+
+        int height[] = {2,1,5,6,2,3};
+        largestRectangleArea(height);  // 10
     }
 }
