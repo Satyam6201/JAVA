@@ -1473,6 +1473,25 @@ public class ArrayAll {
         System.out.println(maxLength);
     }
     
+    // 67 Minimum length 
+    public static int minLengthSubArray(int arr[], int target) {
+        int minLength = Integer.MAX_VALUE;
+        int left = 0;
+        int sum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
+
+            while (sum >= target) {
+                minLength = Math.min(minLength, i - left + 1);
+                sum -= arr[left];
+                left++;
+            }
+
+        }
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
+    }
+
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
         // // secondLargest(arr);
@@ -1718,7 +1737,10 @@ public class ArrayAll {
         // int arr[] = {3, 2, 2, 3};
         // removeElement(arr, 3); // 2
 
-        int arr[] = {0,1,1,1,1,1,0,0,0};
-        maxLength(arr);  // 6(1, 1, 1, 0, 0, 0)
+        // int arr[] = {0,1,1,1,1,1,0,0,0};
+        // maxLength(arr);  // 6(1, 1, 1, 0, 0, 0)
+
+        int arr[] = {2,3,1,2,4,3};
+        System.out.println(minLengthSubArray(arr, 7)); // 2(4 + 3)
     }
 }
