@@ -1451,6 +1451,27 @@ public class ArrayAll {
         }
         System.out.println(k);
     }
+
+    // 66  Contiguous Array(Given a binary array nums, return the maximum length of a contiguous subarray with an equal number of 0 and 1.)
+    public static void maxLength(int arr[]) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);
+
+        int maxLength = 0;
+        int prefix = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            prefix += (arr[i] == 1) ? 1 : -1;
+
+            if (map.containsKey(prefix)) {
+                maxLength = Math.max(maxLength, i - map.get(prefix));
+            }
+            else {
+                map.put(prefix, i);
+            }
+        }
+        System.out.println(maxLength);
+    }
     
     public static void main(String[] args) {
         // int arr[] = {10, 20, 4, 45, 99, 16, 93, 100, 96, 100, 10, 20};
@@ -1694,8 +1715,10 @@ public class ArrayAll {
         // nextPermutation(arr);
         // print(arr); // 151
 
-        int arr[] = {3, 2, 2, 3};
-        removeElement(arr, 3);
+        // int arr[] = {3, 2, 2, 3};
+        // removeElement(arr, 3); // 2
 
+        int arr[] = {0,1,1,1,1,1,0,0,0};
+        maxLength(arr);  // 6(1, 1, 1, 0, 0, 0)
     }
 }
