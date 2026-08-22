@@ -345,6 +345,44 @@ public class StringAll {
         System.out.println(first);
     }
 
+    // 19. Find the first occurance of the string
+    public static void firstOccur(String s1, String s2) {
+        for (int i = 0; i < s1.length() - s2.length(); i++) {
+            if (s1.substring(i, i + s2.length()).equals(s2)) {
+                System.out.println(i);
+                return;
+            }
+        }
+        System.out.println("Not Found");
+    }
+    
+    // 20 Roman to integer
+    public static void romanToInt(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+
+
+        int result = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            int curr = map.get(s.charAt(i));
+
+            if (i < s.length() - 1 && curr < map.get(s.charAt(i + 1))) {
+                result -= curr;
+            }
+            else {
+                result += curr;
+            }
+        }
+        System.out.println(result);
+    }
+    
     public static void main(String[] args) {
         // String s = "satyam";
         // reverse(s); // maytas
@@ -378,8 +416,12 @@ public class StringAll {
         // String magazine = "aab";
         // System.out.println(canConstruct(ransomNote, magazine)); // true
 
-        String [] word = {"flower", "flow", "flight"};
-        longestprefix(word);
+        // String [] word = {"flower", "flow", "flight"};
+        // longestprefix(word);  // fl
+
+        // firstOccur("sadbutsad", "sad");  // 0
+
+        romanToInt("MCMXCIV");  // 1994
 
     }
 }
