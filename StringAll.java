@@ -327,6 +327,24 @@ public class StringAll {
         }
         return true;
     }
+
+    // 18. Longest common prefix
+    public static void longestprefix(String [] word) {
+        String first = word[0];
+
+        for (int i = 0; i < first.length(); i++) {
+            char ch = first.charAt(i);
+
+            for (int j = 1; j < word.length; j++) {
+                if (i >= word[j].length() || ch != word[j].charAt(i)) {
+                    System.out.println(first.substring(0, i));
+                    return;
+                }
+            }
+        }
+        System.out.println(first);
+    }
+
     public static void main(String[] args) {
         // String s = "satyam";
         // reverse(s); // maytas
@@ -356,9 +374,12 @@ public class StringAll {
         // String word[] = {"eat","tea","tan","ate","nat","bat"};
         // System.out.println(groupAnagram(word));
 
-        String ransomNote = "aa";
-        String magazine = "aab";
-        System.out.println(canConstruct(ransomNote, magazine)); // true
+        // String ransomNote = "aa";
+        // String magazine = "aab";
+        // System.out.println(canConstruct(ransomNote, magazine)); // true
+
+        String [] word = {"flower", "flow", "flight"};
+        longestprefix(word);
 
     }
 }
