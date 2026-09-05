@@ -59,9 +59,7 @@ class ProductFactory {
     }
 }
 
-/////////////////////////////////////////////
 // InventoryStore (Interface) & DbInventoryStore
-/////////////////////////////////////////////
 
 interface InventoryStore {
     void addProduct(Product prod, int qty);
@@ -123,9 +121,7 @@ class DbInventoryStore implements InventoryStore {
     }
 }
 
-/////////////////////////////////////////////
 // InventoryManager 
-/////////////////////////////////////////////
 
 class InventoryManager {
     private InventoryStore store;
@@ -153,9 +149,7 @@ class InventoryManager {
     }
 }
 
-/////////////////////////////////////////////
 // Replenishment Strategy (Strategy Pattern)
-/////////////////////////////////////////////
 
 interface ReplenishStrategy {
     void replenish(InventoryManager manager, Map<Integer,Integer> itemsToReplenish);
@@ -193,9 +187,7 @@ class WeeklyReplenishStrategy implements ReplenishStrategy {
     }
 }
 
-/////////////////////////////////////////////
 // DarkStore (formerly Warehouse)
-/////////////////////////////////////////////
 
 class DarkStore {
     private String name;
@@ -262,9 +254,7 @@ class DarkStore {
     }
 }
 
-/////////////////////////////////////////////
 // DarkStoreManager (Singleton)
-/////////////////////////////////////////////
 
 class DarkStoreManager {
     private static DarkStoreManager instance;
@@ -310,9 +300,7 @@ class Pair<K,V> {
     public V getValue() { return value; }
 }
 
-/////////////////////////////////////////////
 // User & Cart
-/////////////////////////////////////////////
 
 class Cart {
     public List<Pair<Product,Integer>> items = new ArrayList<>();
@@ -354,9 +342,7 @@ class User {
     }
 }
 
-/////////////////////////////////////////////
 // DeliveryPartner
-/////////////////////////////////////////////
 
 class DeliveryPartner {
     public String name;
@@ -365,9 +351,7 @@ class DeliveryPartner {
     }
 }
 
-/////////////////////////////////////////////
 // Order & OrderManager (Singleton)
-/////////////////////////////////////////////
 
 class Order {
     private static int nextId = 1;
@@ -518,9 +502,7 @@ class OrderManager {
     }
 }
 
-/////////////////////////////////////////////
 // Zepto Initialization & Main
-/////////////////////////////////////////////
 
 class ZeptoHelper {
     public static void showAllItems(User user) {
